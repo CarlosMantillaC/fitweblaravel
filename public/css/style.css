@@ -108,6 +108,7 @@ ol {
 	margin: 0;
 }
 
+
 /*---------------------
   Helper CSS
 -----------------------*/
@@ -124,6 +125,19 @@ ol {
 	font-weight: 700;
 }
 
+
+.benefit-item i {
+	color: #ffffff;
+}
+
+.benefit-item h3 {
+	color: #ffffff;
+}
+
+.benefit-item h4 {
+	color: #ffffff;
+}
+
 .section-title h2 {
 	color: #ffffff;
 	font-size: 32px;
@@ -131,6 +145,11 @@ ol {
 	text-transform: uppercase;
 	margin-top: 8px;
 }
+
+#benefits-title h2 {
+	color: #f36100;
+}
+
 
 .set-bg {
 	background-repeat: no-repeat;
@@ -3251,4 +3270,15 @@ ol {
 	.search-model-form input {
 		font-size: 28px;
 	}
+}
+
+
+
+.text-white-opaque {
+    font-size: 14px;
+	font-family: "Muli", sans-serif;
+	color: #a9a9a9;
+	font-weight: 400;
+	line-height: 24px;
+	margin: 0 0 15px 0;
 }
