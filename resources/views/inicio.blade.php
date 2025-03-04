@@ -1,10 +1,10 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
 <!-- Hero Section Begin-->
 <section class="hero-section">
     <div class="hs-slider owl-carousel">
-        <div class="hs-item set-bg" data-setbg="img/hero/hero-1.jpg">
+        <div class="hs-item set-bg" data-setbg="img/hero/hero1.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 offset-lg-6">
@@ -263,4 +263,6 @@
     </div>
 </section>
 <!-- Team Section End -->
+
+
 @endsection
