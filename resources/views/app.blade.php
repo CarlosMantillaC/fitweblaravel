@@ -17,11 +17,10 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
     <!-- Css Styles -->
 
-@if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-@endif
-    
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
 </head>
 
 <body>
