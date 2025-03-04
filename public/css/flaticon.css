@@ -231,3 +231,10 @@
 	.flaticon-050-no-fast-food:before {
 		content: "\f131";
 	}
+
+	.flaticon-016-fitness:before { content: "\f10f"; }          /* Icono de persona haciendo ejercicio */
+.flaticon-004-measuring-tape:before { content: "\f103"; }   /* Cinta métrica */
+.flaticon-028-weightlifting:before { content: "\f11b"; }    /* Halterofilia */
+.flaticon-034-stationary-bike:before { content: "\f121"; }  /* Bicicleta estática */
+.flaticon-002-dumbell:before { content: "\f101"; }          /* Mancuerna */
+.flaticon-014-heart-beat:before { content: "\f10d"; }       /* Latido cardíaco */

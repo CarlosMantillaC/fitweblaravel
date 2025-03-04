@@ -1,3 +1,30 @@
+ <!-- Get In Touch Section Begin -->
+ <section class="gettouch-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="gt-text">
+                        <i class="fa fa-map-marker"></i>
+                        <p>Cl. 10 #0-98 a 0-156 <br/>Los Caobos</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gt-text">
+                        <i class="fa fa-mobile"></i>
+                        <p>3215815090</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gt-text email">
+                        <i class="fa fa-envelope"></i>
+                        <p>support.gymcenter@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Get In Touch Section End -->
+
 <section class="footer-section">
     <div class="container">
         <div class="row justify-content-center text-center">
@@ -37,6 +64,17 @@
     </div>
 </div>
 <!-- Search model end -->
+
+<!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
 
 <!-- Js Plugins -->
 <script src="js/jquery-3.4.1.min.js"></script>
