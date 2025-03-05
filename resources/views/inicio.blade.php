@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+<title>Fitweb</title>
+
 <!-- Hero Section Begin-->
 <section class="hero-section">
     <div class="hs-slider owl-carousel">

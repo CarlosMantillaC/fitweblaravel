@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitweb</title>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="img/Favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -53,11 +52,10 @@
         </div>
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="./index.jsp">Inicio</a></li>
+                <li><a href="/">Inicio</a></li>
                 <li><a href="./about-us.jsp">Sobre nosotros</a></li>
                 <li><a href="./services.jsp">Servicios</a></li>
-                <li><a href="./team.jsp">Nuestro equipo</a></li>
-                <li><a href="./contact.jsp">Contáctanos</a></li>
+                <li><a href="contacto">Contáctanos</a></li>
                 <li><a href="./login.jsp">Soy Corpusfit</a></li>
             </ul>
         </nav>
@@ -80,11 +78,10 @@
                 <div class="col-lg-8">
                     <nav class="nav-menu">
                         <ul>
-                            <li><a href="./index.jsp">Inicio</a></li>
+                            <li><a href="/">Inicio</a></li>
                             <li><a href="./about-us.jsp">Sobre nosotros</a></li>
                             <li><a href="./services.jsp">Servicios</a></li>
-                            <li><a href="./team.jsp">Nuestro equipo</a></li>
-                            <li><a href="./contact.jsp">Contáctanos</a></li>
+                            <li><a href="contacto">Contáctanos</a></li>
                             <li><a href="./login.jsp">Soy Corpusfit</a></li>
                         </ul>
                     </nav>
