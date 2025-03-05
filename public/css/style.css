@@ -1,12 +1,3 @@
-/******************************************************************
-  Template Name: Gym
-  Description:  Gym Fitness HTML Template
-  Author: Colorlib
-  Author URI: https://colorlib.com
-  Version: 1.0
-  Created: Colorlib
-******************************************************************/
-
 /*------------------------------------------------------------------
 [Table of contents]
 
@@ -605,12 +596,12 @@ ol {
 
 .choseus-section {
 	background: #0a0a0a;
-	padding-bottom: 70px;
+	padding-bottom: 50px;
+	padding-top: 100px;
 }
 
 .cs-item {
 	text-align: center;
-	margin-bottom: 30px;
 }
 
 .cs-item:hover span {
@@ -647,10 +638,11 @@ ol {
 .classes-section {
 	background: #151515;
 	padding-bottom: 80px;
+	
 }
 
 .classes-section .section-title {
-	margin-bottom: 35px;
+	margin-bottom: 100px;
 }
 
 .class-item {
@@ -1081,7 +1073,7 @@ ol {
 
 .gettouch-section {
 	background: black;
-	padding: 30px 0 15px;
+	padding: 100px 0 15px;
 }
 
 .gt-text {
@@ -1099,7 +1091,6 @@ ol {
 	border-radius: 50%;
 	line-height: 65px;
 	text-align: center;
-	margin-right: 20px;
 }
 
 .gt-text p {
@@ -1107,6 +1098,14 @@ ol {
 	color: #ffffff;
 	margin-bottom: 0;
 	padding-top: 10px;
+}
+
+.gt-text h4 {
+	color: #ffffff;
+	font-size: 22px;
+	font-weight: 600;
+	margin-top: 24px;
+	margin-bottom: 16px;
 }
 
 .gt-text ul {
@@ -3271,8 +3270,6 @@ ol {
 		font-size: 28px;
 	}
 }
-
-
 
 .text-white-opaque {
     font-size: 14px;

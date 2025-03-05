@@ -110,11 +110,10 @@
 <!-- Features Section End -->
 
 <!-- Benefits Section Begin -->
-<section class="banner-section set-bg" data-setbg="img/classes/background-gym.jpg">
+<section class="classes-section set-bg" data-setbg="img/classes/gym-background.jpg">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="bs-text">
+            <div class="col-lg-12 text-center">
                     <div class="section-title" id="benefits-title">
                         <h2>Beneficios para Administradores</h2>
                     </div>
@@ -141,56 +140,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
-</section>
-<!-- Benefits Section End -->
-<section class="team-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title"> <!-- Agregar text-white -->
-                    <span>Modelo de Negocio</span>
-                    <h2>INVERSIÓN INTELIGENTE</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="pricing-card text-white"> <!-- Agregar text-white -->
-                    <h4><i class="fa fa-rocket text-white"></i> Plan Único</h4> <!-- Agregar text-white -->
-                    <div class="price text-white">$99<span>/mes</span></div> <!-- Agregar text-white -->
-                    <ul class="text-white"> <!-- Agregar text-white -->
-                        <li>Usuarios Ilimitados</li>
-                        <li>Soporte 24/7 Prioritario</li>
-                        <li>Todas las Funcionalidades</li>
-                        <li>Actualizaciones Gratuitas</li>
-                        <li>Capacitación Incluida</li>
-                    </ul>
-                    <a href="#contacto" class="primary-btn text-white">Prueba Gratis</a> <!-- Agregar text-white -->
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="feature-item text-white"> <!-- Agregar text-white -->
-                            <i class="fa fa-shield fa-2x text-white"></i> <!-- Agregar text-white -->
-                            <h4>Garantía de Satisfacción</h4>
-                            <p>30 días de prueba sin riesgo con reembolso total</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="feature-item text-white"> <!-- Agregar text-white -->
-                            <i class="fa fa-cloud-upload fa-2x text-white"></i> <!-- Agregar text-white -->
-                            <h4>Implementación Rápida</h4>
-                            <p>Migración de datos gratuita y configuración asistida</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 
 <!-- Problem Section Begin -->
@@ -204,33 +155,26 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row text-center">
             <div class="col-lg-4 col-sm-6">
-                <div class="cs-item">
-                    <span class="fa fa-rocket"></span>
+                <div class="gt-text">
+                    <i class="fa fa-rocket"></i>
                     <h4>Plan Único</h4>
-                    <ul class="text-white-opaque"> <!-- Agregar text-white -->
-                        <li>Usuarios Ilimitados</li>
-                        <li>Soporte 24/7 Prioritario</li>
-                        <li>Todas las Funcionalidades</li>
-                        <li>Actualizaciones Gratuitas</li>
-                        <li>Capacitación Incluida</li>
-                    </ul>
-                    <p>Elimina procesos manuales en reservas, pagos y control de acceso con nuestra plataforma todo-en-uno</p>
+                    <p>Incluye todas las funcionalidades para administradores, sin límite de usuarios o transacciones.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-004-measuring-tape"></span>
-                    <h4>Toma de Decisiones Inteligente</h4>
-                    <p>Dashboard ejecutivo con métricas clave para una gestión basada en datos reales</p>
+                <div class="gt-text">
+                    <i class="fa fa-shield fa-2x"></i>
+                    <h4>Garantía de Satisfacción</h4>
+                    <p>30 días de prueba totalmente gratuita.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-028-weightlifting"></span>
-                    <h4>Escalabilidad Garantizada</h4>
-                    <p>Solución adaptable para gimnasios pequeños y medianos sin costos adicionales por crecimiento</p>
+                <div class="gt-text">
+                    <i class="fa fa-user fa-2x"></i>
+                    <h4>Soporte Prioritario</h4>
+                    <p>Asistencia técnica 24/7, capacitación inicial y actualizaciones gratuitas.</p>
                 </div>
             </div>
         </div>
@@ -239,18 +183,46 @@
 <!-- Problem Section End -->
 
 
-<!-- CTA Section Begin -->
-<section class="gallery-section">
+<!-- Banner Section Begin -->
+<section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <div class="cta-content">
-                    <h2>¿Listo para Transformar tu Gimnasio?</h2>
-                    <p>Programa una demostración personalizada y recibe un plan de implementación gratuito</p>
-                    <a href="#contacto" class="primary-btn">Comenzar Ahora</a>
+                <div class="bs-text">
+                    <h2>Contactanos para obtener mas ofertas</h2>
+                    <div class="bt-tips">Donde la salud, la belleza y el fitness se encuentran.</div>
+                    <a href="contact.jsp" class="primary-btn  btn-normal">Obtener información</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- Banner Section End -->
+
+<!-- Gallery Section Begin -->
+<div class="gallery-section">
+    <div class="gallery">
+        <div class="grid-sizer"></div>
+        <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/gallery-9.jpg">
+            <a href="img/gallery/gallery-9.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+        <div class="gs-item set-bg" data-setbg="img/gallery/gallery-2.jpg">
+            <a href="img/gallery/gallery-2.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+        <div class="gs-item set-bg" data-setbg="img/gallery/gallery-3.jpg">
+            <a href="img/gallery/gallery-3.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+        <div class="gs-item set-bg" data-setbg="img/gallery/gallery-4.jpg">
+            <a href="img/gallery/gallery-4.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+        <div class="gs-item set-bg" data-setbg="img/gallery/gallery-5.jpg">
+            <a href="img/gallery/gallery-5.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+        <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/gallery-6.jpg">
+            <a href="img/gallery/gallery-6.jpg" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
+        </div>
+    </div>
+</div>
+<!-- Gallery Section End -->
+
 @endsection
