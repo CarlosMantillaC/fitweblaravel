@@ -1,7 +1,8 @@
 body {
-  font-family: "Karla", sans-serif;
-  background-color: #1b1a1a;
+  background-color: #0A0A0A !important; /* Fondo rojo */
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .brand-wrapper {
@@ -9,14 +10,16 @@ body {
 }
 .brand-wrapper .logo {
   height: 37px;
+  position: relative;
+  left: 30%;
 }
 
 .login-card {
   border: 0;
   border-radius: 27.5px;
-  box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
-  background-color: #111010; /* Fondo negro para la tarjeta de inicio de sesión */
-  overflow: hidden;
+  box-shadow: 0 10px 30px 0 rgba(255, 102, 0, 0.43);
+  background-color: #151515; /* Fondo negro para la tarjeta de inicio de sesión */
+  overflow: hidden; 
 }
 .login-card-img {
   border-radius: 0;
@@ -28,6 +31,7 @@ body {
 }
 .login-card .card-body {
   padding: 85px 60px 60px;
+  background-color: #111010; /* Fondo negro para el cuerpo de la tarjeta */
 }
 @media (max-width: 422px) {
   .login-card .card-body {
@@ -39,15 +43,17 @@ body {
   color: #ff7b00;
   font-weight: normal;
   margin-bottom: 23px;
+  position: relative;
+  left: 20%;
 }
 .login-card form {
   max-width: 326px;
 }
 
 .btn-black {
-  background-color: #0e0d0d; /* Fondo negro */
-  color: #ffffff; /* Texto blanco */
-  border: 1px solid #ff7b00; /* Borde color naranja */
+  background-color: #181717; /* Fondo negro */
+  color: #151515; /* Texto blanco */
+  border: 1px solid #F36100; /* Borde color naranja */
   border-radius: 4px;
   padding: 13px 20px;
   font-size: 17px;
@@ -55,49 +61,49 @@ body {
   line-height: 20px;
   text-align: center;
   text-decoration: none;
-}s
+  position: relative;
+  left: 25%;
+}
 
 .btn-black:hover {
-  background-color: #ff7b00; /* Cambio a naranja al hacer hover */
+  background-color: #F36100; /* Cambio a naranja al hacer hover */
   color: #131212; /* Texto negro en hover */
 }
 
 .login-card .form-control {
   background-color: #111010; /* Fondo negro para los campos de entrada */
-  color: #ff7b00; /* Texto blanco para mejor contraste */
-  border: 1px solid #ff7b00;
+  color: #ffffff; /* Texto naranja para mejor contraste */
+  border: 1px solid #F36100;
   padding: 15px 25px;
   margin-bottom: 20px;
   min-height: 45px;
   font-size: 13px;
   line-height: 15;
   font-weight: normal;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Animación al enfocar */
+  position: relative;
+  left: 25%;
 }
-.login-card .form-control::-webkit-input-placeholder {
-  color: #919aa3;
-}
-.login-card .form-control::-moz-placeholder {
-  color: #919aa3;
-}
-.login-card .form-control:-ms-input-placeholder {
-  color: #919aa3;
-}
-.login-card .form-control::-ms-input-placeholder {
-  color: #919aa3;
-}
-.login-card .form-control::placeholder {
-  color: #919aa3;
+
+.login-card .form-control:focus {
+  border-color: #F36100; /* Cambia el color del borde al enfocar */
+  box-shadow: 0 0 8px rgba(255, 123, 0, 0.6); /* Sombra naranja al enfocar */
+  outline: none; /* Elimina el contorno predeterminado */
+  background-color: #111010; /* Mantén el fondo negro */
+  color: #ffffff; /* Mantén el texto naranja */
 }
 
 .login-card .login-btn {
   padding: 13px 20px 12px;
-  background-color: #ff7b00;
+  background-color: #F36100;
   border-radius: 4px;
   font-size: 17px;
   font-weight: bold;
   line-height: 20px;
   color: #000000;
   margin-bottom: 24px;
+  position: relative;
+  left: 25%;
 }
 .login-card .login-btn:hover {
   border: 1px solid #000;
@@ -115,6 +121,8 @@ body {
   font-size: 16px;
   color: #e6e8ee;
   margin-bottom: 60px;
+  position: relative;
+  left: 15%;
 }
 @media (max-width: 767px) {
   .login-card-footer-text {
