@@ -4,27 +4,14 @@
 <!-- Hero Section Begin-->
 <section class="hero-section">
     <div class="hs-slider owl-carousel">
-        <div class="hs-item set-bg" data-setbg="img/hero/hero1.jpg">
+        <div class="hs-item set-bg" data-setbg="img//hero/hero8.png">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 offset-lg-6">
+                    <div class="col-lg-8 offset-lg-4">
                         <div class="hi-text">
-                            <span>Pastorea tu cuerpo</span>
-                            <h1>Se <strong>fuerte</strong> entrenando duro</h1>
-                            <a href="contact.jsp" class="primary-btn">Obtener información</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hs-item set-bg" data-setbg="img/hero/hero-2.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 offset-lg-6">
-                        <div class="hi-text">
-                            <span>Pastorea tu cuerpo</span>
-                            <h1>Se <strong>fuerte</strong> entrenando duro</h1>
-                            <a href="contact.jsp" class="primary-btn">Obtener información</a>
+                            <span>Revolucionando la gestión de gimnasios</span>
+                            <h1><strong>FitWeb</strong> - Tu Socio Digital</h1>
+                            <a href="#contacto" class="primary-btn">Agendar Demo</a>
                         </div>
                     </div>
                 </div>
@@ -34,56 +21,52 @@
 </section>
 <!-- Hero Section End -->
 
-<!-- ChoseUs Section Begin -->
+<!-- Problem Section Begin -->
 <section class="choseus-section spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <span>¿Por qué elegirnos?</span>
-                    <h2>SUPERA TUS LÍMITES</h2>
+                    <span>Problemas que Resolvemos</span>
+                    <h2>GESTIÓN DE GIMNASIOS</h2>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4 col-sm-6">
                 <div class="cs-item">
-                    <span class="flaticon-034-stationary-bike"></span>
-                    <h4>Equipo moderno</h4>
-                    <p>Es esencial que el cliente valore un equipo de gimnasio moderno, que permite entrenar de
-                        forma efectiva y segura, optimizando resultados y reduciendo riesgos</p>
-                </div>s
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-002-dumbell"></span>
-                    <h4>Plan de entrenamiento</h4>
-                    <p>Un plan de entrenamiento profesional está diseñado para optimizar el rendimiento, adaptándose
-                        a las metas individuales y asegurando progresos constantes de manera segura y efectiva.</p>
+                    <span class="flaticon-016-fitness"></span>
+                    <h4>Automatización Integral</h4>
+                    <p>Elimina procesos manuales en reservas, pagos y control de acceso con nuestra plataforma todo-en-uno</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="cs-item">
-                    <span class="flaticon-014-heart-beat"></span>
-                    <h4>Único para tus necesidades</h4>
-                    <p>Adaptado exclusivamente a tus necesidades, brindando soluciones personalizadas para alcanzar
-                        tus objetivos de manera efectiva y única.</p>
+                    <span class="flaticon-004-measuring-tape"></span>
+                    <h4>Toma de Decisiones Inteligente</h4>
+                    <p>Dashboard ejecutivo con métricas clave para una gestión basada en datos reales</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-028-weightlifting"></span>
+                    <h4>Escalabilidad Garantizada</h4>
+                    <p>Solución adaptable para gimnasios pequeños y medianos sin costos adicionales por crecimiento</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- Problem Section End -->
 
-<!-- ChoseUs Section End -->
-
-<!-- Classes Section Begin -->
+<!-- Features Section Begin -->
 <section class="classes-section spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <span>Nuestras clases</span>
-                    <h2>LO QUE PODEMOS OFRECER</h2>
+                    <span>Funcionalidades Clave</span>
+                    <h2>PLATAFORMA TODO-EN-UNO</h2>
                 </div>
             </div>
         </div>
@@ -91,76 +74,123 @@
             <div class="col-lg-4 col-md-6">
                 <div class="class-item">
                     <div class="ci-pic">
-                        <img src="img/classes/class-1.jpg" alt="">
+                        <img src="img/classes/dashboard.png" alt="Panel de Control">
                     </div>
                     <div class="ci-text">
-                        <span>Deportes de resistencia</span>
-                        <h5>correr, ciclismo</h5>
-                        <a href="login.jsp"><i class="fa fa-angle-right"></i></a>
+                        <span><i class="fa fa-tachometer"></i> Dashboard Inteligente</span>
+                        <h5>Métricas en Tiempo Real</h5>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="class-item">
                     <div class="ci-pic">
-                        <img src="img/classes/class-2.jpg" alt="">
+                        <img src="img/classes/customer-management.png" alt="Gestión de Clientes">
                     </div>
                     <div class="ci-text">
-                        <span>Actividades de fuerza</span>
-                        <h5>levantamiento de pesas, <br>crossfit</h5>
-                        <a href="login.jsp"><i class="fa fa-angle-right"></i></a>
+                        <span><i class="fa fa-users"></i> Gestión de Clientes</span>
+                        <h5>Perfiles Detallados + Historial Completo</h5>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="class-item">
                     <div class="ci-pic">
-                        <img src="img/classes/class-3.jpg" alt="">
+                        <img src="img/classes/calender.png" alt="Calendario Interactivo">
                     </div>
                     <div class="ci-text">
-                        <span>Actividades de flexibilidad y <br>equilibrio</span>
-                        <h5>yoga, pilates</h5>
-                        <a href="login.jsp"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="img/classes/class-4.jpg" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>Deportes de combate</span>
-                        <h4>boxeo, karate</h4>
-                        <a href="login.jsp"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="img/classes/class-5.jpg" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>Actividades recreativas</span>
-                        <h4>baile, zumba</h4>
-                        <a href="login.jsp"><i class="fa fa-angle-right"></i></a>
+                        <span><i class="fa fa-line-chart"></i> Calendario Interactivo</span>
+                        <h5>Programación + Reservas</h5>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- ChoseUs Section End -->
+<!-- Features Section End -->
+
+<!-- Benefits Section Begin -->
+<section class="classes-section set-bg" data-setbg="img/classes/gym-background.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                    <div class="section-title" id="benefits-title">
+                        <h2>Beneficios para Administradores</h2>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="benefit-item text-center">
+                                <i class="fa fa-clock-o fa-2x fa-md-4x"></i>
+                                <h3 class="fs-5 fs-md-3">+ Eficiencia</h3>
+                                <h4 class="fs-6 fs-md-4">Automatización de procesos</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="benefit-item text-center">
+                                <i class="fa fa-money fa-2x fa-md-4x"></i>
+                                <h3 class="fs-5 fs-md-3">- Errores</h3>
+                                <h4 class="fs-6 fs-md-4">Gestión financiera precisa</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="benefit-item text-center">
+                                <i class="fa fa-line-chart fa-2x fa-md-4x"></i>
+                                <h3 class="fs-5 fs-md-3">+ Retención</h3>
+                                <h4 class="fs-6 fs-md-4">Clientes satisfechos</h4>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+</section>
+
+<!-- Problem Section Begin -->
+<section class="choseus-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Modelo de Negocio</span>
+                    <h2>INVERSIÓN INTELIGENTE</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-4 col-sm-6">
+                <div class="gt-text">
+                    <i class="fa fa-rocket"></i>
+                    <h4>Plan Único</h4>
+                    <p>Incluye todas las funcionalidades para administradores, sin límite de usuarios o transacciones.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="gt-text">
+                    <i class="fa fa-shield fa-2x"></i>
+                    <h4>Garantía de Satisfacción</h4>
+                    <p>30 días de prueba totalmente gratuita.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="gt-text">
+                    <i class="fa fa-user fa-2x"></i>
+                    <h4>Soporte Prioritario</h4>
+                    <p>Asistencia técnica 24/7, capacitación inicial y actualizaciones gratuitas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Problem Section End -->
+
 
 <!-- Banner Section Begin -->
-<section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
+<section class="banner-section set-bg" data-setbg="img/banner.png">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="bs-text">
-                    <h2>Contactanos para obtener mas ofertas</h2>
-                    <div class="bt-tips">Donde la salud, la belleza y el fitness se encuentran.</div>
+                    <h2>Contactanos para obtener más información</h2>
+                    <div class="bt-tips">Donde el fitness y la tecnología se encuentran.</div>
                     <a href="contact.jsp" class="primary-btn  btn-normal">Obtener información</a>
                 </div>
             </div>
@@ -194,75 +224,5 @@
     </div>
 </div>
 <!-- Gallery Section End -->
-
-<!-- Team Section Begin -->
-<section class="team-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="team-title">
-                    <div class="section-title">
-                        <span>Nuestro equipo</span>
-                        <h2>FORMATE CON EXPERTOS</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="ts-slider owl-carousel">
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-1.jpg">
-                        <div class="ts_text">
-                            <h4>Selena Aguilar</h4>
-                            <span>Entrenadora</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-2.jpg">
-                        <div class="ts_text">
-                            <h4>Oliver Johnson</h4>
-                            <span>Entrenador</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-3.jpg">
-                        <div class="ts_text">
-                            <h4>Daniel Smith</h4>
-                            <span>Entrenador</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-4.jpg">
-                        <div class="ts_text">
-                            <h4>Noah Williams</h4>
-                            <span>Entrenador</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-5.jpg">
-                        <div class="ts_text">
-                            <h4>Daniela Acevedo</h4>
-                            <span>Entrenadora</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-6.jpg">
-                        <div class="ts_text">
-                            <h4>Camila Herrera</h4>
-                            <span>Entrenadora</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Team Section End -->
-
 
 @endsection
