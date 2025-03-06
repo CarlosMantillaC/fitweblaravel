@@ -44,8 +44,8 @@
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
                             </div>
                             <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Iniciar sesión">
-                            <!-- Botón para regresar al index -->
-                            <a href="index.html" class="btn btn-black btn-block">Regresar al Inicio</a>
+                            <!-- Botón para regresar al inicio /-->
+                            <a href="/" class="btn btn-black btn-block">Regresar al Inicio</a>
                         </form>
                         <br>
                         <p class="login-card-footer-text">¿No estás registrado? <br> Comunícate con la recepción del gimnasio.</p>
