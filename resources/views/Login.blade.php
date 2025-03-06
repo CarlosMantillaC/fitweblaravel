@@ -20,17 +20,18 @@
 
 </head>
 <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <!-- Logotipo fuera del contenedor de la tarjeta -->
+    <img src="img/logotipo.png" alt="logo" class="logo">
+
     <div class="container">
         <div class="card login-card">
-        <img src="img/logotipo.png" alt="logo" class="logo">
             <div class="row no-gutters">
-                
                 <div class="col-md-5">
                     <img src="img/gallery/gallery-4.jpg" alt="login" class="login-card-img">
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
-                        <p class="login-card-description"> ._   Inicia sesión en tu cuenta _.</p>
+                        <p class="login-card-description">._ Inicia sesión en tu cuenta _.</p>
                         <form action="LoginServlet" method="post">
                             <div class="form-group">
                                 <label for="username" class="sr-only">Usuario</label>
@@ -41,7 +42,6 @@
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
                             </div>
                             <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Iniciar sesión">
-
                             <!-- Botón para regresar al index -->
                             <a href="index.html" class="btn btn-black btn-block">Regresar al Inicio</a>
                         </form>

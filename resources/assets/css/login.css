@@ -150,12 +150,13 @@ body {
 }
 
 .logo {
-  width: 90px; /* Tamaño inicial */
+  width: 100px; /* Tamaño inicial */
   height: auto; /* Mantiene la proporción de la imagen */
-  position: absolute; /* Permite posicionar la imagen libremente */
-  top: 12%; /* Posiciona la imagen en el centro vertical */
-  left: 68%; /* Posiciona la imagen en el centro horizontal */
-  transform: translate(-50%, -50%); /* Centra la imagen correctamente */
+  position: fixed; /* Fija el logotipo en la parte superior */
+  top: 50px; /* Distancia desde la parte superior */
+  left: 66%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta el centrado */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
   transition: all 0.5s ease; /* Transición suave para cambios de tamaño y posición */
 }
 
@@ -165,7 +166,3 @@ body {
   transform: translate(-50%, -50%); /* Rota la imagen ligeramente */
 }
 
-/* Aplicar la animación de rebote */
-.logo.animated {
-  animation: bounce 1s infinite; /* Repite la animación indefinidamente */
-}
