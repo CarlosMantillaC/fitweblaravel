@@ -15,11 +15,13 @@ body {
 }
 
 .login-card {
+  font-family: "Muli", sans-serif;
   border: 0;
   border-radius: 27.5px;
-  box-shadow: 0 10px 30px 0 rgba(255, 102, 0, 0.43);
+  box-shadow: 0 10px 30px 0 rgba(255, 153, 0, 0.555);
   background-color: #151515; /* Fondo negro para la tarjeta de inicio de sesión */
   overflow: hidden; 
+  
 }
 .login-card-img {
   border-radius: 0;
@@ -30,8 +32,10 @@ body {
   object-fit: cover;
 }
 .login-card .card-body {
-  padding: 85px 60px 60px;
+  padding: 80px 80px 60px;
   background-color: #111010; /* Fondo negro para el cuerpo de la tarjeta */
+  position: relative;
+  top: 12%
 }
 @media (max-width: 422px) {
   .login-card .card-body {
@@ -39,8 +43,9 @@ body {
   }
 }
 .login-card-description {
+  font-family: "Oswald", sans-serif;
   font-size: 25px;
-  color: #ff7b00;
+  color: #f36100;
   font-weight: normal;
   margin-bottom: 23px;
   position: relative;
@@ -50,9 +55,10 @@ body {
   max-width: 326px;
 }
 
-.btn-black {
-  background-color: #181717; /* Fondo negro */
-  color: #151515; /* Texto blanco */
+.btn-black { /*boton de regresar al inicio*/
+  font-family: "Oswald", sans-serif;
+  background-color: #F36100; /* Fondo negro */
+  color: #ffffff; /* Texto blanco */
   border: 1px solid #F36100; /* Borde color naranja */
   border-radius: 4px;
   padding: 13px 20px;
@@ -64,13 +70,14 @@ body {
   position: relative;
   left: 25%;
 }
-
-.btn-black:hover {
-  background-color: #F36100; /* Cambio a naranja al hacer hover */
-  color: #131212; /* Texto negro en hover */
+.btn-black:hover { /*Boton de iniciaer sesion*/
+  border: 1px solid #111010;
+  color: #111010;
 }
 
+
 .login-card .form-control {
+  font-family: "Oswald", sans-serif;
   background-color: #111010; /* Fondo negro para los campos de entrada */
   color: #ffffff; /* Texto naranja para mejor contraste */
   border: 1px solid #F36100;
@@ -86,29 +93,29 @@ body {
 }
 
 .login-card .form-control:focus {
-  border-color: #F36100; /* Cambia el color del borde al enfocar */
-  box-shadow: 0 0 8px rgba(255, 123, 0, 0.6); /* Sombra naranja al enfocar */
-  outline: none; /* Elimina el contorno predeterminado */
-  background-color: #111010; /* Mantén el fondo negro */
-  color: #ffffff; /* Mantén el texto naranja */
+  border-color: #F36100; 
+  box-shadow: 0 0 8px rgba(255, 123, 0, 0.6); 
+  outline: none; 
+  background-color: #111010;
+  color: #ffffff; 
 }
 
-.login-card .login-btn {
+.login-card .login-btn { /*Boton de iniciaer sesion*/
+  font-family: "Oswald", sans-serif;
   padding: 13px 20px 12px;
   background-color: #F36100;
   border-radius: 4px;
   font-size: 17px;
   font-weight: bold;
   line-height: 20px;
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 24px;
   position: relative;
   left: 25%;
 }
-.login-card .login-btn:hover {
-  border: 1px solid #000;
-  background-color: transparent;
-  color: #000;
+.login-card .login-btn:hover { /*Boton de iniciaer sesion*/
+  border: 1px solid #111010;
+  color: #111010;
 }
 
 .login-card .forgot-password-link {
@@ -140,4 +147,25 @@ body {
   bottom: 1rem;
   text-align: center;
   width: 100%;
+}
+
+.logo {
+  width: 90px; /* Tamaño inicial */
+  height: auto; /* Mantiene la proporción de la imagen */
+  position: absolute; /* Permite posicionar la imagen libremente */
+  top: 12%; /* Posiciona la imagen en el centro vertical */
+  left: 68%; /* Posiciona la imagen en el centro horizontal */
+  transform: translate(-50%, -50%); /* Centra la imagen correctamente */
+  transition: all 0.5s ease; /* Transición suave para cambios de tamaño y posición */
+}
+
+/* Animación sencilla al pasar el ratón sobre la imagen */
+.logo:hover {
+  width: 100px; /* Aumenta el tamaño de la imagen */
+  transform: translate(-50%, -50%); /* Rota la imagen ligeramente */
+}
+
+/* Aplicar la animación de rebote */
+.logo.animated {
+  animation: bounce 1s infinite; /* Repite la animación indefinidamente */
 }

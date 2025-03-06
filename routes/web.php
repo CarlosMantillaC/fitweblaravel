@@ -17,3 +17,7 @@ Route::get('sobre-nosotros', function () {
 Route::get('funcionalidades', function () {
     return view('funcionalidades');
 });
+
+Route::get('Login', function () {
+    return view('Login');
+});
