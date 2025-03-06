@@ -16,22 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
     <!-- Css Styles -->
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-
-
-    <link rel="stylesheet" href="assets/css/forms.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/login.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/menuadminclien.css" type="text/css">
-
-
+    @vite(['resources/js/app.js'])
 
 </head>
 
