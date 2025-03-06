@@ -18,6 +18,6 @@ Route::get('funcionalidades', function () {
     return view('funcionalidades');
 });
 
-Route::get('Login', function () {
-    return view('Login');
+Route::get('login', function () {
+    return view('login');
 });

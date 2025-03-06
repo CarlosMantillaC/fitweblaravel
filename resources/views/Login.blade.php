@@ -19,10 +19,8 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
 
 </head>
-<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
-    <!-- Logotipo fuera del contenedor de la tarjeta -->
-    <img src="img/logotipo.png" alt="logo" class="logo">
 
+<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="container">
         <div class="card login-card">
             <div class="row no-gutters">
@@ -31,7 +29,11 @@
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
-                        <p class="login-card-description">._ Inicia sesión en tu cuenta _.</p>
+                        <!-- Logo centrado encima del título -->
+                        <div class="logo text-center col-6 col-lg-4">
+                            <img src="img/logotipo.png" alt="logo" class="login-logo">
+                        </div>
+                        <p class="login-card-description">Inicia sesión en tu cuenta</p>
                         <form action="LoginServlet" method="post">
                             <div class="form-group">
                                 <label for="username" class="sr-only">Usuario</label>
