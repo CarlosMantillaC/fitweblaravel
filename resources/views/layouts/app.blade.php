@@ -14,6 +14,8 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <!-- Css Styles -->
 
 
@@ -40,7 +42,7 @@
             <ul>
                 <li><a href="/">Inicio</a></li>
                 <li><a href="./about-us.jsp">Sobre nosotros</a></li>
-                <li><a href="./services.jsp">Servicios</a></li>
+                <li><a href="./services.jsp">Funcionalidades</a></li>
                 <li><a href="contacto">Contáctanos</a></li>
                 <li><a href="./login.jsp">Soy Corpusfit</a></li>
             </ul>
@@ -66,7 +68,7 @@
                         <ul>
                             <li><a href="/">Inicio</a></li>
                             <li><a href="./about-us.jsp">Sobre nosotros</a></li>
-                            <li><a href="./services.jsp">Servicios</a></li>
+                            <li><a href="./services.jsp">Funcionalidades</a></li>
                             <li><a href="contacto">Contáctanos</a></li>
                             <li><a href="./login.jsp">Soy Corpusfit</a></li>
                         </ul>

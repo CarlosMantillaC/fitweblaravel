@@ -13,3 +13,7 @@ Route::get('contacto', function () {
 Route::get('sobre-nosotros', function () {
     return view('sobre-nosotros');
 });
+
+Route::get('funcionalidades', function () {
+    return view('funcionalidades');
+});
