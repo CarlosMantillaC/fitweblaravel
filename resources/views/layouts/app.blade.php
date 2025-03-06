@@ -41,10 +41,10 @@
         <nav class="canvas-menu mobile-menu">
             <ul>
                 <li><a href="/">Inicio</a></li>
-                <li><a href="./about-us.jsp">Sobre nosotros</a></li>
                 <li><a href="funcionalidades">Funcionalidades</a></li>
                 <li><a href="contacto">Contáctanos</a></li>
-                <li><a href="./login.jsp">Soy Corpusfit</a></li>
+                <li><a href="sobre-nosotros">Sobre nosotros</a></li>
+                <li><a href="login">Soy FitWeb</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -67,10 +67,10 @@
                     <nav class="nav-menu">
                         <ul>
                             <li><a href="/">Inicio</a></li>
-                            <li><a href="./about-us.jsp">Sobre nosotros</a></li>
+                            <li><a href="sobre-nosotros">Sobre nosotros</a></li>
                             <li><a href="funcionalidades">Funcionalidades</a></li>
                             <li><a href="contacto">Contáctanos</a></li>
-                            <li><a href="./login.jsp">Soy Corpusfit</a></li>
+                            <li><a href="login">Soy FitWeb</a></li>
                         </ul>
                     </nav>
                 </div>

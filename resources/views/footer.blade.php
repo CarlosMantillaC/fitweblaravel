@@ -17,7 +17,7 @@
             <div class="col-md-4">
                 <div class="gt-text email">
                     <i class="fa fa-envelope"></i>
-                    <p>support.gymcenter@gmail.com</p>
+                    <p>contacto@fitweb.com.co</p>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
 <section class="footer-section">
     <div class="container">
         <div class="row justify-content-center text-center">
-            <div class="col-lg-3">
+            <div class="col-5 col-lg-2">
                 <div class="fs-about">
                     <div class="fa-logo">
                         <a href="#"><img src="img/logotipo.png" alt="" class="img-fluid"></a>

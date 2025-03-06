@@ -972,11 +972,11 @@ ol {
 }
 
 .team-section.team-page {
-	padding-bottom: 70px;
+	padding-bottom: 10px;
 }
 
 .team-section.team-page .ts-item {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 .team-section.team-page .ts-item:hover .ts_text {
@@ -1315,82 +1315,88 @@ ol {
 }
 
 /*---------------------
-  About Us Section
+  About Section
 -----------------------*/
 
-.about-video {
-	height: 640px;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-}
-
-.about-video .play-btn {
-	display: inline-block;
-	height: 70px;
-	width: 70px;
-	background: #f36100;
-	border-radius: 50%;
-	line-height: 70px;
-	text-align: center;
-	font-size: 36px;
-	color: #ffffff;
-}
-
-.about-text {
-	background: #000000;
-	height: 640px;
-	padding: 120px 70px 0 70px;
+.about-section {
+    background: #0a0a0a;
 }
 
 .about-text .section-title {
-	text-align: left;
-	margin-bottom: 30px;
+    text-align: left;
+    margin-bottom: 30px;
 }
 
-.about-text .at-desc {
-	margin-bottom: 27px;
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 40px 0;
 }
 
-.about-text .at-desc p {
-	color: #c4c4c4;
+.af-item {
+    text-align: center;
+    padding: 25px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    transition: all 0.3s;
 }
 
-.about-text .about-bar .ab-item {
-	margin-bottom: 34px;
+.af-item:hover {
+    transform: translateY(-5px);
+    border: 1px solid #f36100;
 }
 
-.about-text .about-bar .ab-item p {
-	color: #ffffff;
-	margin-bottom: 13px;
+.af-item i {
+    font-size: 40px;
+    color: #f36100;
+    margin-bottom: 15px;
+    display: block;
 }
 
-.about-text .about-bar .ab-item .barfiller {
-	background: #2d2d2d;
-	height: 5px;
-	border: none;
-	margin-bottom: 0;
+.af-item h4 {
+    color: #ffffff;
+    margin-bottom: 10px;
 }
 
-.about-text .about-bar .ab-item .barfiller .tip {
-	margin-top: 0;
-	padding: 0;
-	font-size: 14px;
-	color: #ffffff;
-	background: transparent;
-	position: initial !important;
-	float: right;
-	margin-top: -40px;
+.af-item p {
+    margin-bottom: 0;
+    font-size: 14px;
+	color: #cfccccda;
 }
 
-.about-text .about-bar .ab-item .barfiller .tip:after {
-	display: none;
+/*---------------------
+  Team Section
+-----------------------*/
+
+.team-section .ts-item {
+    margin-bottom: 30px;
+}
+
+.tt-social a {
+    color: #c4c4c4;
+    margin: 0 8px;
+    transition: all 0.3s;
+}
+
+.tt-social a:hover {
+    color: #f36100;
+}
+
+@media (max-width: 991px) {
+    .about-text {
+        margin-top: 40px;
+    }
+    
+    .af-item {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-features {
+        grid-template-columns: 1fr;
+    }
 }
 
 /*---------------------

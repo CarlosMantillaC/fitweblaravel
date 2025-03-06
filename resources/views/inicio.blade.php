@@ -14,7 +14,7 @@
                         <div class="hi-text">
                             <span>Revolucionando la gestión de gimnasios</span>
                             <h1><strong>FitWeb</strong> - Tu Socio Digital</h1>
-                            <a href="#contacto" class="primary-btn">Agendar Demo</a>
+                            <a href="contacto" class="primary-btn">Agendar Demo</a>
                         </div>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                 <div class="bs-text">
                     <h2>Contactanos para obtener más información</h2>
                     <div class="bt-tips">Donde el fitness y la tecnología se encuentran.</div>
-                    <a href="contact.jsp" class="primary-btn  btn-normal">Obtener información</a>
+                    <a href="contacto" class="primary-btn  btn-normal">Obtener información</a>
                 </div>
             </div>
         </div>
