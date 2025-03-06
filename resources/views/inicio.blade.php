@@ -113,7 +113,7 @@
 <!-- Features Section End -->
 
 <!-- Benefits Section Begin -->
-<section class="classes-section set-bg" data-setbg="img/classes/gym-background.jpg">
+<section class="classes-section spad set-bg" data-setbg="img/classes/gym-background.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
