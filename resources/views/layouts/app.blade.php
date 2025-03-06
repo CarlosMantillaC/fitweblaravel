@@ -16,7 +16,8 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
     <!-- Css Styles -->
 
-    @vite(['resources/js/app.js'])
+
+    @vite(['resources/css/app.css','resources/js/app.js'])
 
 </head>
 
@@ -81,10 +82,8 @@
 
 
     @yield('content')
-
-
-
     @include('footer')
+
 </body>
 
 </html>

@@ -1,3 +1,8 @@
+// Mostrar contenido cuando todo cargue
+document.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.style.visibility = 'visible';
+});
+
 import '../assets/css/bootstrap.min.css';
 import '../assets/css/font-awesome.min.css';
 import '../assets/css/flaticon.css';
@@ -19,3 +24,4 @@ import '../assets/js/jquery.barfiller.js';
 import '../assets/js/jquery.slicknav.js';
 import '../assets/js/owl.carousel.min.js';
 import '../assets/js/main.js';
+
