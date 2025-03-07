@@ -12,7 +12,6 @@ import '../assets/css/magnific-popup.css';
 import '../assets/css/slicknav.min.css';
 import '../assets/css/style.css';
 import '../assets/css/forms.css';
-import '../assets/css/login.css';
 import '../assets/css/materialdesignicons.min.css';
 import '../assets/css/menuadminclien.css';
 
