@@ -137,7 +137,7 @@
         <div class="cta-content">
             <h2 class="text-white">¿Listo para revolucionar tu gestión?</h2>
             <p class="text-white-opaque">Prueba FitWeb gratis durante 30 días</p>
-            <a href="#" class="primary-btn">Comenzar prueba gratuita</a>
+            <a href="contacto" class="primary-btn">Comenzar prueba gratuita</a>
             <p class="text-white-opaque small mt-3">Sin tarjeta de crédito requerida</p>
         </div>
     </div>

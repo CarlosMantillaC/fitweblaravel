@@ -61,7 +61,7 @@
 </section>
 
 <!-- Mission Section -->
-<section class="choseus-section spad">
+<section class="mision-section spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">

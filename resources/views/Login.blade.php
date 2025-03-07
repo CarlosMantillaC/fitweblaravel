@@ -20,12 +20,12 @@
 
 </head>
 
-<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+<section class="login-section d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="container">
         <div class="card login-card">
             <div class="row no-gutters">
                 <div class="col-md-5">
-                    <img src="img/gallery/gallery-4.jpg" alt="login" class="login-card-img">
+                    <img src="img/hero/hero8c.png" alt="login" class="login-card-img">
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
@@ -54,5 +54,5 @@
             </div>
         </div>
     </div>
-</main>
+</section>
 @include('footer')
