@@ -3461,10 +3461,8 @@ ol {
   Login Section
 --------------------------*/
 
-/* Login Section */
 .login-section {
-	background: #0a0a0a;
-	margin-top: 30px;
+	background: #000000;
 }
 
 .login-card {
@@ -3473,6 +3471,7 @@ ol {
 	border-radius: 15px;
 	overflow: hidden;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	margin: 100px 40px 40px 50px;
 }
 
 .logo {
@@ -3497,6 +3496,22 @@ ol {
 .card-body {
 	padding: 80px;
 	position: relative;
+}
+
+.card-body form input:focus,
+.card-body form textarea:focus {
+	color: #ffffff;
+	outline: none;
+}
+
+.card-body form input::placeholder,
+.card-body form textarea::placeholder {
+	color: #ffffff;
+}
+
+.card-body form input:focus::placeholder,
+.card-body form textarea:focus::placeholder {
+	color: #ffffff;
 }
 
 .login-card-description {
