@@ -37,14 +37,12 @@
     'resources/assets/js/jquery.slicknav.js',
     'resources/assets/js/owl.carousel.min.js',
     'resources/css/app.css',
-    'resources/js/app.js'])
+    'resources/js/app.js',
+    'resources/assets/js/main.js'])
 
 </head>
 
 <body>
-
-@vite(['resources/assets/js/main.js'])
-
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
