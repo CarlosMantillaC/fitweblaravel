@@ -19,8 +19,12 @@
     <!-- Css Styles -->
 
 
-    @vite(['resources/css/app.css','resources/js/app.js'])
-
+    @if (app()->environment('local'))
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @else
+    <link rel="stylesheet" href="{{ asset('build/assets/app-Bzf87Yj.css') }}">
+    <script src="{{ asset('build/assets/app-CTAmBcxz.js') }}" defer></script>
+    @endif
 </head>
 
 <body>
