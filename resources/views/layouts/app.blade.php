@@ -19,15 +19,32 @@
     <!-- Css Styles -->
 
 
-    @if (app()->environment('local'))
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @else
-    <link rel="stylesheet" href="{{ asset('build/assets/app-Bzf87Yj.css') }}">
-    <script src="{{ asset('build/assets/app-CTAmBcxz.js') }}" defer></script>
-    @endif
+    @vite([
+    'resources/assets/css/bootstrap.min.css',
+    'resources/assets/css/font-awesome.min.css',
+    'resources/assets/css/flaticon.css',
+    'resources/assets/css/owl.carousel.min.css',
+    'resources/assets/css/barfiller.css',
+    'resources/assets/css/magnific-popup.css',
+    'resources/assets/css/slicknav.min.css',
+    'resources/assets/css/style.css',
+    'resources/assets/css/materialdesignicons.min.css',
+    'resources/assets/js/jquery-3.4.1.min.js',
+    'resources/assets/js/bootstrap.min.js',
+    'resources/assets/js/jquery.magnific-popup.min.js',
+    'resources/assets/js/masonry.pkgd.min.js',
+    'resources/assets/js/jquery.barfiller.js',
+    'resources/assets/js/jquery.slicknav.js',
+    'resources/assets/js/owl.carousel.min.js',
+    'resources/css/app.css',
+    'resources/js/app.js'])
+
 </head>
 
 <body>
+
+@vite(['resources/assets/js/main.js'])
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
