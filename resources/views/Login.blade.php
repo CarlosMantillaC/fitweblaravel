@@ -13,27 +13,20 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    @vite([
-    'resources/assets/css/bootstrap.min.css',
-    'resources/assets/css/font-awesome.min.css',
-    'resources/assets/css/flaticon.css',
-    'resources/assets/css/owl.carousel.min.css',
-    'resources/assets/css/barfiller.css',
-    'resources/assets/css/magnific-popup.css',
-    'resources/assets/css/slicknav.min.css',
-    'resources/assets/css/style.css',
-    'resources/assets/css/materialdesignicons.min.css',
-    'resources/assets/js/jquery-3.4.1.min.js',
-    'resources/assets/js/bootstrap.min.js',
-    'resources/assets/js/jquery.magnific-popup.min.js',
-    'resources/assets/js/masonry.pkgd.min.js',
-    'resources/assets/js/jquery.barfiller.js',
-    'resources/assets/js/jquery.slicknav.js',
-    'resources/assets/js/owl.carousel.min.js',
-    'resources/css/app.css',
-    'resources/js/app.js',
-    'resources/assets/js/main.js'])
+    <!-- Css Styles -->
 
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
+
+    @vite([
+    
+    'resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <section class="login-section d-flex align-items-center min-vh-100 py-3 py-md-0">

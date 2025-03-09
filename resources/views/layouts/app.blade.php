@@ -26,14 +26,10 @@
     <link rel="stylesheet" href="assets/css/barfiller.css" type="text/css">
     <link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-
-
-    <link rel="stylesheet" href="assets/css/forms.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/login.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/menuadminclien.css" type="text/css">
-
+    
+    @vite([
+    
+    'resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
