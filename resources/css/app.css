@@ -604,6 +604,13 @@ ol {
 	opacity: 0;
 }
 
+.hero-section .primary-btn {
+    position: relative;
+    z-index: 10; /* Asegura que el botón esté por encima de otros elementos */
+    cursor: pointer; /* Cambia el cursor a pointer para indicar que es clickeable */
+}
+
+
 /*---------------------
   ChoseUs Section
 -----------------------*/

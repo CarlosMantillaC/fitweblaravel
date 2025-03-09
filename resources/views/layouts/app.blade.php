@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="assets/css/barfiller.css" type="text/css">
     <link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" type="text/css">
     
     @vite([
     
