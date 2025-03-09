@@ -6,8 +6,8 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::get('contacto', function () {
-    return view('contacto');
+Route::get('contactanos', function () {
+    return view('contactanos');
 });
 
 Route::get('sobre-nosotros', function () {

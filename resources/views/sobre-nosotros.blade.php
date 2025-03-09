@@ -2,7 +2,7 @@
 
 @section('content')
 
-<title>FitWeb - Sobre Nosotros</title>
+<title>FitWeb Sobre Nosotros</title>
 
 
 <!-- Breadcrumb Section Begin -->
@@ -53,7 +53,7 @@
                         </div>
                     </div>
 
-                    <a href="contacto" class="primary-btn">Ver demostración</a>
+                    <a href="contactanos" class="primary-btn">Ver demostración</a>
                 </div>
             </div>
         </div>

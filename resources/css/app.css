@@ -1564,15 +1564,13 @@ ol {
 
 /* 5.3 CTA Section */
 .cta-section {
-	background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../img/cta-bg.jpg');
-	background-size: cover;
-	margin-bottom: 50px;
+	background-color: #0a0a0a;
 	text-align: center;
 }
 
 .cta-content {
-	max-width: 800px;
-	margin: 0 auto;
+	background-color: #0a0a0a;
+	margin-top: 100px;
 }
 
 .cta-content .primary-btn {

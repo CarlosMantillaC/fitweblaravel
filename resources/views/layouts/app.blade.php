@@ -52,7 +52,7 @@
             <ul>
                 <li><a href="/">Inicio</a></li>
                 <li><a href="funcionalidades">Funcionalidades</a></li>
-                <li><a href="contacto">Contáctanos</a></li>
+                <li><a href="contactanos">Contáctanos</a></li>
                 <li><a href="sobre-nosotros">Sobre nosotros</a></li>
                 <li><a href="login">Soy FitWeb</a></li>
             </ul>
@@ -79,7 +79,7 @@
                             <li><a href="/">Inicio</a></li>
                             <li><a href="funcionalidades">Funcionalidades</a></li>
                             <li><a href="sobre-nosotros">Sobre nosotros</a></li>
-                            <li><a href="contacto">Contáctanos</a></li>
+                            <li><a href="contactanos">Contáctanos</a></li>
                             <li><a href="login">Soy FitWeb</a></li>
                         </ul>
                     </nav>

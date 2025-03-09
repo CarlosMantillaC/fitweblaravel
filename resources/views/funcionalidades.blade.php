@@ -2,7 +2,7 @@
 
 @section('content')
 
-<title>FitWeb - Servicios para Gestión de Gimnasios</title>
+<title>FitWeb Funcionalidades</title>
 
 
 <!-- Breadcrumb Section Begin -->
@@ -131,14 +131,16 @@
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="cta-section set-bg" data-setbg="img/cta-bg.jpg">
+<section class="banner-section set-bg" data-setbg="img/banner.png">
     <div class="container">
-        <div class="cta-content">
-            <h2 class="text-white">¿Listo para revolucionar tu gestión?</h2>
-            <p class="text-white-opaque">Prueba FitWeb gratis durante 30 días</p>
-            <a href="contacto" class="primary-btn">Comenzar prueba gratuita</a>
-            <p class="text-white-opaque small mt-3">Sin tarjeta de crédito requerida</p>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="bs-text">
+                    <h2>Contactanos para obtener más información</h2>
+                    <div class="bt-tips">Donde el fitness y la tecnología se encuentran.</div>
+                    <a href="contactanos" class="primary-btn  btn-normal">Obtener información</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>

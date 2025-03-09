@@ -2,7 +2,7 @@
 
 @section('content')
 
-<title>Corpusfit - Contacto</title>
+<title>FitWeb Contactanos</title>
 
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb-bg.jpg">
