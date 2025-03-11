@@ -44,8 +44,9 @@
                         <div class="logo text-center col-6 col-lg-4">
                             <img src="img/logotipo.png" alt="logo" class="login-logo">
                         </div>
-                        <p class="login-card-description">Inicia sesión en tu cuenta</p>
-                        <form action="LoginServlet" method="post">
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <p class="login-card-description">Inicia sesión en tu cuenta</p>
                             <div class="form-group">
                                 <label for="username" class="sr-only">Usuario</label>
                                 <input type="email" name="username" id="username" class="form-control" placeholder="Correo electrónico">

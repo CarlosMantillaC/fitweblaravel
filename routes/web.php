@@ -20,4 +20,10 @@ Route::get('funcionalidades', function () {
 
 Route::get('login', function () {
     return view('login');
+})->name('login'); // Asigna un nombre a la ruta
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return redirect()->route('inicio'); // O la vista que prefieras
+    })->name('dashboard');
 });
