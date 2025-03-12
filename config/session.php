@@ -18,8 +18,8 @@ return [
     |
     */
     'same_site' => 'lax',
-'secure' => false,
-'http_only' => false,
+    'secure' => false,
+    'http_only' => false,
 
 
     'driver' => env('SESSION_DRIVER', 'database'),

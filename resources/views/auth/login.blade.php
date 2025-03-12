@@ -45,11 +45,12 @@
                             <img src="img/logotipo.png" alt="logo" class="login-logo">
                         </div>
                         <form method="POST" action="{{ route('login') }}">
-                            @csrf
+                        @csrf
                             <p class="login-card-description">Inicia sesión en tu cuenta</p>
                             <div class="form-group">
                                 <label for="username" class="sr-only">Usuario</label>
-                                <input type="email" name="username" id="username" class="form-control" placeholder="Correo electrónico" required>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Correo electrónico" required>
+
                             </div>
                             <div class="form-group mb-4">
                                 <label for="password" class="sr-only">Contraseña</label>

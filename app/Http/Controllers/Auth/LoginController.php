@@ -19,28 +19,38 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
+    
     {
+
+
+    
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
-    
+        
         $admin = Admin::where('email', $request->email)->first();
-        
-        // Depuración para verificar los datos de la base de datos
-        dd($admin, Hash::check($request->password, $admin->password));
-    
-        if ($admin && Hash::check($request->password, $admin->password)) {
-            session(['admin_logged' => true]); 
-        
-            // Verificar si la sesión se guarda
-            dd(session()->all());
-        
-            return redirect()->route('dashboard');
-        }
-        
-    
-        return back()->withErrors(['email' => 'Credenciales incorrectas']);
-    }
 
-}
+        
+        if (!$admin) {
+            die("LLEGÓ AQUÍ 3 - Usuario no encontrado");
+        }
+    
+        if (!Hash::check($request->password, $admin->password)) {
+            die("LLEGÓ AQUÍ 4 - Contraseña incorrecta");
+        }
+    
+        session(['admin_logged' => true]);
+        session()->save(); // 🔥 Asegura que la sesión se guarde
+        return redirect()->route('dashboard');
+    
+        die("LLEGÓ AQUÍ 5 - Sesión guardada con éxito");
+        die("LLEGÓ AQUÍ 6 - Redirigiendo...");
+    
+        return redirect()->route('dashboard');
+    }
+    
+    
+    
+    
+    }

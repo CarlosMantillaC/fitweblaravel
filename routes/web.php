@@ -26,14 +26,16 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::post('/login', [LoginController::class, 'login'])->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
 
 Route::get('/dashboard', function () {
-    dd(session()->all()); // Verificar si la sesión existe
     if (!session('admin_logged')) {
         return redirect()->route('login');
     }
-    return view('dashboard');
+    return view('admin.dashboard'); // Esto debe coincidir con la ubicación del archivo
 })->name('dashboard');
+
+
 
 
 
