@@ -12,12 +12,12 @@ class AdminSeeder extends Seeder
     public function run()
     {
         // Verifica si el usuario administrador ya existe
-        $adminExists = DB::table('admins')->where('email', 'admin@fitweb.com')->exists();
+        $adminExists = DB::table('admins')->where('email', 'Administrador@FitWeb.com')->exists();
 
         if (!$adminExists) {
             DB::table('admins')->insert([
-                'email' => 'admin@fitweb.com',
-                'password' => Hash::make('admin123'), // Cambia por seguridad
+                'email' => 'Administrador@FitWeb.com',
+                'password' => Hash::make('Admin/Fit/Web.com/'), // Cambia por seguridad
             ]);
         }
     }
