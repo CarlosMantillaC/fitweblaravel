@@ -7,9 +7,10 @@
 </head>
 <body>
     <h1>Bienvenido al Dashboard</h1>
-    <form action="{{ route('admin.logout') }}" method="POST">
-        @csrf
-        <button type="submit">Cerrar sesión</button>
-    </form>
+    <form action="{{ route('logout') }}" method="POST">
+    @csrf
+    <button type="submit">Cerrar sesión</button>
+</form>
+
 </body>
 </html>
