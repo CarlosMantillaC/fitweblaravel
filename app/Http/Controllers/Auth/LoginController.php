@@ -24,21 +24,23 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
+    
         $admin = Admin::where('email', $request->email)->first();
-
+        
+        // Depuración para verificar los datos de la base de datos
+        dd($admin, Hash::check($request->password, $admin->password));
+    
         if ($admin && Hash::check($request->password, $admin->password)) {
-            session(['admin_logged' => true]);
+            session(['admin_logged' => true]); 
+        
+            // Verificar si la sesión se guarda
+            dd(session()->all());
+        
             return redirect()->route('dashboard');
         }
-
+        
+    
         return back()->withErrors(['email' => 'Credenciales incorrectas']);
     }
 
-    public function logout()
-    {
-        session()->forget('admin_logged');
-        return redirect()->route('login');
-    }
 }
-
