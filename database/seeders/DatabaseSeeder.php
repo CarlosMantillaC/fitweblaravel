@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
 use Illuminate\Database\Seeder;
-
+use Database\Seeders\AdminSeeder; // 🔹 Importa correctamente el seeder
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,9 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Llamar a los seeders aquí
         $this->call([
-            AdminSeeder::class, // Agrega esta línea
+            AdminSeeder::class,          // Seeder para crear administradores si no existen
         ]);
+
+        $this->command->info('Base de datos sembrada correctamente.');
     }
 }
+
