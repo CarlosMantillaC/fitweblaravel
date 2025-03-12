@@ -13,25 +13,18 @@ class LoginController extends Controller
         return view('login'); // Asegúrate de que esta vista existe en resources/views/login.blade.php
     }
 
+
     public function login(Request $request)
     {
-        // Validar los datos ingresados
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
-        // Intentar iniciar sesión
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('dashboard'); // Redirigir al dashboard
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::guard('admin')->attempt($credentials)) {
+            return redirect()->route('dashboard'); // Ajusta el nombre de la ruta si es diferente
         }
-
-        // Si falla el login, retorna con un error
-        return back()->withErrors([
-            'email' => 'Las credenciales proporcionadas no son correctas.',
-        ]);
+    
+        return back()->withErrors(['email' => 'Credenciales incorrectas']);
     }
+    
 
     public function logout(Request $request)
     {
