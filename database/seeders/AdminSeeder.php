@@ -11,8 +11,8 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         Admin::create([
-            'email' => 'AdministradorFitWeb.com',
-            'password' => Hash::make('Admin/Fit/web'), // Contraseña encriptada
+            'email' => 'AdministradorFitWeb@gmail.com',
+            'password' => Hash::make('Admin/Fit/Web/'), // Contraseña encriptada
         ]);
     }
 }
