@@ -3,19 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\AdminSeeder; // 🔹 Importa correctamente el seeder
+use Database\Seeders\AdminSeeder;
+
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function run()
     {
-        $this->call([
-            AdminSeeder::class,          // Seeder para crear administradores si no existen
-        ]);
-
-        $this->command->info('Base de datos sembrada correctamente.');
+        // Llamar a otros seeders aquí
+        $this->call(AdminSeeder::class);
     }
 }
-

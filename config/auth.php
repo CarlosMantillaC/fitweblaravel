@@ -59,20 +59,20 @@ return [
     |
     */
 
-'guards' => [
-    'admins' => [
-        'driver' => 'session',
-        'provider' => 'admins', // Asegúrate de que esto coincide con 'providers'
+    'guards' => [
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
     ],
-],
 
-
-'providers' => [
-    'admins' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Admin::class,
+    'providers' => [
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
     ],
-],
+
 
     /*
     |--------------------------------------------------------------------------
