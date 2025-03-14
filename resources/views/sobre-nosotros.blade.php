@@ -118,6 +118,17 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-3 col-sm-6 mb-4 text-center">
+                <div class="ts-item set-bg" data-setbg="img/team/team-5.jpg">
+                    <div class="ts_text">
+                        <h4>Isaac Diaz</h4>
+                        <span>Fundador</span>
+                        <div class="tt-social">
+                            <a href="https://github.com/IsaacDays"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
