@@ -31,7 +31,7 @@
     'resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<section class="login-section d-flex align-items-center min-vh-100 py-3 py-md-0">
+<section class="login-section d-flex align-items-center">
     <div class="container">
         <div class="card login-card">
             <div class="row no-gutters">
@@ -60,8 +60,6 @@
                             <!-- Botón para regresar al inicio /-->
                             <a href="/" class="btn btn-black btn-block">Regresar al Inicio</a>
                         </form>
-                        <br>
-                        <p class="login-card-footer-text">¿No estás registrado? <br> Comunícate con la recepción del gimnasio.</p>
                     </div>
                 </div>
             </div>

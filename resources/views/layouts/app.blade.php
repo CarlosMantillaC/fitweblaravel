@@ -45,9 +45,7 @@
         <div class="canvas-close">
             <i class="fa fa-close"></i>
         </div>
-        <div class="canvas-search search-switch">
-            <i class="fa fa-search"></i>
-        </div>
+        
         <nav class="canvas-menu mobile-menu">
             <ul>
                 <li><a href="/">Inicio</a></li>

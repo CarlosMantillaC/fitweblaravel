@@ -136,7 +136,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="bs-text">
-                    <h2>Contactanos para obtener más información</h2>
+                    <h2>Contáctanos para obtener más información</h2>
                     <div class="bt-tips">Donde el fitness y la tecnología se encuentran.</div>
                     <a href="contactanos" class="primary-btn  btn-normal">Obtener información</a>
                 </div>

@@ -3476,7 +3476,7 @@ ol {
 	border-radius: 15px;
 	overflow: hidden;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-	margin: 100px 40px 40px 50px;
+	margin: 100px 10px 40px 10px;
 }
 
 .logo {
@@ -3613,6 +3613,11 @@ ol {
 
 /* Responsive */
 @media (max-width: 992px) {
+
+	.login-card {
+		margin: 40px 10px 0px 10px;
+	}
+
 	.login-card-img {
 		min-height: 400px;
 	}
@@ -3623,6 +3628,11 @@ ol {
 }
 
 @media (max-width: 768px) {
+
+	.login-card {
+		margin: 40px 10px 0px 10px;
+	}
+
 	.logo {
 		width: 140px;
 		margin: -70px auto 25px;
@@ -3644,6 +3654,11 @@ ol {
 }
 
 @media (max-width: 576px) {
+
+	.login-card {
+		margin: 40px 10px 0px 10px;
+	}
+
 	.logo {
 		width: 120px;
 		margin: -60px auto 20px;
