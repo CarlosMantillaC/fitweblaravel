@@ -3665,3 +3665,15 @@ ol {
 		font-size: 18px;
 	}
 }
+
+
+
+.whatsapp-container img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.whatsapp-container:hover {
+    background-color: #1ebe5d;
+}
