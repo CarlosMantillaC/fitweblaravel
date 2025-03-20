@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 mb-4 text-center">
-                <div class="ts-item set-bg" data-setbg="img/team/team-5.jpg">
+                <div class="ts-item set-bg" data-setbg="img/team/arturito.jpg">
                     <div class="ts_text">
                         <h4>David Aceros</h4>
                         <span>Fundador</span>
