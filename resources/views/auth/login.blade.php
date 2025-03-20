@@ -6,7 +6,7 @@
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
     <title>FitWeb Login</title>
 
@@ -31,7 +31,7 @@
     'resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<section class="login-section d-flex align-items-center">
+<section class="login-section d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="container">
         <div class="card login-card">
             <div class="row no-gutters">

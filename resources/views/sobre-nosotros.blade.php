@@ -97,7 +97,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-3 col-sm-6 mb-4 text-center">
-                <div class="ts-item set-bg" data-setbg="img/team/fotoC.jpg">
+                <div class="ts-item set-bg" data-setbg="img/team/fotoc.jpg">
                     <div class="ts_text">
                         <h4>Carlos Mantilla</h4>
                         <span>Fundador</span>
@@ -119,12 +119,12 @@
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 mb-4 text-center">
-                <div class="ts-item set-bg" data-setbg="img/team/team-5.jpg">
+                <div class="ts-item set-bg" data-setbg="img/team/isaac.jpg">
                     <div class="ts_text">
                         <h4>Isaac Diaz</h4>
-                        <span>Fundador</span>
+                        <span>El Fundador</span>
                         <div class="tt-social">
-                            <a href="https://github.com/IsaacDays"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/isaacDiazR"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
