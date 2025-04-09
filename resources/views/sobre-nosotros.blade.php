@@ -97,7 +97,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-3 col-sm-6 mb-4 text-center">
-                <div class="ts-item set-bg" data-setbg="img/team/fotoc.jpg">
+                <div class="ts-item set-bg" data-setbg="img/team/carlos.jpg">
                     <div class="ts_text">
                         <h4>Carlos Mantilla</h4>
                         <span>Fundador</span>
