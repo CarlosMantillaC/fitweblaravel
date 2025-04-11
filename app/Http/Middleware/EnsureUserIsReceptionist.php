@@ -2,27 +2,29 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Login;
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Session;
 
 class EnsureUserIsReceptionist
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-
-        $user = session('user');
-        $userType = session('user_type');
-
-        if (!$user || $userType !== 'Receptionist') {
-            return redirect('/login')->with('error', 'Acceso no autorizado');
+        $loginId = Session::get('login_id');
+        $userType = Session::get('user_type');
+    
+        if (!$loginId || $userType !== 'Receptionist') {
+            return redirect('/login')->withErrors(['access' => 'Acceso no autorizado']);
         }
-
+    
+        // (Opcional) Si quieres asegurarte de que el login existe
+        $login = Login::find($loginId);
+        if (!$login) {
+            Session::flush();
+            return redirect('/login')->withErrors(['access' => 'Sesión inválida']);
+        }
+    
         return $next($request);
     }
 }

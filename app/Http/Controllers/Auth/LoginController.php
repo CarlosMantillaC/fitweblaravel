@@ -10,55 +10,43 @@ use App\Models\Login;
 
 class LoginController extends Controller
 {
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
     public function login(Request $request)
     {
-        // Validar campos
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        // Buscar el login por email
         $login = Login::where('email', $request->email)->first();
 
-        // Validar si existe
-        if (!$login) {
-            return back()->withErrors(['email' => 'Usuario no encontrado']);
+        if (!$login || !Hash::check($request->password, $login->password)) {
+            return back()->withErrors(['email' => 'Credenciales incorrectas']);
         }
 
-        // Verificar la contraseña
-        if (!Hash::check($request->password, $login->password)) {
-            return back()->withErrors(['password' => 'Contraseña incorrecta']);
-        }
+        // Guardar datos en la sesión
+        Session::put('login_id', $login->id);
 
-        // Obtener el modelo relacionado (Admin o Receptionist)
+        // Obtener modelo relacionado
         $user = $login->loginable;
-        $userType = class_basename($user); // 'Admin' o 'Receptionist'
+        $userType = class_basename($user);
+        Session::put('user_type', $userType); // ← Esta línea permite usar los middlewares correctamente
 
-        // Guardar en sesión si es necesario
-        Session::put('user', $user);
-        Session::put('user_type', $userType);
-
-        // Redirigir según el tipo de usuario
-        if ($userType === 'Admin') {
-            return redirect()->route('admin.dashboard');
-        } elseif ($userType === 'Receptionist') {
-            return redirect()->route('receptionist.dashboard');
-        }
-
-        return back()->withErrors(['email' => 'Tipo de usuario no reconocido']);
+        // Redirigir
+        return match ($userType) {
+            'Admin' => redirect()->route('admin.dashboard'),
+            'Receptionist' => redirect()->route('receptionist.dashboard'),
+            default => back()->withErrors(['email' => 'Tipo de usuario no reconocido']),
+        };
     }
-
-    public function showLoginForm()
-    {
-        return view('auth.login'); // resources/views/auth/login.blade.php
-    }
-
 
     public function logout(Request $request)
     {
-        Session::flush(); // Limpia todos los datos de la sesión
-
+        Session::flush(); // Limpia todos los datos de sesión
         return redirect('/login')->with('message', 'Sesión cerrada correctamente');
     }
 }

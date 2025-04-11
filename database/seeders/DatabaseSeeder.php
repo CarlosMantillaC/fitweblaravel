@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Receptionist;
 use Illuminate\Database\Seeder;
 use Database\Seeders\AdminSeeder;
 
@@ -11,5 +12,9 @@ class DatabaseSeeder extends Seeder
     {
         // Llamar a otros seeders aquí
         $this->call(AdminSeeder::class);
+        $this->call(ReceptionistSeeder::class);
+        $this->call(GymSeeder::class);
+        $this->call(UserSeeder::class);
+
     }
 }

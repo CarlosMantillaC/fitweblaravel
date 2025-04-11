@@ -18,5 +18,9 @@ class Admin extends Authenticatable
     return $this->morphOne(Login::class, 'loginable');
 }
 
+public function gym()
+{
+    return $this->hasOne(Gym::class, 'admin_id');
+}
 }
 

@@ -13,11 +13,12 @@ class ReceptionistSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         $receptionist= Receptionist::create([
             'name' => 'Super Receptionist',
             'phone' => '3210000000',
+            'admin_id' => 1, // ID del administrador al que pertenece
             // otros campos necesarios
         ]);
 

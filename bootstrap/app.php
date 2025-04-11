@@ -15,8 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         // Registrar alias para middlewares personalizados
         $middleware->alias([
-            'admin' => EnsureUserIsAdmin::class,
-            'receptionist' => EnsureUserIsReceptionist::class,
+            'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
+            'receptionist' => \App\Http\Middleware\EnsureUserIsReceptionist::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
