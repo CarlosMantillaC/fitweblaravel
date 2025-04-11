@@ -30,5 +30,10 @@ Route::post('/login', [LoginController::class, 'login'])->name('custom.login');
 // 👇 Cerrar sesión
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/receptionist/dashboard', [ReceptionistController::class, 'dashboard'])->name('receptionist.dashboard');
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
+    ->middleware('admin')
+    ->name('admin.dashboard');
+
+Route::get('/receptionist/dashboard', [ReceptionistController::class, 'dashboard'])
+    ->middleware('receptionist')
+    ->name('receptionist.dashboard');
