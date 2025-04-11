@@ -41,23 +41,34 @@
                 <div class="col-md-7">
                     <div class="card-body">
                         <!-- Logo centrado encima del título -->
-                        <div class="logo text-center col-6 col-lg-4">
+                        <div class="logo text-center col-6 col-lg-4 mx-auto">
                             <img src="img/logotipo.png" alt="logo" class="login-logo">
                         </div>
-                        <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                            <p class="login-card-description">Inicia sesión en tu cuenta</p>
-                            <div class="form-group">
-                                <label for="username" class="sr-only">Usuario</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Correo electrónico" required>
 
+                        <!-- Mostrar errores -->
+                        @if (session('message'))
+                            <div class="alert alert-danger mt-3">
+                                {{ session('message') }}
                             </div>
+                        @endif
+
+                        <form method="POST" action="{{ url('/login') }}">
+                            @csrf
+                            <p class="login-card-description mt-3">Inicia sesión en tu cuenta</p>
+                            
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Correo</label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Correo electrónico" required>
+                            </div>
+
                             <div class="form-group mb-4">
                                 <label for="password" class="sr-only">Contraseña</label>
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
                             </div>
+
                             <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Iniciar sesión">
-                            <!-- Botón para regresar al inicio /-->
+
+                            <!-- Botón para regresar al inicio -->
                             <a href="/" class="btn btn-black btn-block">Regresar al Inicio</a>
                         </form>
                     </div>
@@ -66,4 +77,5 @@
         </div>
     </div>
 </section>
+
 @include('footer')

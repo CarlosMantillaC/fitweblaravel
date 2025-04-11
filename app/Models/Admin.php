@@ -8,10 +8,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
 {
-    use HasFactory;
+    //use HasFactory;
 
-    protected $fillable = ['email', 'password'];
+    //protected $fillable = ['email', 'password'];
 
-    protected $hidden = ['password'];
+    //protected $hidden = ['password'];
+    public function login()
+{
+    return $this->morphOne(Login::class, 'loginable');
+}
+
 }
 
