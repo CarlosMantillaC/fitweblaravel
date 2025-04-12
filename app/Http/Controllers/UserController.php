@@ -14,39 +14,46 @@ class UserController extends Controller
     {
         $loginId = Session::get('login_id');
         $login = Login::find($loginId);
-    
+
         if (!$login || !$login->loginable) {
             return redirect('/login')->withErrors(['access' => 'Sesión inválida']);
         }
 
-        $user = $login->loginable; 
-        $gym = $user->gym;        
-        
+        $user = $login->loginable;
+        $gym = $user->gym;
+
         $users = $gym->users;
-    
-        return view('admin.tables.users', compact('users', 'user'));
+
+        return view('admin.users.users', compact('users', 'user'));
     }
 
     public function create()
     {
-        $gyms = Gym::all();
-        return view('users.create', compact('gyms'));
+        $login = Login::find(Session::get('login_id'));
+        $user = $login->loginable;
+        $gym = $user->gym;
+
+        return view('admin.users.create-user', compact('user', 'gym'));
     }
 
     public function store(Request $request)
     {
+        $login = Login::find(Session::get('login_id'));
+        $user = $login->loginable;
+
         $request->validate([
-            'name' => 'required|string',
-            'gender' => 'required|string',
+            'name' => 'required|string|max:255',
+            'gender' => 'required|in:M,F',
             'birth_date' => 'required|date',
-            'phone_number' => 'required|string',
+            'phone_number' => 'required|string|max:20',
             'state' => 'required|string',
             'gym_id' => 'required|exists:gyms,id',
         ]);
 
-        User::create($request->all());
+        \App\Models\User::create($request->all());
 
-        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente.');
+        return redirect()->route(class_basename($user) === 'Admin' ? 'admin.users' : 'receptionist.users')
+            ->with('success', 'Usuario registrado correctamente.');
     }
 
     public function edit(User $user)
