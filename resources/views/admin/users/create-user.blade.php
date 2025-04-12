@@ -22,7 +22,7 @@
         </div>
         <h1 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">Registrar Nuevo Usuario</h1>
 
-        <form method="POST" action="{{ route(class_basename(auth()->user()) === 'Admin' ? 'admin.users.store' : 'receptionist.users.store') }}" class="space-y-4 sm:space-y-6">
+        <form method="POST" action="{{ route(class_basename($user) === 'Admin' ? 'admin.users.store' : 'receptionist.users.store') }}" class="space-y-4 sm:space-y-6">
             @csrf
 
             <input type="hidden" name="gym_id" value="{{ $gym->id }}">

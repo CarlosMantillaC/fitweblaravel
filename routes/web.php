@@ -23,8 +23,8 @@ Route::middleware(['admin'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::resource('users', UserController::class)->names([
             'index' => 'admin.users',
-            'create' => 'users.create',
-            'store' => 'users.store',
+            'create' => 'admin.users.create',
+            'store' => 'admin.users.store',
             'edit' => 'users.edit',
             'update' => 'users.update',
             'destroy' => 'users.destroy',

@@ -59,7 +59,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $gyms = Gym::all();
-        return view('users.edit', compact('user', 'gyms'));
+        return view('admin.users.edit', compact('user', 'gyms'));
     }
 
     public function update(Request $request, User $user)
@@ -75,13 +75,13 @@ class UserController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente.');
+        return redirect()->route('admin.users')->with('success', 'Usuario actualizado correctamente.');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');
+        return redirect()->route('admin.users')->with('success', 'Usuario eliminado correctamente.');
     }
 }
