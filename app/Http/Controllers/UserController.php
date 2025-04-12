@@ -59,7 +59,10 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $gyms = Gym::all();
-        return view('admin.users.edit', compact('user', 'gyms'));
+        return view('admin.users.edit', [
+            'editUser' => $user,
+            'gyms' => $gyms
+        ]);
     }
 
     public function update(Request $request, User $user)

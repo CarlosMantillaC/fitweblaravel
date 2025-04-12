@@ -11,50 +11,51 @@
 @endsection
 
 @section('content')
-        <!-- Contenido principal -->
-        <main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-                <h1 class="text-2xl lg:text-3xl font-bold">
-                    Usuarios - {{ class_basename($user) === 'Admin' ? 'Admin' : 'Recepcionista' }}
-                </h1>
-                <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.users.create' : 'receptionist.users.create') }}"
-                    class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto text-center">
-                    + Agregar Usuario
-                </a>
-            </div>
+    <!-- Contenido principal -->
+    <main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+            <h1 class="text-2xl lg:text-3xl font-bold">
+                Usuarios - {{ class_basename($user) === 'Admin' ? 'Admin' : 'Recepcionista' }}
+            </h1>
+            <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.users.create' : 'receptionist.users.create') }}"
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto text-center">
+                + Agregar Usuario
+            </a>
+        </div>
 
-            <div class="overflow-x-auto">
-                <div class="min-w-full inline-block align-middle">
-                    <div class="overflow-hidden">
-                        <table class="min-w-full bg-gray-800 rounded-lg shadow">
-                            <thead>
-                                <tr class="text-left border-b border-gray-700">
-                                    <th class="px-2 py-2 lg:px-4 lg:py-3">ID</th>
-                                    <th class="px-2 py-2 lg:px-4 lg:py-3">Nombre</th>
-                                    <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Género</th>
-                                    <th class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">Fecha Nac.</th>
-                                    <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Teléfono</th>
-                                    <th class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">Estado</th>
-                                    <th class="px-2 py-2 lg:px-4 lg:py-3 hidden lg:table-cell">Gimnasio</th>
-                                    <th class="px-2 py-2 lg:px-4 lg:py-3">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($users as $userRow)
-                                    <tr class="border-b border-gray-700 hover:bg-gray-700 transition">
-                                        <td class="px-2 py-2 lg:px-4 lg:py-3">{{ $userRow->id }}</td>
-                                        <td class="px-2 py-2 lg:px-4 lg:py-3">{{ $userRow->name }}</td>
-                                        <td class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">
-                                            {{ $userRow->gender }}</td>
-                                        <td class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">
-                                            {{ $userRow->birth_date }}</td>
-                                        <td class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">
-                                            {{ $userRow->phone_number }}</td>
-                                        <td class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">
-                                            {{ $userRow->state }}</td>
-                                        <td class="px-2 py-2 lg:px-4 lg:py-3 hidden lg:table-cell">
-                                            {{ $userRow->gym->name }}</td>
-                                        <td class="px-2 py-2 lg:px-4 lg:py-3 flex flex-wrap gap-1">
+        <div class="overflow-x-auto">
+            <div class="min-w-full inline-block align-middle">
+                <div class="overflow-hidden">
+                    <table class="min-w-full bg-gray-800 rounded-lg shadow">
+                        <thead>
+                            <tr class="text-left border-b border-gray-700">
+                                <th class="px-2 py-2 lg:px-4 lg:py-3">ID</th>
+                                <th class="px-2 py-2 lg:px-4 lg:py-3">Nombre</th>
+                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Género</th>
+                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">Fecha Nac.</th>
+                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Teléfono</th>
+                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">Estado</th>
+                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden lg:table-cell">Gimnasio</th>
+                                <th class="px-2 py-2 lg:px-4 lg:py-3">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $userRow)
+                                <tr class="border-b border-gray-700 hover:bg-gray-700 transition">
+                                    <td class="px-2 py-2 lg:px-4 lg:py-3">{{ $userRow->id }}</td>
+                                    <td class="px-2 py-2 lg:px-4 lg:py-3">{{ $userRow->name }}</td>
+                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">
+                                        {{ $userRow->gender }}</td>
+                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">
+                                        {{ $userRow->birth_date }}</td>
+                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">
+                                        {{ $userRow->phone_number }}</td>
+                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">
+                                        {{ $userRow->state }}</td>
+                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden lg:table-cell">
+                                        {{ $userRow->gym->name }}</td>
+                                    <td class="px-2 py-2 lg:px-4 lg:py-3 flex flex-wrap gap-1">
+                                        @if (class_basename($user) === 'Admin')
                                             <a href="{{ route('users.edit', $userRow->id) }}"
                                                 class="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 text-sm lg:px-3 lg:py-1 lg:text-base rounded">
                                                 Editar
@@ -68,23 +69,26 @@
                                                     Eliminar
                                                 </button>
                                             </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                        @else
+                                            <span class="text-gray-400 text-sm italic">Sin permisos</span>
+                                        @endif
+                                    </td>
 
-                                @if ($users->isEmpty())
-                                    <tr>
-                                        <td colspan="8" class="text-center px-4 py-6 text-gray-400">
-                                            No hay usuarios registrados.
-                                        </td>
-                                    </tr>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
+                                </tr>
+                            @endforeach
+
+                            @if ($users->isEmpty())
+                                <tr>
+                                    <td colspan="8" class="text-center px-4 py-6 text-gray-400">
+                                        No hay usuarios registrados.
+                                    </td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </main>
+        </div>
+    </main>
     </div>
-
 @endsection
