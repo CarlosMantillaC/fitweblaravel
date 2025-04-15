@@ -7,6 +7,7 @@ use App\Models\Gym;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Login;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -87,4 +88,58 @@ class UserController extends Controller
 
         return redirect()->route('admin.users')->with('success', 'Usuario eliminado correctamente.');
     }
+
+public function dashboard()
+{
+    $activos = User::where('state', 'activo')->count();
+    $inactivos = User::where('state', 'inactivo')->count();
+
+    // Obtener el rango de fechas del mes pasado
+    $startOfLastMonth = Carbon::now()->subMonth()->startOfMonth();
+    $endOfLastMonth = Carbon::now()->subMonth()->endOfMonth();
+
+    $usuariosMesPasado = User::whereBetween('created_at', [$startOfLastMonth, $endOfLastMonth])->count();
+
+    return view('admin.dashboard', compact('activos', 'inactivos', 'usuariosMesPasado'));
+}
+
+public function userStats(Request $request)
+{
+    $period = $request->query('period', 'all');
+
+    $query = User::query();
+
+    switch ($period) {
+        case 'today':
+            $query->whereDate('created_at', Carbon::today());
+            break;
+        case 'this_month':
+            $query->whereMonth('created_at', Carbon::now()->month)
+                ->whereYear('created_at', Carbon::now()->year);
+            break;
+        case 'last_month':
+            $query->whereBetween('created_at', [
+                Carbon::now()->subMonth()->startOfMonth(),
+                Carbon::now()->subMonth()->endOfMonth()
+            ]);
+            break;
+        case 'two_months_ago':
+            $query->whereBetween('created_at', [
+                Carbon::now()->subMonths(2)->startOfMonth(),
+                Carbon::now()->subMonths(2)->endOfMonth()
+            ]);
+            break;
+        // default: no filtrar
+    }
+
+    $activos = (clone $query)->where('state', 'activo')->count();
+    $inactivos = (clone $query)->where('state', 'inactivo')->count();
+
+    return response()->json([
+        'activos' => $activos,
+        'inactivos' => $inactivos
+    ]);
+}
+
+
 }
