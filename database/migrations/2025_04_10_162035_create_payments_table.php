@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->date('date');
+            $table->decimal('amount', 10, 2); // en caso de necesitar diferenciar
+            $table->string('payment_method')->default('efectivo'); // o enum si usas MySQL
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('membership_id')->constrained('memberships')->onDelete('cascade');
             $table->timestamps();

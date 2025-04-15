@@ -60,6 +60,16 @@
                             Usuarios
                         </span>
                     </a>
+                    <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.users' : 'receptionist.users') }}"
+                        class="nav-item block py-3 px-4 hover:bg-gray-700/50 rounded-lg text-gray-200 hover:text-white">
+                        <span class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                            Membresias
+                        </span>
+                    </a>
                     <a href="#"
                         class="nav-item block py-3 px-4 hover:bg-gray-700/50 rounded-lg text-gray-200 hover:text-white">
                         <span class="flex items-center">
@@ -97,6 +107,7 @@
             <nav class="mt-6 space-y-2">
                 <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.dashboard' : 'receptionist.dashboard') }}" class="block py-2.5 px-4 hover:bg-gray-700 rounded">Inicio</a>
                 <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.users' : 'receptionist.users') }}" class="block py-2.5 px-4 hover:bg-gray-700 rounded">Usuarios</a>
+                <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.memberships' : 'receptionist.memberships') }}" class="block py-2.5 px-4 hover:bg-gray-700 rounded">Membresías</a>
                 <a href="#" class="block py-2.5 px-4 hover:bg-gray-700 rounded">Configuración</a>
                 <form method="POST" action="{{ route('logout') }}" class="mt-4 px-4">
                     @csrf

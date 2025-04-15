@@ -34,8 +34,8 @@
                                 <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Género</th>
                                 <th class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">Fecha Nac.</th>
                                 <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Teléfono</th>
+                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Email</th>
                                 <th class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">Estado</th>
-                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden lg:table-cell">Gimnasio</th>
                                 <th class="px-2 py-2 lg:px-4 lg:py-3">Acciones</th>
                             </tr>
                         </thead>
@@ -50,10 +50,10 @@
                                         {{ $userRow->birth_date }}</td>
                                     <td class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">
                                         {{ $userRow->phone_number }}</td>
+                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">
+                                        {{ $userRow->email }}</td>
                                     <td class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">
                                         {{ $userRow->state }}</td>
-                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden lg:table-cell">
-                                        {{ $userRow->gym->name }}</td>
                                     <td class="px-2 py-2 lg:px-4 lg:py-3 flex flex-wrap gap-1">
                                         @if (class_basename($user) === 'Admin')
                                             <a href="{{ route('users.edit', $userRow->id) }}"

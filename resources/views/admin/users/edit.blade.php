@@ -60,24 +60,20 @@
                         </div>
 
                         <div>
+                            <label for="email" class="block font-semibold mb-1">email</label>
+                            <input type="text" name="email" id="email"
+                                value="{{ old('email', $editUser->email) }}"
+                                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2  focus:ring-orange-500">
+                        </div>
+
+                        <div>
                             <label for="state" class="block font-semibold mb-1">Estado</label>
                             <input type="text" name="state" id="state"
                                 value="{{ old('state', $editUser->state) }}"
                                 class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2  focus:ring-orange-500">
                         </div>
 
-                        <div>
-                            <label for="gym_id" class="block font-semibold mb-1">Gimnasio</label>
-                            <select name="gym_id" id="gym_id"
-                                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2  focus:ring-orange-500">
-                                @foreach ($gyms as $gym)
-                                    <option value="{{ $gym->id }}"
-                                        {{ $editUser->gym_id == $gym->id ? 'selected' : '' }}>
-                                        {{ $gym->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                        
                     </div>
 
                     <div class="flex justify-end space-x-3 mt-8">

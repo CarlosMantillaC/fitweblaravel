@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             'gender' => 'M',
             'birth_date' => '1990-05-10',
             'phone_number' => '3001234567',
+            'email' => 'juanperez@gmail.com',
             'state' => 'activo',
             'gym_id' => 1,
         ]);

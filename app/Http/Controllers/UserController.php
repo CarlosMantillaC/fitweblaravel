@@ -24,7 +24,7 @@ class UserController extends Controller
 
         $users = $gym->users;
 
-        return view('admin.users.users', compact('users', 'user'));
+        return view('admin.users.index', compact('users', 'user'));
     }
 
     public function create()
@@ -33,7 +33,7 @@ class UserController extends Controller
         $user = $login->loginable;
         $gym = $user->gym;
 
-        return view('admin.users.create-user', compact('user', 'gym'));
+        return view('admin.users.create', compact('user', 'gym'));
     }
 
     public function store(Request $request)
@@ -46,8 +46,8 @@ class UserController extends Controller
             'gender' => 'required|in:M,F',
             'birth_date' => 'required|date',
             'phone_number' => 'required|string|max:20',
+            'email' => 'required|string',
             'state' => 'required|string',
-            'gym_id' => 'required|exists:gyms,id',
         ]);
 
         \App\Models\User::create($request->all());
@@ -72,8 +72,8 @@ class UserController extends Controller
             'gender' => 'required|string',
             'birth_date' => 'required|date',
             'phone_number' => 'required|string',
+            'email' => 'required|string',
             'state' => 'required|string',
-            'gym_id' => 'required|exists:gyms,id',
         ]);
 
         $user->update($request->all());

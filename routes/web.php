@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MembershipController;
 
 // Página principal y públicas
 Route::get('/', fn () => view('inicio'));
@@ -31,6 +32,18 @@ Route::middleware(['admin'])->group(function () {
             'show' => 'users.show',
         ]);
     });
+
+    Route::prefix('admin')->group(function () {
+        Route::resource('memberships', MembershipController::class)->names([
+            'index' => 'admin.memberships',
+            'create' => 'admin.memberships.create',
+            'store' => 'admin.memberships.store',
+            'edit' => 'memberships.edit',
+            'update' => 'memberships.update',
+            'destroy' => 'memberships.destroy',
+            'show' => 'memberships.show',
+        ]);
+    });
 });
 
 Route::middleware(['receptionist'])->group(function () {
@@ -42,9 +55,19 @@ Route::middleware(['receptionist'])->group(function () {
             'create'  => 'receptionist.users.create',
             'store'   => 'receptionist.users.store',
             'edit'    => 'receptionist.users.edit',
-            'update'  => 'receptionist.users.update',
+            'update' => 'receptionist.users.update',
             'destroy' => 'receptionist.users.destroy',
-            'show'    => 'receptionist.users.show',
+            'show' => 'receptionist.users.show',
+        ]);
+
+        Route::resource('memberships', MembershipController::class)->names([
+            'index'   => 'receptionist.memberships',
+            'create'  => 'receptionist.memberships.create',
+            'store'   => 'receptionist.memberships.store',
+            'edit'    => 'receptionist.memberships.edit',
+            'update' => 'receptionist.memberships.update',
+            'destroy' => 'receptionist.memberships.destroy',
+            'show' => 'receptionist.memberships.show',
         ]);
     });
 });

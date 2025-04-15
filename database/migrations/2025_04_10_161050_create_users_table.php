@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('gender');
             $table->date('birth_date');
             $table->string('phone_number');
+            $table->string('email')->unique();
             $table->string('state');
             $table->foreignId('gym_id')->constrained('gyms')->onDelete('cascade');
             $table->timestamps();
