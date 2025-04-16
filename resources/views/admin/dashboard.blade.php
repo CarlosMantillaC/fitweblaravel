@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <main class="flex-1 p-6 bg-gray-900">
+    <main class="flex-1 p-6 bg-[#181818]">
         <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center md:text-left">Bienvenido al Dashboard</h2>
 
         <!-- Cards -->
@@ -11,8 +11,8 @@
 
                 <!-- Selector de periodo -->
                 <div class="mb-4 text-center">
-                    <label for="periodSelect" class="text-gray-300 mr-2">Periodo:</label>
-                    <select id="periodSelect" class="bg-gray-700 text-white rounded px-2 py-1">
+                    <label for="periodSelect" class="text-white mr-2">Periodo:</label>
+                    <select id="periodSelect" class="bg-gray-800 text-white rounded px-2 py-1">
                         <option value="all">Todos</option>
                         <option value="today">Hoy</option>
                         <option value="this_month">Este mes</option>
@@ -56,10 +56,10 @@
                         }
                     });
 
-                    document.getElementById('periodSelect').addEventListener('change', function () {
+                    document.getElementById('periodSelect').addEventListener('change', function() {
                         const period = this.value;
 
-                        fetch(`/dashboard/user-stats?period=${period}`)
+                        fetch(`{{ route('user.stats') }}?period=${period}`)
                             .then(response => response.json())
                             .then(data => {
                                 usuariosChart.data.datasets[0].data = [data.activos, data.inactivos];
@@ -73,9 +73,69 @@
             </div>
 
             <div class="bg-gray-800 p-5 rounded-lg shadow">
-                <h3 class="text-lg font-medium">Estadística 2</h3>
-                <p class="mt-2 text-gray-400">Contenido de la estadística.</p>
+                <h2 class="text-xl font-bold text-center mb-4">Nuevos Usuarios por Mes</h2>
+                <canvas id="usersLineChart" width="400" height="400"></canvas>
+
+                <script>
+                    const lineCtx = document.getElementById('usersLineChart').getContext('2d');
+
+                    fetch('/dashboard/users-by-month')
+                        .then(res => res.json())
+                        .then(data => {
+                            const labels = data.map(entry => entry.mes);
+                            const totals = data.map(entry => entry.total);
+
+                            new Chart(lineCtx, {
+                                type: 'line',
+                                data: {
+                                    labels: labels,
+                                    datasets: [{
+                                        label: 'Nuevos Usuarios',
+                                        data: totals,
+                                        borderColor: '#34D399',
+                                        backgroundColor: 'rgba(52, 211, 153, 0.2)',
+                                        tension: 0.3,
+                                        fill: true
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    plugins: {
+                                        legend: {
+                                            position: 'bottom',
+                                            labels: {
+                                                color: '#fff'
+                                            }
+                                        }
+                                    },
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true,
+                                            ticks: {
+                                                precision: 0,
+                                                stepSize: 1,
+                                                color: '#fff'
+                                            },
+                                            grid: {
+                                                color: 'rgba(255,255,255,0.1)'
+                                            }
+                                        },
+                                        x: {
+                                            ticks: {
+                                                color: '#fff'
+                                            },
+                                            grid: {
+                                                color: 'rgba(255,255,255,0.1)'
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        })
+                        .catch(err => console.error('Error cargando datos de usuarios por mes:', err));
+                </script>
             </div>
+
             <div class="bg-gray-800 p-5 rounded-lg shadow">
                 <h3 class="text-lg font-medium">Estadística 3</h3>
                 <p class="mt-2 text-gray-400">Contenido de la estadística.</p>

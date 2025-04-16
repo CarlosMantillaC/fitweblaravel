@@ -141,5 +141,14 @@ public function userStats(Request $request)
     ]);
 }
 
+public function usersByMonth()
+{
+    $usersByMonth = User::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as mes, COUNT(*) as total")
+        ->groupBy('mes')
+        ->orderBy('mes')
+        ->get();
+
+    return response()->json($usersByMonth);
+}
 
 }

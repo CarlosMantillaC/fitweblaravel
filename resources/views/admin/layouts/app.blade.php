@@ -10,7 +10,7 @@
 
 </head>
 
-<body class="bg-gray-900 text-white">
+<body class="bg-[#181818] text-white">
     <!-- Contenedor con margen y posicionamiento fijo -->
     <div class="lg:hidden">
         <!-- Botón con márgenes internas y sombra -->

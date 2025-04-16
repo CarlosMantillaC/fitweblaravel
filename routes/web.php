@@ -21,7 +21,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/dashboard', [UserController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/admin/dashboard/user-stats', [UserController::class, 'userStats'])->name('admin.dashboard.userStats');
+    Route::get('/admin/dashboard/user-stats', [UserController::class, 'userStats'])->name('user.stats');
+    Route::get('/dashboard/users-by-month', [UserController::class, 'usersByMonth']);
 
     Route::prefix('admin')->group(function () {
         Route::resource('users', UserController::class)->names([
