@@ -99,7 +99,9 @@
                                 <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Teléfono</th>
                                 <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Email</th>
                                 <th class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">Estado</th>
-                                <th class="px-2 py-2 lg:px-4 lg:py-3">Acciones</th>
+                                @if (class_basename($user) === 'Admin')
+                                    <th class="px-2 py-2 lg:px-4 lg:py-3">Acciones</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -117,8 +119,8 @@
                                         {{ $userRow->email }}</td>
                                     <td class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">
                                         {{ $userRow->state }}</td>
-                                    <td class="px-2 py-2 lg:px-4 lg:py-3 flex flex-wrap gap-1">
-                                        @if (class_basename($user) === 'Admin')
+                                    @if (class_basename($user) === 'Admin')
+                                        <td class="px-2 py-2 lg:px-4 lg:py-3 flex flex-wrap gap-1">
                                             <a href="{{ route('users.edit', $userRow->id) }}"
                                                 class="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 text-sm lg:px-3 lg:py-1 lg:text-base rounded">
                                                 Editar
@@ -132,17 +134,15 @@
                                                     Eliminar
                                                 </button>
                                             </form>
-                                        @else
-                                            <span class="text-gray-400 text-sm italic">Sin permisos</span>
-                                        @endif
-                                    </td>
-
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
 
                             @if ($users->isEmpty())
                                 <tr>
-                                    <td colspan="8" class="text-center px-4 py-6 text-gray-400">
+                                    <td colspan="{{ class_basename($user) === 'Admin' ? 8 : 7 }}"
+                                        class="text-center px-4 py-6 text-gray-400">
                                         No hay usuarios registrados.
                                     </td>
                                 </tr>
@@ -153,6 +153,7 @@
                             {{ $users->appends(request()->except('page'))->links() }}
                         </div>
                     </table>
+
 
                 </div>
             </div>

@@ -102,7 +102,7 @@
 
 
         <!-- Sidebar (oculto en móvil) -->
-        <aside class="w-full md:w-64 bg-gray-800 text-gray-100 shadow-lg md:block hidden md:relative p-4 lg:p-8">
+        <aside class="w-full md:w-64 bgs text-gray-100 shadow-lg md:block hidden md:relative p-4 lg:p-8">
             <div class="p-6 border-b border-gray-700">
                 <h1 class="text-2xl font-bold">Mi Panel</h1>
             </div>

@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @source "../views";
 
+.bgp {
+    background-color: #0a0a0a;
+}
+
+.bgs {
+
+    background-color: #151515;
+}
+
 /* Transición suave para el menú móvil */
 #mobile-sidebar {
     transition: transform 0.3s ease-in-out;
