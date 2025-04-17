@@ -22,22 +22,69 @@
                 + Agregar Usuario
             </a>
         </div>
-        <!-- Buscador por Nombre de Usuario -->
-        <form method="GET" action="{{ url()->current() }}" class="mb-6 flex flex-col sm:flex-row gap-2 sm:items-center">
-            <input
-                type="text"
-                name="user_name"
-                placeholder="Buscar por nombre de usuario"
-                value="{{ request('user_name') }}"
-                class="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-600 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-green-600"
-            >
-            <button type="submit"
-                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full sm:w-auto text-center">
-                Buscar
-            </button>
-        </form>
 
-</form>
+        <!-- Formulario de Filtrado -->
+        <div class="bg-gray-800 p-4 rounded-lg shadow mb-6">
+            <form action="{{ url()->current() }}" method="GET" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <!-- Búsqueda general -->
+                <div>
+                    <label for="search" class="block text-sm font-medium text-gray-300 mb-1">Buscar</label>
+                    <input type="text" name="search" id="search" value="{{ request('search') }}"
+                        class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Nombre, email, teléfono...">
+                </div>
+
+                <!-- Filtro por Estado -->
+                <div>
+                    <label for="state" class="block text-sm font-medium text-gray-300 mb-1">Estado</label>
+                    <select name="state" id="state"
+                        class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="all" {{ request('state') == 'all' ? 'selected' : '' }}>Todos</option>
+                        <option value="Activo" {{ request('state') == 'Activo' ? 'selected' : '' }}>Activo</option>
+                        <option value="Inactivo" {{ request('state') == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
+                    </select>
+                </div>
+
+                <!-- Filtro por Género -->
+                <div>
+                    <label for="gender" class="block text-sm font-medium text-gray-300 mb-1">Género</label>
+                    <select name="gender" id="gender"
+                        class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="all" {{ request('gender') == 'all' ? 'selected' : '' }}>Todos</option>
+                        <option value="M" {{ request('gender') == 'M' ? 'selected' : '' }}>Masculino</option>
+                        <option value="F" {{ request('gender') == 'F' ? 'selected' : '' }}>Femenino</option>
+                    </select>
+                </div>
+
+                <!-- Botones -->
+                <div class="flex items-end gap-2">
+                    <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto">
+                        Filtrar
+                    </button>
+                    <a href="{{ url()->current() }}"
+                        class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto text-center">
+                        Limpiar
+                    </a>
+                </div>
+                <!-- Botones y Selector de Items por Página -->
+                <div class="flex items-center gap-2">
+                    <label for="per_page" class="text-sm text-gray-300">Mostrar:</label>
+                    <select name="per_page" id="per_page" onchange="this.form.submit()"
+                        class="bg-gray-700 border border-gray-600 rounded-md py-1 px-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="5" {{ request('per_page', 10) == 5 ? 'selected' : '' }}>5</option>
+                        <option value="10" {{ request('per_page', 10) == 10 ? 'selected' : '' }}>10</option>
+                        <option value="25" {{ request('per_page', 10) == 25 ? 'selected' : '' }}>25</option>
+                        <option value="50" {{ request('per_page', 10) == 50 ? 'selected' : '' }}>50</option>
+                        <option value="100" {{ request('per_page', 10) == 100 ? 'selected' : '' }}>100</option>
+                    </select>
+                    <span class="text-sm text-gray-400">items</span>
+                </div>
+
+            </form>
+        </div>
+
+
 
         <div class="overflow-x-auto">
             <div class="min-w-full inline-block align-middle">
@@ -101,8 +148,12 @@
                                 </tr>
                             @endif
                         </tbody>
+                        <!-- Paginación -->
+                        <div class="mt-4 px-4 py-3 flex items-center justify-between border-t border-gray-700 sm:px-6">
+                            {{ $users->appends(request()->except('page'))->links() }}
+                        </div>
                     </table>
-                    
+
                 </div>
             </div>
         </div>

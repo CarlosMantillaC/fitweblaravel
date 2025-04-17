@@ -11,7 +11,7 @@ use Carbon\Carbon;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $loginId = Session::get('login_id');
         $login = Login::find($loginId);
@@ -23,8 +23,32 @@ class UserController extends Controller
         $user = $login->loginable;
         $gym = $user->gym;
 
-        $users = $gym->users;
+        $query = $gym->users();
 
+        // Filtros
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%$search%")
+                    ->orWhere('email', 'like', "%$search%")
+                    ->orWhere('phone_number', 'like', "%$search%")
+                    ->orWhere('state', 'like', "%$search%")
+                    ->orWhere('gender', 'like', "%$search%");
+            });
+        }
+
+        // Filtro por estado específico
+        if ($request->has('state') && $request->state != 'all') {
+            $query->where('state', $request->state);
+        }
+
+        // Filtro por género
+        if ($request->has('gender') && $request->gender != 'all') {
+            $query->where('gender', $request->gender);
+        }
+
+        $perPage = $request->input('per_page', 10); // 10 por defecto
+        $users = $query->paginate($perPage);
         return view('admin.users.index', compact('users', 'user'));
     }
 
@@ -89,66 +113,65 @@ class UserController extends Controller
         return redirect()->route('admin.users')->with('success', 'Usuario eliminado correctamente.');
     }
 
-public function dashboard()
-{
-    $activos = User::where('state', 'activo')->count();
-    $inactivos = User::where('state', 'inactivo')->count();
+    public function dashboard()
+    {
+        $activos = User::where('state', 'activo')->count();
+        $inactivos = User::where('state', 'inactivo')->count();
 
-    // Obtener el rango de fechas del mes pasado
-    $startOfLastMonth = Carbon::now()->subMonth()->startOfMonth();
-    $endOfLastMonth = Carbon::now()->subMonth()->endOfMonth();
+        // Obtener el rango de fechas del mes pasado
+        $startOfLastMonth = Carbon::now()->subMonth()->startOfMonth();
+        $endOfLastMonth = Carbon::now()->subMonth()->endOfMonth();
 
-    $usuariosMesPasado = User::whereBetween('created_at', [$startOfLastMonth, $endOfLastMonth])->count();
+        $usuariosMesPasado = User::whereBetween('created_at', [$startOfLastMonth, $endOfLastMonth])->count();
 
-    return view('admin.dashboard', compact('activos', 'inactivos', 'usuariosMesPasado'));
-}
-
-public function userStats(Request $request)
-{
-    $period = $request->query('period', 'all');
-
-    $query = User::query();
-
-    switch ($period) {
-        case 'today':
-            $query->whereDate('created_at', Carbon::today());
-            break;
-        case 'this_month':
-            $query->whereMonth('created_at', Carbon::now()->month)
-                ->whereYear('created_at', Carbon::now()->year);
-            break;
-        case 'last_month':
-            $query->whereBetween('created_at', [
-                Carbon::now()->subMonth()->startOfMonth(),
-                Carbon::now()->subMonth()->endOfMonth()
-            ]);
-            break;
-        case 'two_months_ago':
-            $query->whereBetween('created_at', [
-                Carbon::now()->subMonths(2)->startOfMonth(),
-                Carbon::now()->subMonths(2)->endOfMonth()
-            ]);
-            break;
-        // default: no filtrar
+        return view('admin.dashboard', compact('activos', 'inactivos', 'usuariosMesPasado'));
     }
 
-    $activos = (clone $query)->where('state', 'activo')->count();
-    $inactivos = (clone $query)->where('state', 'inactivo')->count();
+    public function userStats(Request $request)
+    {
+        $period = $request->query('period', 'all');
 
-    return response()->json([
-        'activos' => $activos,
-        'inactivos' => $inactivos
-    ]);
-}
+        $query = User::query();
 
-public function usersByMonth()
-{
-    $usersByMonth = User::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as mes, COUNT(*) as total")
-        ->groupBy('mes')
-        ->orderBy('mes')
-        ->get();
+        switch ($period) {
+            case 'today':
+                $query->whereDate('created_at', Carbon::today());
+                break;
+            case 'this_month':
+                $query->whereMonth('created_at', Carbon::now()->month)
+                    ->whereYear('created_at', Carbon::now()->year);
+                break;
+            case 'last_month':
+                $query->whereBetween('created_at', [
+                    Carbon::now()->subMonth()->startOfMonth(),
+                    Carbon::now()->subMonth()->endOfMonth()
+                ]);
+                break;
+            case 'two_months_ago':
+                $query->whereBetween('created_at', [
+                    Carbon::now()->subMonths(2)->startOfMonth(),
+                    Carbon::now()->subMonths(2)->endOfMonth()
+                ]);
+                break;
+                // default: no filtrar
+        }
 
-    return response()->json($usersByMonth);
-}
+        $activos = (clone $query)->where('state', 'activo')->count();
+        $inactivos = (clone $query)->where('state', 'inactivo')->count();
 
+        return response()->json([
+            'activos' => $activos,
+            'inactivos' => $inactivos
+        ]);
+    }
+
+    public function usersByMonth()
+    {
+        $usersByMonth = User::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as mes, COUNT(*) as total")
+            ->groupBy('mes')
+            ->orderBy('mes')
+            ->get();
+
+        return response()->json($usersByMonth);
+    }
 }
