@@ -22,6 +22,22 @@
                 + Agregar Usuario
             </a>
         </div>
+        <!-- Buscador por Nombre de Usuario -->
+        <form method="GET" action="{{ url()->current() }}" class="mb-6 flex flex-col sm:flex-row gap-2 sm:items-center">
+            <input
+                type="text"
+                name="user_name"
+                placeholder="Buscar por nombre de usuario"
+                value="{{ request('user_name') }}"
+                class="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-600 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-green-600"
+            >
+            <button type="submit"
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full sm:w-auto text-center">
+                Buscar
+            </button>
+        </form>
+
+</form>
 
         <div class="overflow-x-auto">
             <div class="min-w-full inline-block align-middle">
@@ -86,6 +102,7 @@
                             @endif
                         </tbody>
                     </table>
+                    
                 </div>
             </div>
         </div>

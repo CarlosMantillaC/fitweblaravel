@@ -11,25 +11,35 @@ use Illuminate\Support\Facades\Session;
 
 class MembershipController extends Controller
 {
-    public function index()
-    {
-        $loginId = Session::get('login_id');
-        $login = Login::find($loginId);
+    public function index(Request $request)
+{
+    $loginId = Session::get('login_id');
+    $login = Login::find($loginId);
 
-        if (!$login || !$login->loginable) {
-            return redirect('/login')->withErrors(['access' => 'Sesión inválida']);
-        }
-
-        $user = $login->loginable;
-        $gym = $user->gym;
-
-        // Obtener membresías de los usuarios del gimnasio
-        $memberships = Membership::whereHas('user', function ($query) use ($gym) {
-            $query->where('gym_id', $gym->id);
-        })->with('user')->get();
-
-        return view('admin.memberships.index', compact('memberships', 'user'));
+    if (!$login || !$login->loginable) {
+        return redirect('/login')->withErrors(['access' => 'Sesión inválida']);
     }
+
+    $user = $login->loginable;
+    $gym = $user->gym;
+
+    $perPage = $request->input('per_page', 10); // Por defecto 10
+
+    $query = Membership::whereHas('user', function ($q) use ($gym, $request) {
+        $q->where('gym_id', $gym->id);
+
+        if ($request->filled('user_name')) {
+            $q->where('name', 'LIKE', '%' . $request->user_name . '%');
+        }
+    })->with('user');
+
+    $memberships = $query->paginate($perPage)->withQueryString();
+
+    return view('admin.memberships.index', compact('memberships', 'user'));
+}
+    
+
+    
 
     public function create()
     {

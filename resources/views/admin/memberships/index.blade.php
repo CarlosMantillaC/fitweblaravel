@@ -23,6 +23,39 @@
             </a>
         </div>
 
+        <!-- Buscador por Nombre de Usuario -->
+        <form method="GET" action="{{ url()->current() }}" class="mb-6 flex flex-col sm:flex-row gap-2 sm:items-center">
+            <input
+                type="text"
+                name="user_name"
+                placeholder="Buscar por nombre de usuario"
+                value="{{ request('user_name') }}"
+                class="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-600 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-green-600"
+            >
+            <button type="submit"
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full sm:w-auto text-center">
+                Buscar
+            </button>
+        </form>
+
+        <form method="GET" action="{{ url()->current() }}" class="mb-4 flex items-center gap-2 text-sm text-gray-200">
+            <label for="per_page">Mostrar</label>
+            <select name="per_page" id="per_page" onchange="this.form.submit()"
+                class="bg-gray-800 border border-gray-600 text-white px-2 py-1 rounded">
+                @foreach ([5, 10, 25, 50, 100] as $size)
+                    <option value="{{ $size }}" {{ request('per_page', 10) == $size ? 'selected' : '' }}>{{ $size }}</option>
+                @endforeach
+            </select>
+            <span>registros</span>
+
+            {{-- Mantener filtros de búsqueda al cambiar per_page --}}
+            @if(request('user_name'))
+                <input type="hidden" name="user_name" value="{{ request('user_name') }}">
+            @endif
+        </form>
+
+
+
         <div class="overflow-x-auto">
             <div class="min-w-full inline-block align-middle">
                 <div class="overflow-hidden">
@@ -85,6 +118,48 @@
                             @endif
                         </tbody>
                     </table>
+                    @if ($memberships->total() > 0)
+                    <div class="flex flex-col md:flex-row justify-between items-center mt-4 text-sm text-gray-300">
+                        {{-- Texto de cantidad --}}
+                        <div class="mb-2 md:mb-0">
+                            Mostrando registros del {{ $memberships->firstItem() }} al {{ $memberships->lastItem() }}
+                            de un total de {{ $memberships->total() }} registros
+                        </div>
+
+                        {{-- Paginación --}}
+                        <div class="flex items-center space-x-2">
+                            {{-- Botón anterior --}}
+                            @if ($memberships->onFirstPage())
+                                <span class="px-3 py-1 bg-gray-700 text-gray-400 rounded cursor-not-allowed">Anterior</span>
+                            @else
+                                <a href="{{ $memberships->previousPageUrl() }}" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 text-white rounded">
+                                    Anterior
+                                </a>
+                            @endif
+
+                            {{-- Número de páginas --}}
+                            @for ($i = 1; $i <= $memberships->lastPage(); $i++)
+                                @if ($i == $memberships->currentPage())
+                                    <span class="px-3 py-1 bg-blue-600 text-white rounded">{{ $i }}</span>
+                                @else
+                                    <a href="{{ $memberships->url($i) }}" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 text-white rounded">
+                                        {{ $i }}
+                                    </a>
+                                @endif
+                            @endfor
+
+                            {{-- Botón siguiente --}}
+                            @if ($memberships->hasMorePages())
+                                <a href="{{ $memberships->nextPageUrl() }}" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 text-white rounded">
+                                    Siguiente
+                                </a>
+                            @else
+                                <span class="px-3 py-1 bg-gray-700 text-gray-400 rounded cursor-not-allowed">Siguiente</span>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+
                 </div>
             </div>
         </div>
