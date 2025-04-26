@@ -1,22 +1,22 @@
 <!-- Get In Touch Section Begin -->
-<section class="gettouch-section">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-4">
-                <div class="gt-text">
-                    <i class="fa fa-map-marker"></i>
-                    <p>Cl. 10 #0-98 a 0-156 <br />Los Caobos</p>
+<section class="py-12 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap text-center">
+            <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-map-marker-alt text-4xl text-primary mb-4"></i>
+                    <p>Cl. 10 #0-98 a 0-156<br>Los Caobos</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="gt-text">
-                    <i class="fa fa-mobile"></i>
+            <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-mobile-alt text-4xl text-primary mb-4"></i>
                     <p>3215815090</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="gt-text email">
-                    <i class="fa fa-envelope"></i>
+            <div class="w-full md:w-1/3">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-envelope text-4xl text-primary mb-4"></i>
                     <p>contacto@fitweb.com.co</p>
                 </div>
             </div>
@@ -26,86 +26,65 @@
 <!-- Get In Touch Section End -->
 
 <!-- Footer Section Begin -->
-<section class="footer-section">
-    <div class="container">
-        <div class="row justify-content-center text-center">
-            <div class="col-5 col-lg-2">
-                <div class="fs-about">
-                    <div class="fa-logo">
-                        <a href="#"><img src="img/logotipo.png" alt="" class="img-fluid"></a>
-                    </div>
-                    <div class="fa-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa  fa-envelope-o"></i></a>
+<section class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-center text-center mb-12">
+            <div class="w-5/12 lg:w-1/6 mb-8 lg:mb-0">
+                <div>
+                    <a href="#"><img src="img/logotipo.png" alt="" class="mx-auto mb-4"></a>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#"><i class="fab fa-youtube text-xl"></i></a>
+                        <a href="#"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#"><i class="far fa-envelope text-xl"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-3 col-sm-6">
-                <div class="fs-widget">
-                    <h4>Enlaces útiles</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Acerca de</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Clases</a></li>
-                        <li><a href="#">Contacto</a></li>
+            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/6 mb-8 lg:mb-0">
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Enlaces útiles</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Acerca de</a></li>
+                        <li><a href="#" class="hover:underline">Blog</a></li>
+                        <li><a href="#" class="hover:underline">Clases</a></li>
+                        <li><a href="#" class="hover:underline">Contacto</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-3 col-sm-6">
-                <div class="fs-widget">
-                    <h4>Soporte</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Iniciar sesión</a></li>
-                        <li><a href="#">Mi cuenta</a></li>
-                        <li><a href="#">Suscribirse</a></li>
-                        <li><a href="#">Contacto</a></li>
+            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/6">
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Soporte</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Iniciar sesión</a></li>
+                        <li><a href="#" class="hover:underline">Mi cuenta</a></li>
+                        <li><a href="#" class="hover:underline">Suscribirse</a></li>
+                        <li><a href="#" class="hover:underline">Contacto</a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="copyright-text">
-                    <p>Copyright &copy;<script>
-                            document.write(new Date().getFullYear());
-                        </script> Todos los derechos reservados | Desarrollado por FitWeb</p>
-                </div>
-            </div>
+        <div class="text-center">
+            <p class="text-sm">&copy;
+                <script>
+                    document.write(new Date().getFullYear());
+                </script> Todos los derechos reservados | Desarrollado por FitWeb
+            </p>
         </div>
     </div>
 </section>
 <!-- Footer Section End -->
 
-<!-- Search model Begin -->
-<div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
+<!-- Search Model Begin -->
+<div class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center" id="search-model">
+    <div class="relative w-full h-full flex items-center justify-center">
+        <div class="text-white text-5xl absolute top-5 right-5 cursor-pointer"
+            onclick="document.getElementById('search-model').classList.add('hidden')">+</div>
+        <form class="w-11/12 max-w-md">
+            <input type="text" id="search-input" placeholder="Search here....."
+                class="w-full p-3 rounded-lg text-black focus:outline-none">
         </form>
     </div>
 </div>
-<!-- Search model end -->
-
-<!-- Search model Begin -->
-<div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
-        </form>
-    </div>
-</div>
-<!-- Search model end -->
-
-<script src="assets/js/jquery-3.4.1.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/masonry.pkgd.min.js"></script>
-<script src="assets/js/jquery.barfiller.js"></script>
-<script src="assets/js/jquery.slicknav.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
+<!-- Search Model End -->

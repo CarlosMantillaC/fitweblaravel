@@ -14,84 +14,134 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Css Styles -->
 
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" type="text/css">
-    
-    @vite([
-    
-    'resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        .offcanvas-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .offcanvas-menu.open {
+            transform: translateX(0);
+        }
+
+        .overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+
 </head>
 
-<body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+<body class="font-sans antialiased">
 
-    <!-- Offcanvas Menu Section Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="canvas-close">
-            <i class="fa fa-close"></i>
+    <!-- Overlay -->
+    <div id="overlay" class="overlay fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
+    <!-- Offcanvas Menu -->
+    <div id="offcanvas-menu" class="offcanvas-menu fixed top-0 right-0 w-80 h-full bg-white z-50 shadow-xl p-6">
+        <div class="flex justify-end">
+            <button id="close-menu" class="text-2xl text-gray-700 hover:text-orange-500 focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        <nav class="canvas-menu mobile-menu">
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="funcionalidades">Funcionalidades</a></li>
-                <li><a href="contactanos">Contáctanos</a></li>
-                <li><a href="sobre-nosotros">Sobre nosotros</a></li>
-                <li><a href="login">Soy FitWeb</a></li>
+
+        <nav class="mt-8">
+            <ul class="space-y-4">
+                <li><a href="/"
+                        class="block py-2 px-4 text-gray-800 hover:text-orange-500 hover:bg-gray-100 rounded transition">Inicio</a>
+                </li>
+                <li><a href="funcionalidades"
+                        class="block py-2 px-4 text-gray-800 hover:text-orange-500 hover:bg-gray-100 rounded transition">Funcionalidades</a>
+                </li>
+                <li><a href="contactanos"
+                        class="block py-2 px-4 text-gray-800 hover:text-orange-500 hover:bg-gray-100 rounded transition">Contáctanos</a>
+                </li>
+                <li><a href="sobre-nosotros"
+                        class="block py-2 px-4 text-gray-800 hover:text-orange-500 hover:bg-gray-100 rounded transition">Sobre
+                        nosotros</a></li>
+                <li><a href="login"
+                        class="block py-2 px-4 font-medium text-orange-500 hover:bg-orange-50 rounded transition">Soy
+                        FitWeb</a></li>
             </ul>
         </nav>
-        <div id="mobile-menu-wrap"></div>
-
     </div>
-    <!-- Offcanvas Menu Section End -->
 
-    <!-- Header Section Begin -->
-    <header class="header-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="logo">
-                        <a href="/">
-                            <img src="img/logo.png" alt="">
-                        </a>
-                    </div>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-30">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="/" class="flex items-center">
+                        <img src="img/logo.png" alt="FitWeb Logo" class="h-10">
+                    </a>
                 </div>
-                <div class="col-lg-8">
-                    <nav class="nav-menu">
-                        <ul>
-                            <li><a href="/">Inicio</a></li>
-                            <li><a href="funcionalidades">Funcionalidades</a></li>
-                            <li><a href="sobre-nosotros">Sobre nosotros</a></li>
-                            <li><a href="contactanos">Contáctanos</a></li>
-                            <li><a href="login">Soy FitWeb</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="canvas-open">
-                <i class="fa fa-bars"></i>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="/" class="text-gray-800 hover:text-orange-500 transition">Inicio</a></li>
+                        <li><a href="funcionalidades"
+                                class="text-gray-800 hover:text-orange-500 transition">Funcionalidades</a></li>
+                        <li><a href="sobre-nosotros" class="text-gray-800 hover:text-orange-500 transition">Sobre
+                                nosotros</a></li>
+                        <li><a href="contactanos" class="text-gray-800 hover:text-orange-500 transition">Contáctanos</a>
+                        </li>
+                        <li><a href="login"
+                                class="ml-6 px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition">Soy
+                                FitWeb</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="open-menu" class="md:hidden text-gray-700 hover:text-orange-500 text-xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
-    <!-- Header End -->
 
+    <!-- Main Content -->
+    <main>
+        @yield('content')
+    </main>
 
-    @yield('content')
+    <!-- Footer -->
     @include('footer')
+
+    <!-- Script para abrir/cerrar menú -->
+    <script>
+        const openMenuButton = document.getElementById('open-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const offcanvasMenu = document.getElementById('offcanvas-menu');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            offcanvasMenu.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        openMenuButton.addEventListener('click', toggleMenu);
+        closeMenuButton.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Opcional: cerrar menú al hacer click en cualquier enlace del offcanvas
+        document.querySelectorAll('#offcanvas-menu a').forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    </script>
 
 </body>
 

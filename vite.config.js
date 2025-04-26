@@ -8,8 +8,6 @@ export default defineConfig({
             input: [ //orden
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/css/tailwind.css',
-                'resources/js/dashboard.js'
             ],
             refresh: true,
         }),

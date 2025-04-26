@@ -5,17 +5,13 @@
 <title>FitWeb Contactanos</title>
 
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb-bg.jpg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="breadcrumb-text">
-                    <h2>Contáctanos</h2>
-                    <div class="bt-option">
-                        <a href="/">Inicio</a>
-                        <span>Contáctanos</span>
-                    </div>
-                </div>
+<section class="bg-cover bg-center text-white py-16" style="background-image: url('img/breadcrumb-bg.jpg');">
+    <div class="container mx-auto text-center">
+        <div class="breadcrumb-text">
+            <h2 class="text-4xl font-semibold mb-4">Contáctanos</h2>
+            <div class="bt-option">
+                <a href="/" class="text-lg text-gray-300">Inicio</a>
+                <span class="text-lg text-gray-300"> / Contáctanos</span>
             </div>
         </div>
     </div>
@@ -23,25 +19,29 @@
 <!-- Breadcrumb Section End -->
 
 <!-- Contact Section Begin -->
-<section class="contact-section spad">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="leave-comment">
+<section class="py-16 bg-gray-900">
+    <div class="container mx-auto text-center">
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">Contáctanos</h2>
+            <p class="text-lg text-gray-300">¡Nos encantaría saber de ti! Llena el formulario para ponerte en contacto con nosotros.</p>
+        </div>
+        <div class="flex justify-center">
+            <div class="w-full max-w-md">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
                     <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control mb-3" id="name" placeholder="Nombre">
+                        <div class="mb-4">
+                            <input type="text" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="name" placeholder="Nombre">
                         </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control mb-3" id="email" placeholder="Email">
+                        <div class="mb-4">
+                            <input type="email" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="email" placeholder="Email">
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control mb-3" id="numero" placeholder="Número">
+                        <div class="mb-4">
+                            <input type="text" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="numero" placeholder="Número">
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control mb-3" id="comment" placeholder="Comentario"></textarea>
+                        <div class="mb-4">
+                            <textarea class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="comment" placeholder="Comentario"></textarea>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="submitForm()">Enviar</button>
+                        <button type="button" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none" onclick="submitForm()">Enviar</button>
                     </form>
                 </div>
             </div>
