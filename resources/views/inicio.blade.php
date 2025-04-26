@@ -2,83 +2,86 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center bg-cover bg-center"
-        style="background-image: url('img/hero/hero8.png')">
-        <div class="absolute inset-0 bg-opacity-50"></div>
-        <div class="container mx-auto px-4 z-10">
-            <div class="flex flex-col lg:flex-row">
-                <div class="lg:w-1/2"></div>
-                <div class="lg:w-1/2 text-white">
-                    <div class="mt-20 space-y-6">
-                        <span class="text-2xl font-semibold text-white">Revolucionando la gestión de gimnasios</span>
-                        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
-                            <span class="text-tertiary">FitWeb</span> - Tu Socio Digital
-                        </h1>
-                        <a href="contactanos"
-                            class="inline-block bg-[#f36100] hover:bg-orange-600 text-white font-extrabold py-4 px-10 rounded transition duration-300 text-lg md:text-xl">
-                            Agendar Demo
-                        </a>
-                    </div>
+    <section class="relative h-screen flex items-center bg-cover bg-center" style="background-image: url('img/hero/hero8.png')">
+    <!-- Capa oscura + degradado -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-1/2"></div>
+            <div class="lg:w-1/2 text-white">
+                <div class="mt-20 space-y-6">
+                    <span class="text-2xl font-semibold text-white">Revolucionando la gestión de gimnasios</span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+                        <span class="text-tertiary">FitWeb</span> - Tu Socio Digital
+                    </h1>
+                    <a href="contactanos"
+                        class="inline-block bg-[#f36100] hover:bg-orange-600 text-white font-extrabold py-4 px-10 rounded transition duration-300 text-lg md:text-xl">
+                        Agendar Demo
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Problem Section -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-20 bg-black">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-orange-500 font-semibold">Problemas que Resolvemos</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2">GESTIÓN DE GIMNASIOS</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 text-white">GESTIÓN DE GIMNASIOS</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Item 1 -->
-                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                <div class="bg-[#151515] p-8 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
                     <div class="text-orange-500 text-4xl mb-4">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">Automatización Integral</h4>
-                    <p class="text-gray-600">Elimina procesos manuales en reservas, pagos y control de acceso con nuestra
+                    <h4 class="text-xl font-bold mb-3 text-white">Automatización Integral</h4>
+                    <p class="text-gray-400">Elimina procesos manuales en reservas, pagos y control de acceso con nuestra
                         plataforma todo-en-uno</p>
                 </div>
 
                 <!-- Item 2 -->
-                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                <div class="bg-[#151515] p-8 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
                     <div class="text-orange-500 text-4xl mb-4">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">Toma de Decisiones Inteligente</h4>
-                    <p class="text-gray-600">Dashboard ejecutivo con métricas clave para una gestión basada en datos reales
+                    <h4 class="text-xl font-bold mb-3 text-white">Toma de Decisiones Inteligente</h4>
+                    <p class="text-gray-400">Dashboard ejecutivo con métricas clave para una gestión basada en datos reales
                     </p>
                 </div>
 
                 <!-- Item 3 -->
-                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                <div class="bg-[#151515] p-8 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
                     <div class="text-orange-500 text-4xl mb-4">
                         <i class="fas fa-expand"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">Escalabilidad Garantizada</h4>
-                    <p class="text-gray-600">Solución adaptable para gimnasios pequeños y medianos sin costos adicionales
+                    <h4 class="text-xl font-bold mb-3 text-white">Escalabilidad Garantizada</h4>
+                    <p class="text-gray-400">Solución adaptable para gimnasios pequeños y medianos sin costos adicionales
                         por crecimiento</p>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="py-20">
+    <section class="py-20 bg-[#151515]">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-orange-500 font-semibold">Funcionalidades Clave</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2">PLATAFORMA TODO-EN-UNO</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 text-white">PLATAFORMA TODO-EN-UNO</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                <div class="bg-[#0e0e0e] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                     <img src="img/classes/dashboard.png" alt="Panel de Control" class="w-full h-48 object-cover">
-                    <div class="p-6">
+                    <div class="p-6 bg-[#151515] text-white">
                         <div class="flex items-center text-orange-500 mb-2">
                             <i class="fas fa-tachometer-alt mr-2"></i>
                             <span class="font-semibold">Dashboard Inteligente</span>
@@ -88,10 +91,10 @@
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                <div class="bg-[#0e0e0] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                     <img src="img/classes/customer-management.png" alt="Gestión de Clientes"
                         class="w-full h-48 object-cover">
-                    <div class="p-6">
+                    <div class="p-6 bg-[#151515] text-white">
                         <div class="flex items-center text-orange-500 mb-2">
                             <i class="fas fa-users mr-2"></i>
                             <span class="font-semibold">Gestión de Clientes</span>
@@ -100,10 +103,11 @@
                     </div>
                 </div>
 
+
                 <!-- Feature 3 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                <div class="bg-[#0e0e0e] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                     <img src="img/classes/calender.png" alt="Calendario Interactivo" class="w-full h-48 object-cover">
-                    <div class="p-6">
+                    <div class="p-6 bg-[#151515] text-white">
                         <div class="flex items-center text-orange-500 mb-2">
                             <i class="fas fa-calendar-alt mr-2"></i>
                             <span class="font-semibold">Calendario Interactivo</span>
@@ -156,7 +160,7 @@
     </section>
 
     <!-- Business Model Section -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-20 bg-[#151515]">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-orange-500 font-semibold">Modelo de Negocio</span>
