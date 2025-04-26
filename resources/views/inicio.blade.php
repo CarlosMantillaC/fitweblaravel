@@ -120,11 +120,11 @@
     </section>
 
     <!-- Benefits Section -->
-    <section class="py-20 bg-cover bg-center" style="background-image: url('img/classes/gym-background.jpg')">
-        <div class="bg-black bg-opacity-70 py-20">
+    <section class="py-14 bg-cover bg-center" style="background-image: url('img/classes/gym-background.jpg')">
+        <div class="py-12">
             <div class="container mx-auto px-4">
-                <div class="text-center text-white mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold">Beneficios para Administradores</h2>
+                <div class="text-center text-white mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#f36100]">Beneficios para Administradores</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -159,41 +159,42 @@
         </div>
     </section>
 
+
     <!-- Business Model Section -->
-    <section class="py-20 bg-[#151515]">
+    <section class="py-20 bg-[#000000]">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-orange-500 font-semibold">Modelo de Negocio</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2">INVERSIÓN INTELIGENTE</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 text-white">INVERSIÓN INTELIGENTE</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Plan 1 -->
                 <div class="text-center">
                     <div class="text-orange-500 text-4xl mb-4">
-                        <i class="fas fa-rocket"></i>
+                    <i class="fas fa-rocket text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-3">Plan Único</h4>
-                    <p class="text-gray-600">Incluye todas las funcionalidades para administradores, sin límite de usuarios
+                    <p class="text-white">Incluye todas las funcionalidades para administradores, sin límite de usuarios
                         o transacciones.</p>
                 </div>
 
                 <!-- Plan 2 -->
                 <div class="text-center">
                     <div class="text-orange-500 text-4xl mb-4">
-                        <i class="fas fa-shield-alt"></i>
+                    <i class="fas fa-gift text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-3">Garantía de Satisfacción</h4>
-                    <p class="text-gray-600">30 días de prueba totalmente gratuita.</p>
+                    <p class="text-white">30 días de prueba totalmente gratuita.</p>
                 </div>
 
                 <!-- Plan 3 -->
                 <div class="text-center">
                     <div class="text-orange-500 text-4xl mb-4">
-                        <i class="fas fa-headset"></i>
+                        <i class="fas fa-headset text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-3">Soporte Prioritario</h4>
-                    <p class="text-gray-600">Asistencia técnica 24/7, capacitación inicial y actualizaciones gratuitas.</p>
+                    <p class="text-white">Asistencia técnica 24/7, capacitación inicial y actualizaciones gratuitas.</p>
                 </div>
             </div>
         </div>
@@ -201,19 +202,16 @@
 
     <!-- Banner Section -->
     <section class="py-32 bg-cover bg-center" style="background-image: url('img/banner.png')">
-        <div class="bg-black bg-opacity-60 py-20">
-            <div class="container mx-auto px-4">
-                <div class="text-center text-white">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Contáctanos para obtener más información</h2>
-                    <p class="text-xl mb-8">Donde el fitness y la tecnología se encuentran.</p>
-                    <a href="contactanos"
-                        class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded transition duration-300">Obtener
-                        información</a>
-                </div>
+        <div class="container mx-auto px-4">
+            <div class="text-center text-white">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-orange-500">Contáctanos para obtener más información</h2>
+                <p class="text-xl mb-8">Donde el fitness y la tecnología se encuentran.</p>
+                <a href="contactanos"
+                    class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded transition duration-300">Obtener
+                    información</a>
             </div>
         </div>
     </section>
-
     <!-- Gallery Section -->
     <div class="container mx-auto px-4 py-20">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
