@@ -81,7 +81,7 @@
                 <!-- Feature 1 -->
                 <div class="bg-[#0e0e0e] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                     <img src="img/classes/dashboard.png" alt="Panel de Control" class="w-full h-48 object-cover">
-                    <div class="p-6 bg-[#151515] text-white">
+                    <div class="p-6 bg-[#000000] text-white">
                         <div class="flex items-center text-orange-500 mb-2">
                             <i class="fas fa-tachometer-alt mr-2"></i>
                             <span class="font-semibold">Dashboard Inteligente</span>
@@ -94,7 +94,7 @@
                 <div class="bg-[#0e0e0] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                     <img src="img/classes/customer-management.png" alt="Gestión de Clientes"
                         class="w-full h-48 object-cover">
-                    <div class="p-6 bg-[#151515] text-white">
+                    <div class="p-6 bg-[#000000] text-white">
                         <div class="flex items-center text-orange-500 mb-2">
                             <i class="fas fa-users mr-2"></i>
                             <span class="font-semibold">Gestión de Clientes</span>
@@ -107,7 +107,7 @@
                 <!-- Feature 3 -->
                 <div class="bg-[#0e0e0e] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                     <img src="img/classes/calender.png" alt="Calendario Interactivo" class="w-full h-48 object-cover">
-                    <div class="p-6 bg-[#151515] text-white">
+                    <div class="p-6 bg-[#000000] text-white">
                         <div class="flex items-center text-orange-500 mb-2">
                             <i class="fas fa-calendar-alt mr-2"></i>
                             <span class="font-semibold">Calendario Interactivo</span>
