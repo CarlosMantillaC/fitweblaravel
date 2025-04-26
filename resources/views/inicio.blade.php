@@ -172,7 +172,7 @@
                 <!-- Plan 1 -->
                 <div class="text-center">
                     <div class="text-orange-500 text-4xl mb-4">
-                    <i class="fas fa-rocket text-white text-2xl bg-[#f36100] p-6 rounded-full"></i>
+                    <i class="fas fa-rocket text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-3">Plan Único</h4>
                     <p class="text-white">Incluye todas las funcionalidades para administradores, sin límite de usuarios
@@ -182,7 +182,7 @@
                 <!-- Plan 2 -->
                 <div class="text-center">
                     <div class="text-orange-500 text-4xl mb-4">
-                        <i class="fas fa-gift text-white text-2xl bg-[#f36100] p-6 rounded-full"></i>
+                    <i class="fas fa-gift text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-3">Garantía de Satisfacción</h4>
                     <p class="text-white">30 días de prueba totalmente gratuita.</p>
@@ -191,7 +191,7 @@
                 <!-- Plan 3 -->
                 <div class="text-center">
                     <div class="text-orange-500 text-4xl mb-4">
-                        <i class="fas fa-headset text-white text-2xl bg-[#f36100] p-6 rounded-full"></i>
+                        <i class="fas fa-headset text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-3">Soporte Prioritario</h4>
                     <p class="text-white">Asistencia técnica 24/7, capacitación inicial y actualizaciones gratuitas.</p>
