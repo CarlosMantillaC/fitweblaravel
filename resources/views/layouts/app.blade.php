@@ -12,12 +12,14 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 
-<body class="font-['Oswald'] font-bold antialiased">
+<body class="font-['Oswald'] font-bold antialiased bg-primary">
 
     <!-- Header -->
     <header class="bg-transparent absolute top-0 left-0 w-full z-30 mt-10">
@@ -114,6 +116,10 @@
     <!-- Footer -->
     @include('footer')
 
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Inicializar AOS
+    </script>
 </body>
 
 </html>
