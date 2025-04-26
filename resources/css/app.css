@@ -44,7 +44,30 @@
     border-color: var(--color-tertiary);
 }
 
-/* Transición suave para el menú móvil */
+
+/* Estilos para el menú móvil landing page*/
+.offcanvas-menu {
+	transform: translateX(100%);
+	transition: transform 0.3s ease;
+}
+
+.offcanvas-menu.open {
+	transform: translateX(0);
+}
+
+.overlay {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+
+/* Dashboard*/
 #mobile-sidebar {
     transition: transform 0.3s ease-in-out;
 }
