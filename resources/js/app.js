@@ -48,3 +48,30 @@ mobileOverlay.addEventListener("click", toggleMenu);
 document.querySelectorAll("#mobile-sidebar nav a").forEach((link) => {
     link.addEventListener("click", toggleMenu);
 });
+
+// gallery lightbox
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryLinks = document.querySelectorAll('a[href^="img/gallery/"]');
+
+    galleryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const imgSrc = this.getAttribute('href');
+            const lightbox = document.createElement('div');
+            lightbox.className =
+                'fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4';
+            lightbox.innerHTML = `
+            <div class="relative max-w-4xl w-full">
+                <img src="${imgSrc}" class="max-h-screen w-full object-contain" alt="Gallery Image">
+                <button class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+            </div>
+        `;
+
+            document.body.appendChild(lightbox);
+
+            lightbox.querySelector('button').addEventListener('click', function() {
+                document.body.removeChild(lightbox);
+            });
+        });
+    });
+});
