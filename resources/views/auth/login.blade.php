@@ -22,7 +22,7 @@
 </head>
 <section class="login-section flex items-center min-h-screen py-6 bg-black">
     <div class="container mx-auto px-4">
-        <div class="bg-[#151515] rounded-lg shadow-lg max-w-4xl mx-auto md:my-12">
+        <div class="bg-[#151515] rounded-lg shadow-2xl max-w-4xl mx-auto md:my-12 border-1 border-[#2D2D2D]">
             <div class="flex flex-col md:flex-row">
                 <!-- Imagen -->
                 <div class="w-full md:w-5/12">
@@ -58,44 +58,43 @@
 
                         <!-- Input Contraseña -->
                         <div class="mb-6 relative">
-                        <label for="password" class="sr-only">Contraseña</label>
-                        <input type="password" name="password" id="password" 
-                            class="w-full p-4 bg-[#2D2D2D] text-white border border-gray-600 rounded-lg
-                                focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none transition-all duration-500"
-                            placeholder="Contraseña" required>
+                            <label for="password" class="sr-only">Contraseña</label>
+                            <input type="password" name="password" id="password" 
+                                class="w-full p-4 bg-[#2D2D2D] text-white border border-gray-600 rounded-lg
+                                       focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none transition-all duration-500"
+                                placeholder="Contraseña" required>
                         
-                        <!-- Icono de mostrar/ocultar contraseña -->
-                        <button type="button" id="togglePassword" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white">
-                            <!-- Ojo cerrado (mostrar contraseña) -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12l-3 3m0 0l-3-3m3 3V9m6.75 2.25a9.953 9.953 0 00-3.607-7.477A9.953 9.953 0 0012 4.5a9.953 9.953 0 00-6.75 2.25M9 12a3 3 0 015.5 0m0 0A3 3 0 0115 12" />
-                            </svg>
-                        </button>
-                    </div>
+                            <!-- Icono de mostrar/ocultar contraseña -->
+                            <button type="button" id="togglePassword" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white">
+                                <!-- Ojo cerrado (mostrar contraseña) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12l-3 3m0 0l-3-3m3 3V9m6.75 2.25a9.953 9.953 0 00-3.607-7.477A9.953 9.953 0 0012 4.5a9.953 9.953 0 00-6.75 2.25M9 12a3 3 0 015.5 0m0 0A3 3 0 0115 12" />
+                                </svg>
+                            </button>
+                        </div>
 
-                    <script>
-                        const togglePassword = document.getElementById('togglePassword');
-                        const passwordField = document.getElementById('password');
+                        <script>
+                            const togglePassword = document.getElementById('togglePassword');
+                            const passwordField = document.getElementById('password');
 
-                        togglePassword.addEventListener('click', () => {
-                            // Cambia el tipo de input entre 'password' y 'text'
-                            const type = passwordField.type === 'password' ? 'text' : 'password';
-                            passwordField.type = type;
+                            togglePassword.addEventListener('click', () => {
+                                // Cambia el tipo de input entre 'password' y 'text'
+                                const type = passwordField.type === 'password' ? 'text' : 'password';
+                                passwordField.type = type;
 
-                            // Cambiar el ícono si la contraseña es visible
-                            togglePassword.innerHTML = type === 'password' ? 
-                                '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12l-3 3m0 0l-3-3m3 3V9m6.75 2.25a9.953 9.953 0 00-3.607-7.477A9.953 9.953 0 0012 4.5a9.953 9.953 0 00-6.75 2.25M9 12a3 3 0 015.5 0m0 0A3 3 0 0115 12" /></svg>' : 
-                                '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5l14 14M5 19l14-14" /></svg>';
-                        });
-                    </script>
+                                // Cambiar el ícono si la contraseña es visible
+                                togglePassword.innerHTML = type === 'password' ? 
+                                    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12l-3 3m0 0l-3-3m3 3V9m6.75 2.25a9.953 9.953 0 00-3.607-7.477A9.953 9.953 0 0012 4.5a9.953 9.953 0 00-6.75 2.25M9 12a3 3 0 015.5 0m0 0A3 3 0 0115 12" /></svg>' : 
+                                    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5l14 14M5 19l14-14" /></svg>';
+                            });
+                        </script>
 
                         <!-- Botón Iniciar Sesión -->
                         <input name="login" id="login" 
                             class="w-full py-3 bg-[#f36100] text-white rounded-lg 
                             hover:bg-[#ff6a00] hover:text-[#151515] active:scale-95 transition-all duration-300 cursor-pointer mb-4" 
                                 type="submit" 
-                                 value="Iniciar sesión">
-
+                                value="Iniciar sesión">
 
                         <!-- Botón Regresar al Inicio -->
                         <a href="/" 
@@ -109,6 +108,7 @@
         </div>
     </div>
 </section>
+
 
 
 
