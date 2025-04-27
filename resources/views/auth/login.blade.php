@@ -20,9 +20,9 @@
 
 
 </head>
-<section class="login-section flex items-center min-h-screen py-6 bg-gray-100">
+<section class="login-section flex items-center min-h-screen py-6 bg-black">
     <div class="container mx-auto px-4">
-        <div class="bg-white rounded-lg shadow-lg max-w-4xl mx-auto md:my-12">
+        <div class="bg-[#151515] rounded-lg shadow-2xl max-w-4xl mx-auto md:my-12 border-1 border-[#2D2D2D]">
             <div class="flex flex-col md:flex-row">
                 <!-- Imagen -->
                 <div class="w-full md:w-5/12">
@@ -32,13 +32,11 @@
                 <!-- Formulario de login -->
                 <div class="w-full md:w-7/12 p-8">
                     <div class="text-center mb-6">
-                        <!-- Logo centrado encima del título -->
                         <div class="mx-auto w-1/2 lg:w-1/3">
-                            <img src="img/logotipo.png" alt="logo" class="w-full mb-6">
+                            <img src="img/logotipo.png" alt="logo" class="login-logo default_cursor_land transition-all duration-500 hover:scale-110 hover:translate-y-[-5px]">
                         </div>
                     </div>
 
-                    <!-- Mostrar errores -->
                     @if (session('message'))
                         <div class="alert alert-danger mt-3 bg-red-500 text-white p-4 rounded-lg mb-4">
                             {{ session('message') }}
@@ -47,22 +45,61 @@
 
                     <form method="POST" action="{{ url('/login') }}">
                         @csrf
-                        <p class="text-xl text-gray-700 mt-3 mb-6">Inicia sesión en tu cuenta</p>
+                        <p class="text-xl text-center text-[#f36100] mt-3 mb-6">INICIA SESIÓN EN TU CUENTA</p>
                         
+                        <!-- Input Correo -->
                         <div class="mb-4">
                             <label for="email" class="sr-only">Correo</label>
-                            <input type="email" name="email" id="email" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Correo electrónico" required>
+                            <input type="email" name="email" id="email" 
+                                class="w-full p-4 bg-[#2D2D2D] text-white border border-gray-600 rounded-lg
+                                       focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none transition-all duration-500" 
+                                placeholder="Correo electrónico" required>
                         </div>
 
-                        <div class="mb-6">
+                        <!-- Input Contraseña -->
+                        <div class="mb-6 relative">
                             <label for="password" class="sr-only">Contraseña</label>
-                            <input type="password" name="password" id="password" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Contraseña" required>
+                            <input type="password" name="password" id="password" 
+                                class="w-full p-4 bg-[#2D2D2D] text-white border border-gray-600 rounded-lg
+                                       focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none transition-all duration-500"
+                                placeholder="Contraseña" required>
+                        
+                            <!-- Icono de mostrar/ocultar contraseña -->
+                            <button type="button" id="togglePassword" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white">
+                                <!-- Ojo cerrado (mostrar contraseña) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12l-3 3m0 0l-3-3m3 3V9m6.75 2.25a9.953 9.953 0 00-3.607-7.477A9.953 9.953 0 0012 4.5a9.953 9.953 0 00-6.75 2.25M9 12a3 3 0 015.5 0m0 0A3 3 0 0115 12" />
+                                </svg>
+                            </button>
                         </div>
 
-                        <input name="login" id="login" class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none mb-4" type="submit" value="Iniciar sesión">
+                        <script>
+                            const togglePassword = document.getElementById('togglePassword');
+                            const passwordField = document.getElementById('password');
 
-                        <!-- Botón para regresar al inicio (como un botón de enlace) -->
-                        <a href="/" class="block w-full py-3 bg-blue-600 text-white text-center rounded-lg hover:bg-blue-700 focus:outline-none">
+                            togglePassword.addEventListener('click', () => {
+                                // Cambia el tipo de input entre 'password' y 'text'
+                                const type = passwordField.type === 'password' ? 'text' : 'password';
+                                passwordField.type = type;
+
+                                // Cambiar el ícono si la contraseña es visible
+                                togglePassword.innerHTML = type === 'password' ? 
+                                    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12l-3 3m0 0l-3-3m3 3V9m6.75 2.25a9.953 9.953 0 00-3.607-7.477A9.953 9.953 0 0012 4.5a9.953 9.953 0 00-6.75 2.25M9 12a3 3 0 015.5 0m0 0A3 3 0 0115 12" /></svg>' : 
+                                    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5l14 14M5 19l14-14" /></svg>';
+                            });
+                        </script>
+
+                        <!-- Botón Iniciar Sesión -->
+                        <input name="login" id="login" 
+                            class="w-full py-3 bg-[#f36100] text-white rounded-lg 
+                            hover:bg-[#ff6a00] hover:text-[#151515] active:scale-95 transition-all duration-300 cursor-pointer mb-4" 
+                                type="submit" 
+                                value="Iniciar sesión">
+
+                        <!-- Botón Regresar al Inicio -->
+                        <a href="/" 
+                            class="block w-full py-3 border border-gray-500 text-gray-300 text-center rounded-lg 
+                                   hover:border-[#f36100] hover:text-[#f36100] active:scale-95 transition-all duration-300">
                             Regresar al Inicio
                         </a>
                     </form>
@@ -71,5 +108,8 @@
         </div>
     </div>
 </section>
+
+
+
 
 @include('footer')
