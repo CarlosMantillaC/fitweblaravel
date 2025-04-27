@@ -81,7 +81,7 @@
                 <!-- Feature 1 -->
                 <div class="bg-[#0e0e0e] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                     <img src="img/classes/dashboard.png" alt="Panel de Control" class="w-full h-48 object-cover">
-                    <div class="p-6 bg-[#000000] text-white">
+                    <div class="p-6 bg-[#0A0A0A] text-white">
                         <div class="flex items-center text-orange-500 mb-2">
                             <i class="fas fa-tachometer-alt mr-2"></i>
                             <span class="font-semibold">Dashboard Inteligente</span>
@@ -94,7 +94,7 @@
                 <div class="bg-[#0e0e0] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                     <img src="img/classes/customer-management.png" alt="Gestión de Clientes"
                         class="w-full h-48 object-cover">
-                    <div class="p-6 bg-[#000000] text-white">
+                    <div class="p-6 bg-[#0A0A0A] text-white">
                         <div class="flex items-center text-orange-500 mb-2">
                             <i class="fas fa-users mr-2"></i>
                             <span class="font-semibold">Gestión de Clientes</span>
@@ -107,7 +107,7 @@
                 <!-- Feature 3 -->
                 <div class="bg-[#0e0e0e] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                     <img src="img/classes/calender.png" alt="Calendario Interactivo" class="w-full h-48 object-cover">
-                    <div class="p-6 bg-[#000000] text-white">
+                    <div class="p-6 bg-[#0A0A0A] text-white">
                         <div class="flex items-center text-orange-500 mb-2">
                             <i class="fas fa-calendar-alt mr-2"></i>
                             <span class="font-semibold">Calendario Interactivo</span>
@@ -161,7 +161,7 @@
 
 
     <!-- Business Model Section -->
-    <section class="py-20 bg-[#000000]">
+    <section class="py-20 bg-[#0A0A0A]">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-orange-500 font-semibold">Modelo de Negocio</span>
@@ -172,9 +172,9 @@
                 <!-- Plan 1 -->
                 <div class="text-center">
                     <div class="text-orange-500 text-4xl mb-4">
-                    <i class="fas fa-rocket text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
+                        <i class="fas fa-rocket text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">Plan Único</h4>
+                    <h4 class="text-xl font-bold mb-3 text-[#f36100]">Plan Único</h4>
                     <p class="text-white">Incluye todas las funcionalidades para administradores, sin límite de usuarios
                         o transacciones.</p>
                 </div>
@@ -182,9 +182,9 @@
                 <!-- Plan 2 -->
                 <div class="text-center">
                     <div class="text-orange-500 text-4xl mb-4">
-                    <i class="fas fa-gift text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
+                        <i class="fas fa-gift text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">Garantía de Satisfacción</h4>
+                    <h4 class="text-xl font-bold mb-3 text-[#f36100]">Garantía de Satisfacción</h4>
                     <p class="text-white">30 días de prueba totalmente gratuita.</p>
                 </div>
 
@@ -193,7 +193,7 @@
                     <div class="text-orange-500 text-4xl mb-4">
                         <i class="fas fa-headset text-white text-2xl bg-[#f36100] p-6 rounded-full animate-bounce"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">Soporte Prioritario</h4>
+                    <h4 class="text-xl font-bold mb-3 text-[#f36100]">Soporte Prioritario</h4>
                     <p class="text-white">Asistencia técnica 24/7, capacitación inicial y actualizaciones gratuitas.</p>
                 </div>
             </div>
@@ -212,64 +212,93 @@
             </div>
         </div>
     </section>
-    <!-- Gallery Section -->
-    <div class="container mx-auto px-4 py-20">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="md:col-span-2 relative group">
-                <img src="img/gallery/gallery-9.jpg" alt="Gallery 1" class="w-full h-64 md:h-96 object-cover rounded-lg">
-                <a href="img/gallery/gallery-9.jpg"
-                    class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300">
-                    <i
-                        class="fas fa-expand text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"></i>
-                </a>
+    <section class="py-20 bg-[#151515]">
+        <!-- Gallery Section -->
+        <div class="container mx-auto px- py-1">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 text-white mb-4">SE PARTE DE LA ERA MODERNA</h2>
+            <div class="w-24 h-1 bg-orange-500 mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Imagen grande 1 -->
+            <div class="md:col-span-2 relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                <img src="img/gallery/gallery-9.jpg" alt="Gallery 1" 
+                    class="w-full h-100 md:h-[32rem] object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                    <a href="img/gallery/gallery-9.jpg" target="_blank" rel="noopener noreferrer"
+                    class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125"></i>
+                    </a>
+                    <h3 class="text-white text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Instalaciones modernas</h3>
+                </div>
             </div>
 
-            <div class="relative group">
-                <img src="img/gallery/gallery-2.jpg" alt="Gallery 2" class="w-full h-64 object-cover rounded-lg">
-                <a href="img/gallery/gallery-2.jpg"
-                    class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300">
-                    <i
-                        class="fas fa-expand text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"></i>
-                </a>
+            <!-- Imagen 2 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                <img src="img/gallery/gallery-2.jpg" alt="Gallery 2" 
+                    class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                    <a href="img/gallery/gallery-2.jpg" target="_blank" rel="noopener noreferrer"
+                    class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125"></i>
+                    </a>
+                    <h3 class="text-white text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Tecnología avanzada</h3>
+                </div>
             </div>
 
-            <div class="relative group">
-                <img src="img/gallery/gallery-3.jpg" alt="Gallery 3" class="w-full h-64 object-cover rounded-lg">
-                <a href="img/gallery/gallery-3.jpg"
-                    class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300">
-                    <i
-                        class="fas fa-expand text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"></i>
-                </a>
+            <!-- Imagen 3 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                <img src="img/gallery/gallery-3.jpg" alt="Gallery 3" 
+                    class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                    <a href="img/gallery/gallery-3.jpg" target="_blank" rel="noopener noreferrer"
+                    class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125"></i>
+                    </a>
+                    <h3 class="text-white text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Entrenamiento personalizado</h3>
+                </div>
             </div>
 
-            <div class="relative group">
-                <img src="img/gallery/gallery-4.jpg" alt="Gallery 4" class="w-full h-64 object-cover rounded-lg">
-                <a href="img/gallery/gallery-4.jpg"
-                    class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300">
-                    <i
-                        class="fas fa-expand text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"></i>
-                </a>
+            <!-- Imagen 4 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                <img src="img/gallery/gallery-4.jpg" alt="Gallery 4" 
+                    class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                    <a href="img/gallery/gallery-4.jpg" target="_blank" rel="noopener noreferrer"
+                    class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125"></i>
+                    </a>
+                    <h3 class="text-white text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Comunidad fitness</h3>
+                </div>
             </div>
 
-            <div class="relative group">
-                <img src="img/gallery/gallery-5.jpg" alt="Gallery 5" class="w-full h-64 object-cover rounded-lg">
-                <a href="img/gallery/gallery-5.jpg"
-                    class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300">
-                    <i
-                        class="fas fa-expand text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"></i>
-                </a>
+            <!-- Imagen 5 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                <img src="img/gallery/gallery-5.jpg" alt="Gallery 5" 
+                    class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                    <a href="img/gallery/gallery-5.jpg" target="_blank" rel="noopener noreferrer"
+                    class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125"></i>
+                    </a>
+                    <h3 class="text-white text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Equipo profesional</h3>
+                </div>
             </div>
 
-            <div class="md:col-span-2 relative group">
-                <img src="img/gallery/gallery-6.jpg" alt="Gallery 6" class="w-full h-64 md:h-96 object-cover rounded-lg">
-                <a href="img/gallery/gallery-6.jpg"
-                    class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300">
-                    <i
-                        class="fas fa-expand text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"></i>
-                </a>
+            <!-- Imagen grande 2 -->
+            <div class="md:col-span-2 relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                <img src="img/gallery/gallery-6.jpg" alt="Gallery 6" 
+                    class="w-full h-100 md:h-[32rem] object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                    <a href="img/gallery/gallery-6.jpg" target="_blank" rel="noopener noreferrer"
+                    class="absolute inset-0 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-4xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125"></i>
+                    </a>
+                    <h3 class="text-white text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Resultados comprobados</h3>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Simple Lightbox for Gallery (Vanilla JS alternative) -->
     <script>
