@@ -51,7 +51,7 @@
                             <div class="mb-4">
                                 <label for="email" class="sr-only">Correo</label>
                                 <input type="email" name="email" id="email"
-                                    class="w-full p-4 bg-[#2D2D2D] text-white border border-gray-600 rounded-lg
+                                    class="w-full p-4 bg-[#252525] text-white border border-gray-600 rounded-lg
                                            focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none transition-all duration-500 font-light"
                                     placeholder="Correo electrónico" required>
                             </div>
@@ -60,7 +60,7 @@
                             <div class="mb-6 relative">
                                 <label for="password" class="sr-only">Contraseña</label>
                                 <input type="password" name="password" id="password"
-                                    class="w-full p-4 bg-[#2D2D2D] text-white border border-gray-600 rounded-lg
+                                    class="w-full p-4 bg-[#252525] text-white border border-gray-600 rounded-lg
                                            focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none transition-all duration-500 font-light"
                                     placeholder="Contraseña" required>
 
