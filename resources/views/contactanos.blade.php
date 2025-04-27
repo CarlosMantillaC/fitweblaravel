@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <title>FitWeb Contactanos</title>
 
-<title>FitWeb Contactanos</title>
-
-<!-- Breadcrumb Section Begin -->
-<section class="relative bg-cover bg-center py-50" style="background-image: url('/img/breadcrumb-bg.jpg')"
+    <!-- Breadcrumb Section Begin -->
+    <section class="relative bg-cover bg-center py-50" style="background-image: url('/img/breadcrumb-bg.jpg')"
         data-aos="fade-in">
         <!-- Overlay negro con opacidad -->
         <div class="absolute inset-0 bg-black/70"></div>
@@ -19,111 +18,125 @@
             </div>
         </div>
     </section>
-<!-- Breadcrumb Section End -->
+    <!-- Breadcrumb Section End -->
 
-<!-- Contact Section Begin -->
-<section class="py-16 bg-[#151515]">
-  <div class="container mx-auto text-center">
-    <div class="mb-12">
-      <h2 class="text-3xl font-bold text-[#f36100] mb-6">Contáctanos</h2>
-      <p class="text-lg text-gray-300">¡Nos encantaría saber de ti! Llena el formulario para ponerte en contacto con nosotros.</p>
-    </div>
-    <div class="flex justify-center">
-      <div class="w-full max-w-md">
-        <div class="bg-[#151515] p-8 rounded-xl shadow-lg border border-gray-700">
-          <form id="contactForm" action="https://formspree.io/f/xblolwzo" method="POST">
-            <div class="mb-4">
-              <input type="text" name="name" required
-                class="w-full p-4 bg-[#252525] text-white border border-gray-600 rounded-lg
-                focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none 
-                transition-all duration-500 font-light"
-                placeholder="Nombre">
-            </div>
-            <div class="mb-4">
-              <input type="email" name="email" required
-                class="w-full p-4 bg-[#252525] text-white border border-gray-600 rounded-lg
-                focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none 
-                transition-all duration-500 font-light"
-                placeholder="Email">
-            </div>
-            <div class="mb-4">
-              <input type="text" name="numero"
-                class="w-full p-4 bg-[#252525] text-white border border-gray-600 rounded-lg
-                focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none 
-                transition-all duration-500 font-light"
-                placeholder="Número">
-            </div>
-            <div class="mb-4">
-              <textarea name="comment" rows="4"
-                class="w-full p-4 bg-[#252525] text-white border border-gray-600 rounded-lg
-                focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none 
-                transition-all duration-500 font-light"
-                placeholder="Comentario"></textarea>
-            </div>
-            <button type="submit" id="submitButton"
-              class="flex justify-center items-center gap-2 w-full py-3 bg-[#f36100] text-white rounded-lg hover:bg-[#e05500] hover:text-[#151515]
-              focus:outline-none focus:ring-2 focus:ring-[#f36100]/80 transition-all duration-300 relative">
-              <span id="buttonText">Enviar</span>
-              <span id="spinner" class="hidden animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></span>
-            </button>
-
-            <!-- Mensaje de éxito oculto -->
-            <p id="successMessage" class="text-green-400 mt-4 hidden">¡Mensaje enviado correctamente! Redireccionando...</p>
-          </form>
+    <!-- Contact Section Begin -->
+    <section class="py-20 bg-gradient-to-b from-[#151515] via-[#1c1c1c] to-[#151515] relative overflow-hidden"
+        data-aos="fade-up">
+        <div class="absolute top-0 left-0 w-72 h-72 bg-[#f36100]/20 rounded-full blur-3xl opacity-30 animate-pulse -z-10">
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div
+            class="absolute bottom-0 right-0 w-72 h-72 bg-[#f36100]/20 rounded-full blur-3xl opacity-30 animate-pulse delay-2000 -z-10">
+        </div>
 
-<script>
-  const form = document.getElementById('contactForm');
-  const successMessage = document.getElementById('successMessage');
-  const submitButton = document.getElementById('submitButton');
-  const spinner = document.getElementById('spinner');
-  const buttonText = document.getElementById('buttonText');
+        <div class="container mx-auto text-center px-6">
+            <div class="mb-14" data-aos="fade-down">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-[#f36100] mb-6 tracking-wide drop-shadow-lg">Contáctanos
+                </h2>
+                <p class="text-lg md:text-xl text-gray-300 leading-relaxed">¡Nos encantaría saber de ti! Llena el formulario
+                    y da el primer paso.</p>
+            </div>
 
-  form.addEventListener('submit', async function(event) {
-    event.preventDefault(); // Evita recargar la página
+            <div class="flex justify-center">
+                <div class="w-full max-w-lg">
+                    <div class="bg-[#1f1f1f] p-10 rounded-3xl shadow-2xl border border-gray-700 backdrop-blur-md"
+                        data-aos="zoom-in">
+                        <form id="contactForm" action="https://formspree.io/f/xblolwzo" method="POST" class="space-y-6">
+                            <div>
+                                <input type="text" name="name" required
+                                    class="w-full p-4 bg-[#252525] text-white border border-gray-700 rounded-xl
+                              focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                              transition-all duration-500 placeholder-gray-400 text-base"
+                                    placeholder="Tu Nombre">
+                            </div>
 
-    // Mostrar spinner y desactivar botón
-    spinner.classList.remove('hidden');
-    buttonText.classList.add('hidden');
-    submitButton.disabled = true;
+                            <div>
+                                <input type="email" name="email" required
+                                    class="w-full p-4 bg-[#252525] text-white border border-gray-700 rounded-xl
+                              focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                              transition-all duration-500 placeholder-gray-400 text-base"
+                                    placeholder="Correo Electrónico">
+                            </div>
 
-    const formData = new FormData(form);
+                            <div>
+                                <input type="text" name="numero"
+                                    class="w-full p-4 bg-[#252525] text-white border border-gray-700 rounded-xl
+                              focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                              transition-all duration-500 placeholder-gray-400 text-base"
+                                    placeholder="Número de Teléfono">
+                            </div>
 
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
+                            <div>
+                                <textarea name="comment" rows="4"
+                                    class="w-full p-4 bg-[#252525] text-white border border-gray-700 rounded-xl
+                              focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                              transition-all duration-500 placeholder-gray-400 text-base"
+                                    placeholder="Tu Mensaje"></textarea>
+                            </div>
 
-      if (response.ok) {
-        form.reset();
-        successMessage.classList.remove('hidden');
-        
-        setTimeout(() => {
-          window.location.href = 'gracias.html'; // Tu página de gracias
-        }, 2500);
-      } else {
-        alert('Algo salió mal. El formulario no pudo enviarse.');
-      }
-    } catch (error) {
-      alert('Error en la conexión. Inténtalo más tarde.');
-    } finally {
-      // Ocultar spinner y reactivar botón (por si hay error)
-      spinner.classList.add('hidden');
-      buttonText.classList.remove('hidden');
-      submitButton.disabled = false;
-    }
-  });
-</script>
+                            <button type="submit" id="submitButton"
+                                class="flex justify-center items-center gap-2 w-full py-4 bg-gradient-to-r from-[#f36100] to-[#ff7300] text-white rounded-xl text-lg font-semibold
+                          hover:scale-105 hover:from-[#e05500] hover:to-[#e05500] focus:outline-none focus:ring-4 focus:ring-[#f36100]/70 transition-all duration-300 relative">
+                                <span id="buttonText">Enviar Mensaje</span>
+                                <span id="spinner"
+                                    class="hidden animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-white"></span>
+                            </button>
+
+                            <!-- Mensaje de éxito oculto -->
+                            <p id="successMessage" class="text-green-400 mt-6 hidden text-center text-sm animate-bounce">
+                                ¡Mensaje enviado correctamente! Redireccionando...</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        const submitButton = document.getElementById('submitButton');
+        const spinner = document.getElementById('spinner');
+        const buttonText = document.getElementById('buttonText');
 
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Evita recargar la página
 
+            // Mostrar spinner y desactivar botón
+            spinner.classList.remove('hidden');
+            buttonText.classList.add('hidden');
+            submitButton.disabled = true;
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    form.reset();
+                    successMessage.classList.remove('hidden');
+
+                    setTimeout(() => {
+                        window.location.href = 'gracias.html'; // Tu página de gracias
+                    }, 2500);
+                } else {
+                    alert('Algo salió mal. El formulario no pudo enviarse.');
+                }
+            } catch (error) {
+                alert('Error en la conexión. Inténtalo más tarde.');
+            } finally {
+                // Ocultar spinner y reactivar botón (por si hay error)
+                spinner.classList.add('hidden');
+                buttonText.classList.remove('hidden');
+                submitButton.disabled = false;
+            }
+        });
+    </script>
 @endsection

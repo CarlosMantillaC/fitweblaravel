@@ -147,13 +147,13 @@
 
 
 <!-- Team Section -->
-<section class="py-16 bg-primary text-white" data-aos="fade-up" data-aos-duration="1000">
+<section class="pt-16 bg-primary text-white" data-aos="fade-up" data-aos-duration="1000">
     <div class="container mx-auto text-center">
         <div class="section-title mb-12">
             <span class="text-tertiary font-semibold text-lg animate__animated animate__fadeIn animate__delay-0.5s">Conoce al Equipo</span>
             <h2 class="text-4xl font-bold mb-8 text-white animate__animated animate__fadeIn animate__delay-1s">Nuestros Expertos</h2>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 justify-center m-10 lg:m-0 ">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 justify-center mx-8 lg:m-0 ">
             <!-- Miembro 1 -->
             <div class="bg-secondary rounded-2xl shadow-2xl p-8 text-center transform transition-all duration-500 hover:scale-105 active:scale-95 focus:scale-105 hover:shadow-xl hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50 border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500 group cursor-pointer"
                 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">

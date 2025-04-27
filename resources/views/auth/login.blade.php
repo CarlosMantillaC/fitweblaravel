@@ -52,7 +52,7 @@
                                 <label for="email" class="sr-only">Correo</label>
                                 <input type="email" name="email" id="email"
                                     class="w-full p-4 bg-[#252525] text-white border border-gray-600 rounded-lg
-                                           focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none transition-all duration-500 font-light"
+                                        focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none transition-all duration-500 font-light"
                                     placeholder="Correo electrónico" required>
                             </div>
 
@@ -61,7 +61,7 @@
                                 <label for="password" class="sr-only">Contraseña</label>
                                 <input type="password" name="password" id="password"
                                     class="w-full p-4 bg-[#252525] text-white border border-gray-600 rounded-lg
-                                           focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none transition-all duration-500 font-light"
+                                        focus:border-[#f36100] focus:ring focus:ring-[#f36100]/80 focus:outline-none transition-all duration-500 font-light"
                                     placeholder="Contraseña" required>
 
                                 <!-- Icono de mostrar/ocultar contraseña -->
@@ -101,7 +101,7 @@
                             <!-- Botón Regresar al Inicio -->
                             <a href="/"
                                 class="block w-full py-3 border border-gray-500 text-gray-300 text-center rounded-lg 
-                                       hover:border-[#f36100] hover:text-[#f36100] active:scale-95 transition-all duration-300">
+                                    hover:border-[#f36100] hover:text-[#f36100] active:scale-95 transition-all duration-300">
                                 Regresar al Inicio
                             </a>
                         </form>

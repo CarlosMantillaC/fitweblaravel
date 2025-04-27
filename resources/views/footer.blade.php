@@ -4,19 +4,22 @@
         <div class="flex flex-wrap text-center">
             <div class="w-full md:w-1/3 mb-8 md:mb-0">
                 <div class="flex flex-col items-center">
-                    <i class="fas fa-map-marker-alt text-5xl text-[#f36100] mb-4 transition-transform duration-300 hover:text-orange-400 hover:scale-110"></i>
+                    <i
+                        class="fas fa-map-marker-alt text-5xl text-[#f36100] mb-4 transition-transform duration-300 hover:text-orange-400 hover:scale-110"></i>
                     <p>Cl. 10 #0-98 a 0-156<br>Los Caobos</p>
                 </div>
             </div>
             <div class="w-full md:w-1/3 mb-8 md:mb-0">
                 <div class="flex flex-col items-center">
-                    <i class="fas fa-mobile-alt text-5xl text-[#f36100] mb-4 transition-transform duration-300 hover:text-orange-400 hover:scale-110"></i>
+                    <i
+                        class="fas fa-mobile-alt text-5xl text-[#f36100] mb-4 transition-transform duration-300 hover:text-orange-400 hover:scale-110"></i>
                     <p>3215815090</p>
                 </div>
             </div>
             <div class="w-full md:w-1/3">
                 <div class="flex flex-col items-center">
-                    <i class="fas fa-envelope text-5xl text-[#f36100] mb-4 transition-transform duration-300 hover:text-orange-400 hover:scale-110"></i>
+                    <i
+                        class="fas fa-envelope text-5xl text-[#f36100] mb-4 transition-transform duration-300 hover:text-orange-400 hover:scale-110"></i>
                     <p>contacto@fitweb.com.co</p>
                 </div>
             </div>
@@ -76,5 +79,3 @@
     </div>
 </section>
 <!-- Footer Section End -->
-
-
