@@ -83,8 +83,8 @@
                             </button>
 
                             <!-- Mensaje de éxito oculto -->
-                            <p id="successMessage" class="text-green-400 mt-6 hidden text-center text-sm">
-                                ¡Mensaje enviado correctamente! Redireccionando...</p>
+                            <p id="successMessage" class="text-green-400 mt-6 hidden text-center text-sm animate-bounce">
+                                ¡Mensaje enviado correctamente!</p>
                         </form>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     successMessage.classList.remove('hidden');
 
                     setTimeout(() => {
-                        window.location.href = '/contactanos';
+                        window.location.href = '/contactanos'; // Tu página de gracias
                     }, 2500);
                 } else {
                     alert('Algo salió mal. El formulario no pudo enviarse.');
