@@ -48,7 +48,7 @@
 
                 <div class="flex flex-wrap gap-8 mb-12 justify-center">
                     <!-- Estadísticas 1 -->
-                    <div class="af-item items-center space-x-4 mb-4 animate__animated animate__fadeIn animate__delay-1s grid grid-cols-1 gap-4 p-6 bg-secondary rounded-xl shadow-xl hover:scale-105 transition-all duration-300 hover:border-2 hover:border-orange-500"
+                    <div class="af-item items-center space-x-4 mb-4 animate__animated animate__fadeIn animate__delay-1s grid grid-cols-1 gap-4 p-6 bg-secondary rounded-xl shadow-xl hover:scale-105 transition-all duration-300 hover:border-2 hover:border-[#f36100]"
                         data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
                         <i
                             class="fas fa-dumbbell text-4xl text-tertiary transition-transform duration-500 transform hover:scale-125"></i>
@@ -59,7 +59,7 @@
                     </div>
 
                     <!-- Estadísticas 2 -->
-                    <div class="af-item items-center space-x-4 mb-4 animate__animated animate__fadeIn animate__delay-1s grid grid-cols-1 gap-4 p-6 bg-secondary rounded-xl shadow-xl hover:scale-105 transition-all duration-300 hover:border-2 hover:border-orange-500"
+                    <div class="af-item items-center space-x-4 mb-4 animate__animated animate__fadeIn animate__delay-1s grid grid-cols-1 gap-4 p-6 bg-secondary rounded-xl shadow-xl hover:scale-105 transition-all duration-300 hover:border-2 hover:border-[#f36100]"
                         data-aos="fade-up" data-aos-duration="1600" data-aos-delay="400">
                         <i
                             class="fas fa-chart-line text-4xl text-tertiary transition-transform duration-500 transform hover:scale-125"></i>
@@ -74,7 +74,7 @@
 
                 <!-- Botón CTA -->
                 <a href="contactanos"
-                    class="bg-gradient-to-r from-orange-500 to-yellow-500 text-white py-4 px-8 rounded-lg text-lg font-semibold shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out hover:from-orange-600 hover:to-yellow-600"
+                    class="bg-gradient-to-r from-[#f36100] to-orange-600 text-white py-4 px-8 rounded-lg text-lg font-semibold shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out hover:from-orange-400 hover:to-orange-500"
                     data-aos="fade-up" data-aos-duration="1800" data-aos-delay="600">
                     Ver demostración
                 </a>
@@ -89,14 +89,14 @@
             <div 
                 class="bg-primary rounded-2xl shadow-2xl p-8 mx-10 lg:m-0 text-center transform transition-all duration-500 
                     hover:scale-105 active:scale-95 focus:scale-105 
-                    hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50
-                    border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500
+                    hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50
+                    border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100]
                     group cursor-pointer"
                 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                 <div class="flex justify-center mb-6 text-tertiary">
                     <i class="fas fa-bullseye text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
                 </div>
-                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-orange-500 group-active:text-orange-500 group-focus:text-orange-500">
+                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-[#f36100] group-active:text-[#f36100] group-focus:text-[#f36100]">
                     Misión
                 </h4>
                 <p class="text-lg text-gray-200 opacity-90 font-light">
@@ -108,14 +108,14 @@
             <div 
                 class="bg-primary rounded-2xl shadow-2xl p-8 mx-10 lg:m-0 text-center transform transition-all duration-500 
                     hover:scale-105 active:scale-95 focus:scale-105 
-                    hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50
-                    border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500
+                    hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50
+                    border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100]
                     group cursor-pointer"
                 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                 <div class="flex justify-center mb-6 text-tertiary">
                     <i class="fas fa-eye text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
                 </div>
-                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-orange-500 group-active:text-orange-500 group-focus:text-orange-500">
+                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-[#f36100] group-active:text-[#f36100] group-focus:text-[#f36100]">
                     Visión
                 </h4>
                 <p class="text-lg text-gray-200 opacity-90 font-light">
@@ -127,14 +127,14 @@
             <div 
                 class="bg-primary rounded-2xl shadow-2xl p-8 mx-10 lg:m-0 text-center transform transition-all duration-500 
                     hover:scale-105 active:scale-95 focus:scale-105 
-                    hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50
-                    border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500
+                    hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50
+                    border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100]
                     group cursor-pointer"
                 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
                 <div class="flex justify-center mb-6 text-tertiary">
                     <i class="fas fa-heart text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
                 </div>
-                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-orange-500 group-active:text-orange-500 group-focus:text-orange-500">
+                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-[#f36100] group-active:text-[#f36100] group-focus:text-[#f36100]">
                     Valores
                 </h4>
                 <p class="text-lg text-gray-200 opacity-90 font-light">
@@ -150,50 +150,50 @@
 <section class="pt-16 bg-primary text-white" data-aos="fade-up" data-aos-duration="1000">
     <div class="container mx-auto text-center">
         <div class="section-title mb-12">
-            <span class="text-tertiary font-semibold text-lg animate__animated animate__fadeIn animate__delay-0.5s">Conoce al Equipo</span>
+            <span class="uppercase text-tertiary font-semibold text-lg animate__animated animate__fadeIn animate__delay-0.5s">Conoce al Equipo</span>
             <h2 class="text-4xl font-bold mb-8 text-white animate__animated animate__fadeIn animate__delay-1s">Nuestros Expertos</h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 justify-center mx-8 lg:m-0 ">
             <!-- Miembro 1 -->
-            <div class="bg-secondary rounded-2xl shadow-2xl p-8 text-center transform transition-all duration-500 hover:scale-105 active:scale-95 focus:scale-105 hover:shadow-xl hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50 border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500 group cursor-pointer"
+            <div class="bg-secondary rounded-2xl shadow-2xl p-8 text-center transform transition-all duration-500 hover:scale-105 active:scale-95 focus:scale-105 hover:shadow-xl hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50 border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100] group cursor-pointer"
                 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                 <div class="bg-cover bg-center h-80 mb-6 rounded-2xl" style="background-image: url('img/team/carlos.jpg');"></div>
-                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-orange-500 group-active:text-orange-500 group-focus:text-orange-500">
+                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-[#f36100] group-active:text-[#f36100] group-focus:text-[#f36100]">
                     Carlos Mantilla
                 </h4>
                 <span class="text-lg font-semibold">CEO</span>
                 <div class="tt-social mt-4">
-                    <a href="https://github.com/CarlosMantillaC" class="text-white hover:text-orange-500 transition-all duration-300">
+                    <a href="https://github.com/CarlosMantillaC" class="text-white hover:text-[#f36100] transition-all duration-300">
                         <i class="fab fa-github text-2xl"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Miembro 2 -->
-            <div class="bg-secondary rounded-2xl shadow-2xl p-8 text-center transform transition-all duration-500 hover:scale-105 active:scale-95 focus:scale-105 hover:shadow-xl hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50 border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500 group cursor-pointer"
+            <div class="bg-secondary rounded-2xl shadow-2xl p-8 text-center transform transition-all duration-500 hover:scale-105 active:scale-95 focus:scale-105 hover:shadow-xl hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50 border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100] group cursor-pointer"
                 data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                 <div class="bg-cover bg-center h-80 mb-6 rounded-2xl" style="background-image: url('img/team/arturito.jpg');"></div>
-                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-orange-500 group-active:text-orange-500 group-focus:text-orange-500">
+                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-[#f36100] group-active:text-[#f36100] group-focus:text-[#f36100]">
                     David Aceros
                 </h4>
                 <span class="text-lg font-semibold">COO</span>
                 <div class="tt-social mt-4">
-                    <a href="https://github.com/AcerosDavid" class="text-white hover:text-orange-500 transition-all duration-300">
+                    <a href="https://github.com/AcerosDavid" class="text-white hover:text-[#f36100] transition-all duration-300">
                         <i class="fab fa-github text-2xl"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Miembro 3 -->
-            <div class="bg-secondary rounded-2xl shadow-2xl p-8 text-center transform transition-all duration-500 hover:scale-105 active:scale-95 focus:scale-105 hover:shadow-xl hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50 border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500 group cursor-pointer"
+            <div class="bg-secondary rounded-2xl shadow-2xl p-8 text-center transform transition-all duration-500 hover:scale-105 active:scale-95 focus:scale-105 hover:shadow-xl hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50 border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100] group cursor-pointer"
                 data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
                 <div class="bg-cover bg-center h-80 mb-6 rounded-2xl " style="background-image: url('img/team/isaac.jpg');"></div>
-                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-orange-500 group-active:text-orange-500 group-focus:text-orange-500">
+                <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-[#f36100] group-active:text-[#f36100] group-focus:text-[#f36100]">
                     Isaac Diaz
                 </h4>
                 <span class="text-lg font-semibold">CTO</span>
                 <div class="tt-social mt-4">
-                    <a href="https://github.com/isaacDiazR" class="text-white hover:text-orange-500 transition-all duration-300">
+                    <a href="https://github.com/isaacDiazR" class="text-white hover:text-[#f36100] transition-all duration-300">
                         <i class="fab fa-github text-2xl"></i>
                     </a>
                 </div>

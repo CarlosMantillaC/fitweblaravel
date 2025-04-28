@@ -9,7 +9,7 @@
         <div class="absolute inset-0 bg-black/70"></div>
 
         <div class="container relative z-10 mx-auto px-4 text-center">
-            <h2 class="text-6xl font-extrabold text-white mb-6">Funcionalidades</h2>
+            <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-6">Funcionalidades</h2>
             <div class="text-white space-x-2 text-lg">
                 <a href="/" class="hover:underline transition-all">Inicio</a>
                 <span>></span>

@@ -24,7 +24,7 @@
                 <div class="flex flex-col md:flex-row">
                     <!-- Imagen -->
                     <div class="w-full md:w-5/12">
-                        <img src="img/hero/hero8c.png" alt="login"
+                        <img src="img/hero/hero8c.webp" alt="login"
                             class="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none">
                     </div>
 
