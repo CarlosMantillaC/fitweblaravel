@@ -22,7 +22,7 @@
         <div class="container mx-auto flex flex-col lg:flex-row gap-16 lg:gap-32">
             <!-- Columna de imagen centrada verticalmente -->
             <div class="lg:w-1/2 mx-auto px-10 lg:px-0 overflow-hidden rounded-xl shadow-2xl transform transition-all duration-500 hover:scale-105 hover:rotate-3 flex justify-center"
-                data-aos="fade-up" data-aos-duration="1500">
+                data-aos="fade-up" data-aos-duration="500">
                 <img src="img/about-us.jpg"
                     class="w-full h-auto rounded-xl shadow-lg transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3"
                     alt="Nuestro equipo">
@@ -33,14 +33,14 @@
                 <div class="section-title mb-8">
                     <span
                         class="text-tertiary font-semibold text-lg uppercase tracking-wider animate__animated animate__fadeIn animate__delay-1s"
-                        data-aos="fade-up" data-aos-duration="1000">Nuestra Historia</span>
+                        data-aos="fade-up" data-aos-duration="400">Nuestra Historia</span>
                     <h2 class="text-4xl font-extrabold mb-6 text-white leading-tight animate__animated animate__fadeIn animate__delay-1s"
-                        data-aos="fade-up" data-aos-duration="1200">
+                        data-aos="fade-up" data-aos-duration="500">
                         Transformando la gestión de gimnasios desde 2025
                     </h2>
                 </div>
                 <p class="text-lg text-gray-300 mb-8 animate__animated animate__fadeIn animate__delay-1s  font-light"
-                    data-aos="fade-up" data-aos-duration="1400">
+                    data-aos="fade-up" data-aos-duration="500">
                     En FitWeb combinamos pasión por el fitness con tecnología innovadora para ofrecer la solución más
                     completa en gestión deportiva. Nuestro equipo de expertos en software y gestión deportiva trabaja para
                     simplificar las operaciones diarias de tu gimnasio.
@@ -49,7 +49,7 @@
                 <div class="flex flex-wrap gap-8 mb-12 justify-center">
                     <!-- Estadísticas 1 -->
                     <div class="af-item items-center space-x-4 mb-4 animate__animated animate__fadeIn animate__delay-1s grid grid-cols-1 gap-4 p-6 bg-secondary rounded-xl shadow-xl hover:scale-105 transition-all duration-300 hover:border-2 hover:border-[#f36100]"
-                        data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+                        data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
                         <i
                             class="fas fa-dumbbell text-4xl text-tertiary transition-transform duration-500 transform hover:scale-125"></i>
                         <div>
@@ -60,7 +60,7 @@
 
                     <!-- Estadísticas 2 -->
                     <div class="af-item items-center space-x-4 mb-4 animate__animated animate__fadeIn animate__delay-1s grid grid-cols-1 gap-4 p-6 bg-secondary rounded-xl shadow-xl hover:scale-105 transition-all duration-300 hover:border-2 hover:border-[#f36100]"
-                        data-aos="fade-up" data-aos-duration="1600" data-aos-delay="400">
+                        data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
                         <i
                             class="fas fa-chart-line text-4xl text-tertiary transition-transform duration-500 transform hover:scale-125"></i>
                         <div>
@@ -75,7 +75,7 @@
                 <!-- Botón CTA -->
                 <a href="contactanos"
                     class="bg-gradient-to-r from-[#f36100] to-orange-600 text-white py-4 px-8 rounded-lg text-lg font-semibold shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out hover:from-orange-400 hover:to-orange-500"
-                    data-aos="fade-up" data-aos-duration="1800" data-aos-delay="600">
+                    data-aos="fade-up" data-aos-duration="400" data-aos-delay="600">
                     Ver demostración
                 </a>
             </div>
@@ -92,7 +92,7 @@
                     hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50
                     border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100]
                     group cursor-pointer"
-                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                data-aos="fade-up" data-aos-duration="400" data-aos-delay="200">
                 <div class="flex justify-center mb-6 text-tertiary">
                     <i class="fas fa-bullseye text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
                 </div>
@@ -111,7 +111,7 @@
                     hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50
                     border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100]
                     group cursor-pointer"
-                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                data-aos="fade-up" data-aos-duration="400" data-aos-delay="400">
                 <div class="flex justify-center mb-6 text-tertiary">
                     <i class="fas fa-eye text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
                 </div>
@@ -130,7 +130,7 @@
                     hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50
                     border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100]
                     group cursor-pointer"
-                data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                data-aos="fade-up" data-aos-duration="400" data-aos-delay="600">
                 <div class="flex justify-center mb-6 text-tertiary">
                     <i class="fas fa-heart text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
                 </div>
@@ -147,7 +147,7 @@
 
 
 <!-- Team Section -->
-<section class="pt-16 bg-primary text-white" data-aos="fade-up" data-aos-duration="1000">
+<section class="pt-16 bg-primary text-white" data-aos="fade-up" data-aos-duration="400">
     <div class="container mx-auto text-center">
         <div class="section-title mb-12">
             <span class="uppercase text-tertiary font-semibold text-lg animate__animated animate__fadeIn animate__delay-0.5s">Conoce al Equipo</span>
@@ -156,7 +156,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 justify-center mx-8 lg:m-0 ">
             <!-- Miembro 1 -->
             <div class="bg-secondary rounded-2xl shadow-2xl p-8 text-center transform transition-all duration-500 hover:scale-105 active:scale-95 focus:scale-105 hover:shadow-xl hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50 border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100] group cursor-pointer"
-                data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                 <div class="bg-cover bg-center h-80 mb-6 rounded-2xl" style="background-image: url('img/team/carlos.jpg');"></div>
                 <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-[#f36100] group-active:text-[#f36100] group-focus:text-[#f36100]">
                     Carlos Mantilla
@@ -171,7 +171,7 @@
 
             <!-- Miembro 2 -->
             <div class="bg-secondary rounded-2xl shadow-2xl p-8 text-center transform transition-all duration-500 hover:scale-105 active:scale-95 focus:scale-105 hover:shadow-xl hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50 border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100] group cursor-pointer"
-                data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                data-aos="fade-up" data-aos-delay="400" data-aos-duration="400">
                 <div class="bg-cover bg-center h-80 mb-6 rounded-2xl" style="background-image: url('img/team/arturito.jpg');"></div>
                 <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-[#f36100] group-active:text-[#f36100] group-focus:text-[#f36100]">
                     David Aceros
@@ -186,7 +186,7 @@
 
             <!-- Miembro 3 -->
             <div class="bg-secondary rounded-2xl shadow-2xl p-8 text-center transform transition-all duration-500 hover:scale-105 active:scale-95 focus:scale-105 hover:shadow-xl hover:shadow-[#f36100]/50 active:shadow-[#f36100]/50 focus:shadow-[#f36100]/50 border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100] group cursor-pointer"
-                data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                data-aos="fade-up" data-aos-delay="600" data-aos-duration="400">
                 <div class="bg-cover bg-center h-80 mb-6 rounded-2xl " style="background-image: url('img/team/isaac.jpg');"></div>
                 <h4 class="text-2xl font-extrabold mb-4 text-white group-hover:text-[#f36100] group-active:text-[#f36100] group-focus:text-[#f36100]">
                     Isaac Diaz

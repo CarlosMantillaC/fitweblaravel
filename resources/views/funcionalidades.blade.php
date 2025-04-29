@@ -21,7 +21,7 @@
 
 
     <!-- Service Section -->
-    <section class="py-20 bg-primary" data-aos="fade-up" data-aos-duration="1500">
+    <section class="py-20 bg-primary" data-aos="fade-up" data-aos-duration="500">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <span class="text-tertiary font-semibold uppercase">Características principales</span>
@@ -35,7 +35,7 @@
                        hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50
                        border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500 
                        group cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                     <div class="flex justify-center mb-6 text-tertiary">
                         <i
                             class="fas fa-tachometer-alt text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
@@ -57,7 +57,7 @@
            hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50
            border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500 
            group cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                     <div class="flex justify-center mb-6 text-tertiary">
                         <i
                             class="fas fa-users text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
@@ -80,7 +80,7 @@
            hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50
            border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500 
            group cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">
                     <div class="flex justify-center mb-6 text-tertiary">
                         <i
                             class="fas fa-user-tie text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
@@ -103,7 +103,7 @@
            hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50
            border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500 
            group cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="400" data-aos-duration="400">
                     <div class="flex justify-center mb-6 text-tertiary">
                         <i
                             class="fas fa-calendar-alt text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
@@ -126,7 +126,7 @@
            hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50
            border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500 
            group cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="500" data-aos-duration="400">
                     <div class="flex justify-center mb-6 text-tertiary">
                         <i
                             class="fas fa-chart-bar text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
@@ -149,7 +149,7 @@
            hover:shadow-orange-500/50 active:shadow-orange-500/50 focus:shadow-orange-500/50
            border-2 border-transparent hover:border-orange-500 active:border-orange-500 focus:border-orange-500 
            group cursor-pointer"
-                    data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="600" data-aos-duration="400">
                     <div class="flex justify-center mb-6 text-tertiary">
                         <i
                             class="fas fa-shield-alt text-6xl group-hover:-translate-y-2 group-active:-translate-y-2 group-focus:-translate-y-2 transition-transform duration-500"></i>
@@ -173,7 +173,7 @@
 
     <!-- Banner Section Mejorado -->
     <section class="relative bg-cover bg-center py-32" style="background-image: url('/img/banner.png')" data-aos="zoom-in"
-        data-aos-duration="1500">
+        data-aos-duration="500">
         <div class="absolute inset-0 bg-black/70"></div> <!-- Capa oscura -->
         <div class="container relative z-10 mx-auto px-6 text-center">
             <h2 class="text-6xl font-extrabold text-white mb-6 drop-shadow-lg animate-fade-down">Contáctanos para obtener

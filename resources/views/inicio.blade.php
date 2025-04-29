@@ -3,13 +3,13 @@
 @section('content')
     <!-- Hero Section -->
     <section class="relative h-200 flex items-center bg-cover bg-center bg-blend-overlay "
-        style="background-image: url('img/hero/hero8.webp');" data-aos="fade-up" data-aos-duration="1500">
+        style="background-image: url('img/hero/hero8.webp');" data-aos="fade-up" data-aos-duration="400">
         <!-- Capa oscura + degradado -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black"></div>
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="flex flex-col md:flex-row">
-                <div class="lg:w-1/2" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500">
+                <div class="lg:w-1/2" data-aos="fade-right" data-aos-delay="200" data-aos-duration="400">
 
                 </div>
 
@@ -36,7 +36,7 @@
     </section>
 
     <!-- Problem Section -->
-    <section class="py-20 bg-black" data-aos="fade-up" data-aos-duration="1500">
+    <section class="py-20 bg-black" data-aos="fade-up" data-aos-duration="400">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-tertiary font-semibold uppercase">Problemas que Resolvemos</span>
@@ -49,7 +49,7 @@
                 hover:scale-105 hover:shadow-xl hover:shadow-[#f36100]/50 
                 active:scale-95 focus:scale-105 group cursor-pointer 
                 border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100]"
-                    data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                     <div class="text-[#f36100] text-5xl mb-6 group-hover:-translate-y-2 transition-transform duration-500">
                         <i class="fas fa-robot"></i>
                     </div>
@@ -65,7 +65,7 @@
                 hover:scale-105 hover:shadow-xl hover:shadow-[#f36100]/50 
                 active:scale-95 focus:scale-105 group cursor-pointer 
                 border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100]"
-                    data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="400" data-aos-duration="400">
                     <div class="text-[#f36100] text-5xl mb-6 group-hover:-translate-y-2 transition-transform duration-500">
                         <i class="fas fa-chart-line"></i>
                     </div>
@@ -81,7 +81,7 @@
                 hover:scale-105 hover:shadow-xl hover:shadow-[#f36100]/50 
                 active:scale-95 focus:scale-105 group cursor-pointer 
                 border-2 border-transparent hover:border-[#f36100] active:border-[#f36100] focus:border-[#f36100]"
-                    data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="600" data-aos-duration="400">
                     <div class="text-[#f36100] text-5xl mb-6 group-hover:-translate-y-2 transition-transform duration-500">
                         <i class="fas fa-expand"></i>
                     </div>
@@ -97,7 +97,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="py-20 bg-[#151515]" data-aos="fade-up" data-aos-duration="1500">
+    <section class="py-20 bg-[#151515]" data-aos="fade-up" data-aos-duration="400">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-[#f36100] font-semibold uppercase">Funcionalidades Clave</span>
@@ -107,7 +107,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
                 <div class="bg-[#0e0e0e] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-                    data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                     <img src="img/classes/dashboard.webp" alt="Panel de Control" class="w-full h-48 object-cover">
                     <div class="p-6 bg-[#0A0A0A] text-white">
                         <div class="flex items-center text-[#f36100] mb-2">
@@ -120,7 +120,7 @@
 
                 <!-- Feature 2 -->
                 <div class="bg-[#0e0e0] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-                    data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="400" data-aos-duration="400">
                     <img src="img/classes/customer-management.webp" alt="Gestión de Clientes"
                         class="w-full h-48 object-cover">
                     <div class="p-6 bg-[#0A0A0A] text-white">
@@ -134,7 +134,7 @@
 
                 <!-- Feature 3 -->
                 <div class="bg-[#0e0e0e] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300"
-                    data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                    data-aos="fade-up" data-aos-delay="600" data-aos-duration="400">
                     <img src="img/classes/calender.webp" alt="Calendario Interactivo" class="w-full h-48 object-cover">
                     <div class="p-6 bg-[#0A0A0A] text-white">
                         <div class="flex items-center text-[#f36100] mb-2">
@@ -150,7 +150,7 @@
 
     <!-- Benefits Section -->
     <section class="py-14 bg-cover bg-center" style="background-image: url('img/classes/gym-background.webp')"
-        data-aos="fade-up" data-aos-duration="1500">
+        data-aos="fade-up" data-aos-duration="400">
         <div class="py-12">
             <div class="container mx-auto px-4">
                 <div class="text-center text-white mb-24">
@@ -160,7 +160,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Benefit 1 -->
                     <div class="text-center text-white" data-aos="fade-up" data-aos-delay="200"
-                        data-aos-duration="1000">
+                        data-aos-duration="400">
                         <div class="text-[#f36100] text-4xl mb-4">
                             <i class="far fa-clock"></i>
                         </div>
@@ -170,7 +170,7 @@
 
                     <!-- Benefit 2 -->
                     <div class="text-center text-white" data-aos="fade-up" data-aos-delay="400"
-                        data-aos-duration="1000">
+                        data-aos-duration="400">
                         <div class="text-[#f36100] text-4xl mb-4">
                             <i class="fas fa-money-bill-wave"></i>
                         </div>
@@ -180,7 +180,7 @@
 
                     <!-- Benefit 3 -->
                     <div class="text-center text-white" data-aos="fade-up" data-aos-delay="600"
-                        data-aos-duration="1000">
+                        data-aos-duration="400">
                         <div class="text-[#f36100] text-4xl mb-4">
                             <i class="fas fa-chart-line"></i>
                         </div>
@@ -192,7 +192,7 @@
         </div>
     </section>
     <!-- Business Model Section -->
-    <section class="py-20 bg-[#0A0A0A]" data-aos="fade-up" data-aos-duration="1500">
+    <section class="py-20 bg-[#0A0A0A]" data-aos="fade-up" data-aos-duration="400">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-[#f36100] font-semibold uppercase">Modelo de Negocio</span>
@@ -201,7 +201,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Plan 1 -->
-                <div class="text-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
                     <div class="text-[#f36100] text-4xl mb-4">
                         <i class="fas fa-rocket text-white text-2xl bg-[#f36100] p-6 rounded-full"></i>
                     </div>
@@ -212,7 +212,7 @@
                 </div>
 
                 <!-- Plan 2 -->
-                <div class="text-center" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400" data-aos-duration="400">
                     <div class="text-[#f36100] text-4xl mb-4">
                         <i class="fas fa-gift text-white text-2xl bg-[#f36100] p-6 rounded-full"></i>
                     </div>
@@ -221,7 +221,7 @@
                 </div>
 
                 <!-- Plan 3 -->
-                <div class="text-center" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="600" data-aos-duration="400">
                     <div class="text-[#f36100] text-4xl mb-4">
                         <i class="fas fa-headset text-white text-2xl bg-[#f36100] p-6 rounded-full"></i>
                     </div>
@@ -235,7 +235,7 @@
 
 
     <section class="relative bg-cover bg-center py-32" style="background-image: url('/img/banner.png')"
-        data-aos="zoom-in" data-aos-duration="1500">
+        data-aos="zoom-in" data-aos-duration="400">
         <div class="absolute inset-0 bg-black/70"></div> <!-- Capa oscura -->
         <div class="container relative z-10 mx-auto px-6 text-center">
             <h2 class="text-6xl font-extrabold text-white mb-6 drop-shadow-lg animate-fade-down">Contáctanos para obtener
@@ -276,7 +276,7 @@
 
             <!-- Imagen 2 -->
             <div class="relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500"
-                data-aos="fade-up" data-aos-delay="500">
+                data-aos="fade-up" data-aos-delay="400">
                 <img src="img/gallery/gallery-2.jpg" alt="Gallery 2"
                     class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-110">
                 <div
@@ -294,7 +294,7 @@
 
             <!-- Imagen 3 -->
             <div class="relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500"
-                data-aos="fade-up" data-aos-delay="600">
+                data-aos="fade-up" data-aos-delay="500">
                 <img src="img/gallery/gallery-3.jpg" alt="Gallery 3"
                     class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-110">
                 <div
@@ -312,7 +312,7 @@
 
             <!-- Imagen 4 -->
             <div class="relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500"
-                data-aos="fade-up" data-aos-delay="700">
+                data-aos="fade-up" data-aos-delay="500">
                 <img src="img/gallery/gallery-4.jpg" alt="Gallery 4"
                     class="w-full h-100 object-cover transition-transform duration-700 group-hover:scale-110">
                 <div
@@ -330,7 +330,7 @@
 
             <!-- Imagen 5 -->
             <div class="relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500"
-                data-aos="fade-up" data-aos-delay="800">
+                data-aos="fade-up" data-aos-delay="600">
                 <img src="img/gallery/gallery-5.jpg" alt="Gallery 5"
                     class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
                 <div
@@ -348,7 +348,7 @@
 
             <!-- Imagen grande 2 -->
             <div class="md:col-span-2 relative group overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500"
-                data-aos="fade-up" data-aos-delay="900">
+                data-aos="fade-up" data-aos-delay="600">
                 <img src="img/gallery/gallery-6.jpg" alt="Gallery 6"
                     class="w-full h-100 md:h-[32rem] object-cover transition-transform duration-700 group-hover:scale-110">
                 <div
