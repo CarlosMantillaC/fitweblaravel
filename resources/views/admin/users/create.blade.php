@@ -8,7 +8,9 @@
     @vite(['resources/css/app.css'])
 </head>
 
-<body class="bg-gray-900 text-white min-h-screen p-4 sm:p-6 md:p-8">
+<body class="bg-[#0A0A0A] text-white min-h-screen p-4 sm:p-6 md:p-8">
+
+
     <div class="max-w-md sm:max-w-xl mx-auto bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg">
 
         <!-- Botón Atrás -->
