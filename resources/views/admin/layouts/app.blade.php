@@ -10,6 +10,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 
+
 </head>
 
 <body class="font-['Oswald'] font-bold bg-primary text-white">

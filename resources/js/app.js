@@ -2,6 +2,10 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'animate.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+Alpine.start();
 
 const mobileMenuButton = document.getElementById("mobile-menu-button");
 const closeMobileMenu = document.getElementById("close-mobile-menu");

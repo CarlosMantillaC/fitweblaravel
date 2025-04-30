@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @source "../views";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
     --color-primary: #0a0a0a;
