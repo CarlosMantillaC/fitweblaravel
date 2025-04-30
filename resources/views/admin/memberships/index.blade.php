@@ -1,165 +1,201 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    @if (class_basename($user) === 'Admin')
-        Admin Dashboard
-    @elseif (class_basename($user) === 'Receptionist')
-        Receptionista Dashboard
-    @else
-        Dashboard
-    @endif
+    @php
+        $role = class_basename($user);
+    @endphp
+    {{ $role === 'Admin' ? 'Admin Dashboard' : ($role === 'Receptionist' ? 'Receptionista Dashboard' : 'Dashboard') }}
 @endsection
 
 @section('content')
-    <!-- Contenido principal -->
     <main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0">
+        <!-- Encabezado -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-            <h1 class="text-2xl lg:text-3xl font-bold">
-                Membresías - {{ class_basename($user) === 'Admin' ? 'Admin' : 'Recepcionista' }}
+            <h1 class="text-3xl lg:text-4xl font-extrabold text-[#f36100] transition-all duration-300">
+                Membresías - <span class="text-white">{{ $role === 'Admin' ? 'Admin' : 'Recepcionista' }}</span>
             </h1>
-            <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.memberships.create' : 'receptionist.memberships.create') }}"
+            <a href="{{ route($role === 'Admin' ? 'admin.memberships.create' : 'receptionist.memberships.create') }}"
                 class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto text-center">
                 + Agregar Membresía
             </a>
         </div>
 
-        <!-- Buscador por Nombre de Usuario -->
-        <form method="GET" action="{{ url()->current() }}" class="mb-6 flex flex-col sm:flex-row gap-2 sm:items-center">
-            <input
-                type="text"
-                name="user_name"
-                placeholder="Buscar por nombre de usuario"
-                value="{{ request('user_name') }}"
-                class="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-600 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-green-600"
-            >
-            <button type="submit"
-                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full sm:w-auto text-center">
-                Buscar
-            </button>
-        </form>
+        <!-- Filtros -->
+        <div class="bg-[#151515] p-4 rounded-lg shadow mb-6">
+            <form x-data="{
+                selected: '{{ request('per_page', 10) }}',
+                options: [5, 10, 25, 50, 100],
+                open: false,
+                selectAndSubmit(option) {
+                    this.selected = option;
+                    this.open = false;
+                    this.$nextTick(() => {
+                        this.$refs.input.value = option;
+                        this.$refs.form.submit();
+                    });
+                }
+            }" x-ref="form" action="{{ url()->current() }}" method="GET" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        
+                <!-- Buscar general -->
+                <div>
+                    <label for="search" class="block text-sm font-medium text-gray-300 mb-1">Buscar</label>
+                    <input type="text" name="search" id="search" value="{{ request('search') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl
+                           focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                           transition-all duration-500 placeholder-gray-400 text-base"
+                        placeholder="Tipo, monto, descuento, fechas, nombre usuario...">
+                </div>
+        
+                <!-- Filtro por tipo -->
+                <div>
+                    <label for="type" class="block text-sm font-medium text-gray-300 mb-1">Tipo</label>
+                    <select name="type" id="type"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all duration-300 text-base">
+                        <option value="all">Todos</option>
+                        <option value="mensual" {{ request('type') == 'mensual' ? 'selected' : '' }}>Mensual</option>
+                        <option value="trimestral" {{ request('type') == 'trimestral' ? 'selected' : '' }}>Trimestral</option>
+                        <option value="anual" {{ request('type') == 'anual' ? 'selected' : '' }}>Anual</option>
+                    </select>
+                </div>
+        
+                <!-- Fecha de inicio -->
+                <div>
+                    <label for="start_date" class="block text-sm font-medium text-gray-300 mb-1">Desde</label>
+                    <input type="date" name="start_date" id="start_date" value="{{ request('start_date') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl 
+                           focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                           transition-all duration-500 text-base">
+                </div>
+        
+                <!-- Fecha de fin -->
+                <div>
+                    <label for="finish_date" class="block text-sm font-medium text-gray-300 mb-1">Hasta</label>
+                    <input type="date" name="finish_date" id="finish_date" value="{{ request('finish_date') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl 
+                           focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                           transition-all duration-500 text-base">
+                </div>
+        
+                
+                <!-- Botones -->
+                <div class="flex items-end gap-2 col-span-1 md:col-span-2">
+                    <button type="submit"
+                        class="w-full px-6 py-2 bg-[#f36100] text-white rounded-lg 
+                        hover:bg-[#ff6a00] hover:text-[#151515] active:scale-95 transition-all duration-300 cursor-pointer md:w-auto">
+                        Filtrar
+                    </button>
+                    <a href="{{ url()->current() }}"
+                        class="block w-full px-6 py-2 border border-gray-500 text-gray-300 text-center rounded-lg 
+                        hover:border-[#f36100] hover:text-[#f36100] active:scale-95 transition-all duration-300 md:w-auto">
+                        Limpiar
+                    </a>
+                </div>
 
-        <form method="GET" action="{{ url()->current() }}" class="mb-4 flex items-center gap-2 text-sm text-gray-200">
-            <label for="per_page">Mostrar</label>
-            <select name="per_page" id="per_page" onchange="this.form.submit()"
-                class="bg-gray-800 border border-gray-600 text-white px-2 py-1 rounded">
-                @foreach ([5, 10, 25, 50, 100] as $size)
-                    <option value="{{ $size }}" {{ request('per_page', 10) == $size ? 'selected' : '' }}>{{ $size }}</option>
-                @endforeach
-            </select>
-            <span>registros</span>
+                <!-- Selector per_page -->
+                <div class="flex items-center gap-2 md:col-span-4">
+                    <label for="per_page" class="text-sm text-gray-300">Mostrar:</label>
+        
+                    <!-- Dropdown personalizado -->
+                    <div class="relative w-24">
+                        <button @click.prevent="open = !open" @keydown.escape.window="open = false" type="button"
+                            class="w-full bg-[#252525] border border-gray-600 rounded-md px-3 py-[6px] text-white text-sm
+                            hover:border-[#f36100] focus:outline-none focus:ring-2 focus:ring-[#f36100] transition-all duration-300 flex justify-between items-center">
+                            <span x-text="selected"></span>
+                            <svg class="w-4 h-4 ml-2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+        
+                        <ul x-show="open" x-cloak x-transition @click.outside="open = false"
+                            class="absolute z-10 mt-2 w-full bg-[#252525] border border-gray-600 rounded-md shadow-lg">
+                            <template x-for="option in options" :key="option">
+                                <li @click="selectAndSubmit(option)"
+                                    :class="{'bg-[#f36100] text-white': selected == option}"
+                                    class="px-4 py-2 cursor-pointer transition-all duration-300 hover:bg-[#f36100]/80">
+                                    <span x-text="option"></span>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+        
+                    <span class="text-sm text-gray-400">registros</span>
+                    <input type="hidden" name="per_page" x-ref="input" :value="selected">
+                </div>
+        
+            </form>
+        </div>
+        
 
-            {{-- Mantener filtros de búsqueda al cambiar per_page --}}
-            @if(request('user_name'))
-                <input type="hidden" name="user_name" value="{{ request('user_name') }}">
-            @endif
-        </form>
-
-
-
+        <!-- Tabla -->
         <div class="overflow-x-auto">
             <div class="min-w-full inline-block align-middle">
                 <div class="overflow-hidden">
-                    <table class="min-w-full bg-gray-800 rounded-lg shadow">
+                    <table class="min-w-full bg-[#151515] rounded-lg shadow-lg">
                         <thead>
                             <tr class="text-left border-b border-gray-700">
-                                <th class="px-2 py-2 lg:px-4 lg:py-3">ID</th>
-                                <th class="px-2 py-2 lg:px-4 lg:py-3">Tipo</th>
-                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Monto</th>
-                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">Descuento</th>
-                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">Fecha de Inicio</th>
-                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">Fecha de Fin</th>
-                                <th class="px-2 py-2 lg:px-4 lg:py-3 hidden lg:table-cell">Usuario</th>
-                                <th class="px-2 py-2 lg:px-4 lg:py-3">Acciones</th>
+                                <th class="px-4 py-3 text-sm text-gray-300">ID</th>
+                                <th class="px-4 py-3 text-sm text-gray-300">Usuario</th>
+                                <th class="px-4 py-3 text-sm text-gray-300">Tipo</th>
+                                <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Monto</th>
+                                <th class="px-4 py-3 text-sm text-gray-300 hidden md:table-cell">Descuento</th>
+                                <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Inicio</th>
+                                <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Fin</th>
+                                @if ($role === 'Admin')
+                                    <th class="px-4 py-3 text-sm text-gray-300">Acciones</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($memberships as $membership)
-                                <tr class="border-b border-gray-700 hover:bg-gray-700 transition">
-                                    <td class="px-2 py-2 lg:px-4 lg:py-3">{{ $membership->id }}</td>
-                                    <td class="px-2 py-2 lg:px-4 lg:py-3">{{ $membership->type }}</td>
-                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">
-                                        ${{ number_format($membership->amount, 2) }}</td>
-                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">
-                                        ${{ number_format($membership->discount, 2) }}</td>
-                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden sm:table-cell">
+                            @forelse ($memberships as $membership)
+                                <tr
+                                    class="border-b border-gray-700 hover:bg-[#252525] hover:text-white transition duration-300">
+                                    <td class="px-4 py-3 text-sm text-white">{{ $membership->id }}</td>
+                                    <td class="px-4 py-3 text-sm text-white">{{ $membership->user->name }}</td>
+                                    <td class="px-4 py-3 text-sm text-white">{{ $membership->type }}</td>
+                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
+                                        ${{ number_format($membership->amount, 0, ',', '.') }}</td>
+                                    <td class="px-4 py-3 text-sm text-white hidden md:table-cell">
+                                        {{ $membership->discount }}%</td>
+                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
                                         {{ $membership->start_date }}</td>
-                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden md:table-cell">
+                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
                                         {{ $membership->finish_date }}</td>
-                                    <td class="px-2 py-2 lg:px-4 lg:py-3 hidden lg:table-cell">
-                                        {{ $membership->user->name }}</td>
-                                    <td class="px-2 py-2 lg:px-4 lg:py-3 flex flex-wrap gap-1">
-                                        @if (class_basename($user) === 'Admin')
+                                    </td>
+                                    @if ($role === 'Admin')
+                                        <td class="px-4 py-3 flex gap-2">
                                             <a href="{{ route('memberships.edit', $membership->id) }}"
-                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 text-sm lg:px-3 lg:py-1 lg:text-base rounded">
+                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
                                                 Editar
                                             </a>
-                                            <form action="{{ route('memberships.destroy', $membership->id) }}" method="POST"
+                                            <form action="{{ route('memberships.destroy', $membership->id) }}"
+                                                method="POST"
                                                 onsubmit="return confirm('¿Estás seguro de eliminar esta membresía?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 text-sm lg:px-3 lg:py-1 lg:text-base rounded">
+                                                    class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm transition duration-300">
                                                     Eliminar
                                                 </button>
                                             </form>
-                                        @else
-                                            <span class="text-gray-400 text-sm italic">Sin permisos</span>
-                                        @endif
-                                    </td>
+                                        </td>
+                                    @endif
                                 </tr>
-                            @endforeach
-
-                            @if ($memberships->isEmpty())
+                            @empty
                                 <tr>
-                                    <td colspan="8" class="text-center px-4 py-6 text-gray-400">
+                                    <td colspan="{{ $role === 'Admin' ? 9 : 8 }}"
+                                        class="text-center px-4 py-6 text-gray-400">
                                         No hay membresías registradas.
                                     </td>
                                 </tr>
-                            @endif
+                            @endforelse
                         </tbody>
                     </table>
-                    @if ($memberships->total() > 0)
-                    <div class="flex flex-col md:flex-row justify-between items-center mt-4 text-sm text-gray-300">
-                        {{-- Texto de cantidad --}}
-                        <div class="mb-2 md:mb-0">
-                            Mostrando registros del {{ $memberships->firstItem() }} al {{ $memberships->lastItem() }}
-                            de un total de {{ $memberships->total() }} registros
-                        </div>
 
-                        {{-- Paginación --}}
-                        <div class="flex items-center space-x-2">
-                            {{-- Botón anterior --}}
-                            @if ($memberships->onFirstPage())
-                                <span class="px-3 py-1 bg-gray-700 text-gray-400 rounded cursor-not-allowed">Anterior</span>
-                            @else
-                                <a href="{{ $memberships->previousPageUrl() }}" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 text-white rounded">
-                                    Anterior
-                                </a>
-                            @endif
-
-                            {{-- Número de páginas --}}
-                            @for ($i = 1; $i <= $memberships->lastPage(); $i++)
-                                @if ($i == $memberships->currentPage())
-                                    <span class="px-3 py-1 bg-blue-600 text-white rounded">{{ $i }}</span>
-                                @else
-                                    <a href="{{ $memberships->url($i) }}" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 text-white rounded">
-                                        {{ $i }}
-                                    </a>
-                                @endif
-                            @endfor
-
-                            {{-- Botón siguiente --}}
-                            @if ($memberships->hasMorePages())
-                                <a href="{{ $memberships->nextPageUrl() }}" class="px-3 py-1 bg-gray-800 hover:bg-gray-700 text-white rounded">
-                                    Siguiente
-                                </a>
-                            @else
-                                <span class="px-3 py-1 bg-gray-700 text-gray-400 rounded cursor-not-allowed">Siguiente</span>
-                            @endif
-                        </div>
+                    <!-- Paginación -->
+                    <div class="mt-4 px-4 py-3 flex items-center justify-between border-t border-gray-700 sm:px-6">
+                        {{ $memberships->appends(request()->except('page'))->links() }}
                     </div>
-                @endif
-
                 </div>
             </div>
         </div>
