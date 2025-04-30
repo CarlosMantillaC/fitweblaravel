@@ -13,7 +13,7 @@
             Dashboard
         @endif
     </title>
-    @vite(['resources/css/tailwind.css', 'resources/js/dashboard.js'])
+    @vite(['resources/css/app.css'])
 </head>
 
 <body class="bg-gray-900 text-white">

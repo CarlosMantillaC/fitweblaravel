@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Membresía</title>
-    @vite(['resources/css/tailwind.css'])
+    @vite(['resources/css/app.css'])
 </head>
 
 <body class="bg-gray-900 text-white min-h-screen p-4 sm:p-6 md:p-8">
