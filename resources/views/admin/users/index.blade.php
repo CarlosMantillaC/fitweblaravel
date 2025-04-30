@@ -10,10 +10,10 @@
 @section('content')
     <main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0">
 
-        <!-- Título y botón -->
+        <!-- Título -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-            <h1 class="text-2xl lg:text-3xl font-bold">
-                Usuarios - {{ $role === 'Admin' ? 'Admin' : 'Recepcionista' }}
+            <h1 class="text-3xl lg:text-4xl font-extrabold text-[#f36100] transition-all duration-300">
+                Usuarios - <span class="text-white">{{ $role === 'Admin' ? 'Admin' : 'Recepcionista' }}</span>
             </h1>
             <a href="{{ route($role === 'Admin' ? 'admin.users.create' : 'receptionist.users.create') }}"
                 class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto text-center">
@@ -96,14 +96,20 @@
                 <!-- Botones de acción -->
                 <div class="flex items-end gap-2">
                     <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto">
+                        class="w-full px-6 py-2 bg-[#f36100] text-white rounded-lg 
+                        hover:bg-[#ff6a00] hover:text-[#151515] active:scale-95 transition-all duration-300 cursor-pointer md:w-auto">
                         Filtrar
                     </button>
                     <a href="{{ url()->current() }}"
-                        class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto text-center">
+                        class="block w-full px-6 py-2 border border-gray-500 text-gray-300 text-center rounded-lg 
+                        hover:border-[#f36100] hover:text-[#f36100] active:scale-95 transition-all duration-300 md:w-auto">
                         Limpiar
                     </a>
                 </div>
+
+
+
+
 
                 <!-- Selector de items por página -->
                 <div class="flex items-center gap-2 md:col-span-4">
