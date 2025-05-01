@@ -48,7 +48,8 @@ class MembershipController extends Controller
                     ->orWhere('amount', 'like', "%$search%")
                     ->orWhere('discount', 'like', "%$search%")
                     ->orWhereHas('user', function ($q2) use ($search) {
-                        $q2->where('name', 'like', "%$search%");
+                        $q2->where('id', 'like', "%$search%");
+                        
                     });
             });
         }

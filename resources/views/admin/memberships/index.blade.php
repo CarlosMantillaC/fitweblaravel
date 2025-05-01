@@ -135,11 +135,12 @@
         <div class="overflow-x-auto">
             <div class="min-w-full inline-block align-middle">
                 <div class="overflow-hidden">
-                    <table class="min-w-full bg-[#151515] rounded-lg shadow-lg">
+                    <table class="min-w-full bg-[#151515] rounded-lg shadow-lg text-center">
                         <thead>
-                            <tr class="text-left border-b border-gray-700">
+                            <tr class="border-b border-gray-700">
                                 <th class="px-4 py-3 text-sm text-gray-300">ID</th>
-                                <th class="px-4 py-3 text-sm text-gray-300">Usuario</th>
+                                <th class="px-4 py-3 text-sm text-gray-300">Nombre del Usuario</th>
+                                <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">ID del Usuario</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Tipo</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Monto</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden md:table-cell">Descuento</th>
@@ -155,7 +156,9 @@
                                 <tr
                                     class="border-b border-gray-700 hover:bg-[#252525] hover:text-white transition duration-300">
                                     <td class="px-4 py-3 text-sm text-white">{{ $membership->id }}</td>
-                                    <td class="px-4 py-3 text-sm text-white">{{ $membership->user->name }}</td>
+                                    <td class="px-4 py-3 text-sm text-white">{{ $membership->user->name}}</td>
+                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
+                                        {{ $membership->user->id}}</td>
                                     <td class="px-4 py-3 text-sm text-white">{{ $membership->type }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
                                         ${{ number_format($membership->amount, 0, ',', '.') }}</td>

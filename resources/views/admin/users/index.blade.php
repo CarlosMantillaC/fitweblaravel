@@ -166,9 +166,9 @@
         <div class="overflow-x-auto">
             <div class="min-w-full inline-block align-middle">
                 <div class="overflow-hidden">
-                    <table class="min-w-full bg-[#151515] rounded-lg shadow-lg">
+                    <table class="min-w-full bg-[#151515] rounded-lg shadow-lg text-center">
                         <thead>
-                            <tr class="text-left border-b border-gray-700">
+                            <tr class="border-b border-gray-700">
                                 <th class="px-4 py-3 text-sm text-gray-300">ID</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Nombre</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Género</th>

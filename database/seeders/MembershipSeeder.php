@@ -26,7 +26,7 @@ class MembershipSeeder extends Seeder
                 'discount' => $faker->numberBetween(0, 200000), // Descuento aleatorio entre 0 y 200,000
                 'start_date' => $faker->date($format = 'Y-m-d', $max = 'now'), // Fecha de inicio aleatoria hasta el día de hoy
                 'finish_date' => now()->addYear(), // Fecha de finalización dentro de un año
-                'user_id' => $faker->numberBetween(1, 20), // Relacionar con un usuario aleatorio (puedes cambiar este valor si necesitas una lógica diferente)
+                'user_id' => User::inRandomOrder()->first()->id, // Relacionar con un usuario aleatorio (ahora usando el id como cédula)
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

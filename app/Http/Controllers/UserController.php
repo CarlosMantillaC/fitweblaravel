@@ -67,6 +67,7 @@ class UserController extends Controller
         $user = $login->loginable;
 
         $request->validate([
+            'id' => 'required|numeric|digits_between:5,20|unique:users,id',
             'name' => 'required|string|max:255',
             'gender' => 'required|in:M,F',
             'birth_date' => 'required|date',

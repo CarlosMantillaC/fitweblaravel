@@ -34,10 +34,19 @@
 
             <input type="hidden" name="gym_id" value="{{ $gym->id }}">
 
-            <div class="space-y-1">
-                <label class="block text-sm sm:text-base">Nombre</label>
-                <input type="text" name="name" required
-                    class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+
+                <div class="space-y-1">
+                    <label class="block text-sm sm:text-base">ID</label>
+                    <input type="number" name="id" required
+                        class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                </div>
+
+                <div class="space-y-1">
+                    <label class="block text-sm sm:text-base">Nombre</label>
+                    <input type="text" name="name" required
+                        class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
