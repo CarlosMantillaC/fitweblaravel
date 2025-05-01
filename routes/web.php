@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\PaymentController;
 
 // Página principal y públicas
 Route::get('/', fn () => view('inicio'));
@@ -47,6 +48,18 @@ Route::middleware(['admin'])->group(function () {
             'show' => 'memberships.show',
         ]);
     });
+
+    Route::prefix('admin')->group(function () {
+        Route::resource('payments', PaymentController::class)->names([
+            'index' => 'admin.payments',
+            'create' => 'admin.payments.create',
+            'store' => 'admin.payments.store',
+            'edit' => 'payments.edit',
+            'update' => 'payments.update',
+            'destroy' => 'payments.destroy',
+            'show' => 'payments.show',
+        ]);
+    });
 });
 
 Route::middleware(['receptionist'])->group(function () {
@@ -71,6 +84,16 @@ Route::middleware(['receptionist'])->group(function () {
             'update' => 'receptionist.memberships.update',
             'destroy' => 'receptionist.memberships.destroy',
             'show' => 'receptionist.memberships.show',
+        ]);
+
+        Route::resource('payments', PaymentController::class)->names([
+            'index'   => 'receptionist.payments',
+            'create'  => 'receptionist.payments.create',
+            'store'   => 'receptionist.payments.store',
+            'edit'    => 'receptionist.payments.edit',
+            'update' => 'receptionist.payments.update',
+            'destroy' => 'receptionist.payments.destroy',
+            'show' => 'receptionist.payments.show',
         ]);
     });
 });

@@ -33,6 +33,11 @@ class MembershipController extends Controller
             }
         })->with('user');
 
+        // Obtenemos los tipos de membresía únicos
+        $types = Membership::whereHas('user', function ($q) use ($gym) {
+            $q->where('gym_id', $gym->id);
+        })->distinct('type')->pluck('type');
+
         // 🔍 Filtro general (tipo, fechas, monto, descuento, nombre de usuario)
         if ($request->filled('search')) {
             $search = $request->search;
@@ -59,12 +64,13 @@ class MembershipController extends Controller
         }
 
         if ($request->filled('finish_date')) {
-            $query->whereDate('finish_date', '<=', $request->finish_date);
+
+            $query->whereDate('finish_date', '=', $request->finish_date);
         }
 
         $memberships = $query->paginate($perPage)->withQueryString();
 
-        return view('admin.memberships.index', compact('memberships', 'user'));
+        return view('admin.memberships.index', compact('memberships', 'user', 'types'));
     }
 
     public function create()
@@ -81,18 +87,22 @@ class MembershipController extends Controller
 
     public function store(Request $request)
     {
+        $login = Login::find(Session::get('login_id'));
+        $user = $login->loginable;
+
         $request->validate([
             'type' => 'required|string|max:255',
             'amount' => 'required|numeric',
             'discount' => 'nullable|numeric',
             'start_date' => 'required|date',
-            'finish_date' => 'required|date|after:start_date',
+            'finish_date' => 'required|date|after_or_equal:start_date',
             'user_id' => 'required|exists:users,id',
         ]);
 
         Membership::create($request->all());
 
-        return redirect()->route('admin.memberships')->with('success', 'Membresía registrada correctamente.');
+        return redirect()->route(class_basename($user) === 'Admin' ? 'admin.memberships' : 'receptionist.memberships')
+            ->with('success', 'Usuario registrado correctamente.');
     }
 
     public function edit(Membership $membership)
@@ -104,7 +114,9 @@ class MembershipController extends Controller
         // Solo permitir editar usuarios del gimnasio
         $users = User::where('gym_id', $gym->id)->get();
 
-        return view('admin.memberships.edit', compact('membership', 'users', 'gym'));
+        $types = \App\Models\Membership::select('type')->distinct()->pluck('type');
+
+        return view('admin.memberships.edit', compact('membership', 'users', 'gym', 'types'));
     }
 
     public function update(Request $request, Membership $membership)
@@ -114,7 +126,7 @@ class MembershipController extends Controller
             'amount' => 'required|numeric',
             'discount' => 'nullable|numeric',
             'start_date' => 'required|date',
-            'finish_date' => 'required|date|after:start_date',
+            'finish_date' => 'required|date|after_or_equal:start_date',
             'user_id' => 'required|exists:users,id',
         ]);
 

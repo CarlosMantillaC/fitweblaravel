@@ -75,8 +75,6 @@ class UserController extends Controller
             'state' => 'required|string',
         ]);
 
-        \App\Models\User::create($request->all());
-
         return redirect()->route(class_basename($user) === 'Admin' ? 'admin.users' : 'receptionist.users')
             ->with('success', 'Usuario registrado correctamente.');
     }

@@ -40,22 +40,12 @@ class UserSeeder extends Seeder
                 'birth_date' => $faker->date($format = 'Y-m-d', $max = '2003-01-01'),
                 'phone_number' => '3' . $faker->numerify('########'),
                 'email' => strtolower("$nombre.$apellido1.$i@gmail.com"),
-                'state' => $faker->randomElement(['activo', 'inactivo']), // Solo activo e inactivo
+                'state' => $faker->randomElement(['Activo', 'Inactivo']), // Solo activo e inactivo
                 'gym_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
         }
 
-        // Usuario específico de ejemplo
-        User::create([
-            'name' => 'Juan Pérez',
-            'gender' => 'M',
-            'birth_date' => '1990-05-10',
-            'phone_number' => '3001234567',
-            'email' => 'juanperez@gmail.com',
-            'state' => 'activo',
-            'gym_id' => 1,
-        ]);
     }
 }

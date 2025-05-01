@@ -29,10 +29,17 @@
             @csrf
 
             <div class="space-y-1">
-                <label class="block text-sm sm:text-base">Tipo</label>
-                <input type="text" name="type" required
+                <label for="type" class="block text-sm sm:text-base">Tipo</label>
+                <select name="type" required
                     class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    <option value="Mensual">Mensual</option>
+                    <option value="Diaria">Diaria</option>
+                    <option value="Trimestral">Semestral</option>
+                    <option value="Anual">Anual</option>
+                    <!-- Agrega más tipos si es necesario -->
+                </select>
             </div>
+            
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div class="space-y-1">

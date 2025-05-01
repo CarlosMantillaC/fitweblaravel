@@ -76,8 +76,8 @@
                     <label class="block text-sm sm:text-base">Estado</label>
                     <select name="state" required
                         class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
-                        <option value="inactivo">Inactivo</option>
-                        <option value="activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                        <option value="Activo">Activo</option>
                     </select>
                 </div>
             </div>

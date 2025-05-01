@@ -68,12 +68,13 @@
 
                         <div>
                             <label for="state" class="block font-semibold mb-1">Estado</label>
-                            <input type="text" name="state" id="state"
-                                value="{{ old('state', $editUser->state) }}"
-                                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2  focus:ring-orange-500">
+                            <select name="state" id="state"
+                                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                <option value="Inactivo" {{ $editUser->state === 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
+                                <option value="Activo" {{ $editUser->state === 'Activo' ? 'selected' : '' }}>Activo</option>
+                            </select>
                         </div>
 
-                        
                     </div>
 
                     <div class="flex justify-end space-x-3 mt-8">
