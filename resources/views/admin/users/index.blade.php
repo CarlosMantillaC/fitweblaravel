@@ -8,18 +8,61 @@
 @endsection
 
 @section('content')
-    <main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0">
+    <main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0" x-data="{ showCreateModal: false }">
 
         <!-- Título -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
             <h1 class="text-3xl lg:text-4xl font-extrabold text-[#f36100] transition-all duration-300">
                 Usuarios - <span class="text-white">{{ $role === 'Admin' ? 'Admin' : 'Recepcionista' }}</span>
             </h1>
-            <a href="{{ route($role === 'Admin' ? 'admin.users.create' : 'receptionist.users.create') }}"
+            <button @click="showCreateModal = true"
                 class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto text-center">
                 + Agregar Usuario
-            </a>
+            </button>
         </div>
+
+        <!-- Modal para crear usuario -->
+        <!-- Modal backdrop -->
+        <div x-show="showCreateModal" 
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm"
+            @click="showCreateModal = false">
+        </div>
+
+        <!-- Modal content -->
+        <div x-show="showCreateModal"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 scale-95"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-95"
+            class="fixed inset-0 z-50 flex items-center justify-center p-4"
+            @keydown.escape.window="showCreateModal = false">
+            
+            <div class="bg-[#151515] w-full max-w-2xl rounded-lg shadow-xl overflow-hidden">
+                <!-- Modal header -->
+                <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                    <h2 class="text-xl font-bold text-white">Registrar Nuevo Usuario</h2>
+                    <button @click="showCreateModal = false" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Modal body -->
+                <div class="p-4 overflow-y-auto max-h-[80vh]">
+                    @include('admin.users.create')
+                </div>
+            </div>
+        </div>
+
 
         <!-- Filtros -->
         <div class="bg-[#151515] p-4 rounded-lg shadow mb-6">

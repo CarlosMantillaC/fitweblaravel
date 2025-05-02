@@ -63,7 +63,7 @@ class UserController extends Controller
 
         $perPage = $request->input('per_page', 10); // 10 por defecto
         $users = $query->paginate($perPage);
-        return view('admin.users.index', compact('users', 'user'));
+        return view('admin.users.index', compact('users', 'user', 'gym'));
     }
 
     public function create()
