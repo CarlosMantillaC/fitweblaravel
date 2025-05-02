@@ -131,7 +131,6 @@
                                 <button type="button" @click="state = option; open = false"
                                     class="w-full px-4 py-2 text-left hover:bg-[#f36100] transition-colors duration-200">
                                     <span x-text="option"></span>
-                                    <span x-show="state === option" class="float-right">✓</span>
                                 </button>
                             </li>
                         </template>

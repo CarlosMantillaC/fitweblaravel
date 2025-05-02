@@ -79,7 +79,7 @@ class UserController extends Controller
     {
         $login = Login::find(Session::get('login_id'));
         $user = $login->loginable;
-
+    
         $request->validate([
             'id' => 'required|numeric|digits_between:5,20|unique:users,id',
             'name' => 'required|string|max:255',
@@ -89,11 +89,14 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'state' => 'required|in:Activo,Inactivo',
         ]);
-
+    
+        // Formatear el nombre con la primera letra de cada palabra en mayúscula
+        $formattedName = ucwords(strtolower($request->name));
+    
         // Crear el nuevo usuario
         $newUser = User::create([
             'id' => $request->id,
-            'name' => $request->name,
+            'name' => $formattedName,
             'gender' => $request->gender,
             'birth_date' => $request->birth_date,
             'phone_number' => $request->phone_number,
@@ -101,36 +104,53 @@ class UserController extends Controller
             'state' => $request->state,
             'gym_id' => $request->gym_id,
         ]);
-
+    
         return redirect()->route(class_basename($user) === 'Admin' ? 'admin.users' : 'receptionist.users')
             ->with('success', 'Usuario registrado correctamente.');
     }
 
     public function edit(User $user)
     {
-        $gyms = Gym::all();
-        return view('admin.users.edit', [
-            'editUser' => $user,
-            'gyms' => $gyms
+        $login = Login::find(Session::get('login_id'));
+        $currentUser = $login->loginable;
+        $gym = $currentUser->gym;
+
+        return view('admin.users.index', [
+            'users' => $gym->users()->paginate(10),
+            'user' => $currentUser,
+            'gym' => $gym,
+            'editUser' => $user // Pasamos el usuario a editar
         ]);
     }
 
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required|string',
-            'gender' => 'required|string',
+            'name' => 'required|string|max:255',
+            'gender' => 'required|in:M,F',
             'birth_date' => 'required|date',
-            'phone_number' => 'required|string',
-            'email' => 'required|string',
-            'state' => 'required|string',
+            'phone_number' => 'required|string|max:20',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'state' => 'required|in:Activo,Inactivo',
         ]);
-
-        $user->update($request->all());
-
-        return redirect()->route('admin.users')->with('success', 'Usuario actualizado correctamente.');
+    
+        // Formatear el nombre con la primera letra de cada palabra en mayúscula
+        $formattedName = ucwords(strtolower($request->name));
+    
+        // Actualizar el usuario con el nombre formateado
+        $user->update([
+            'name' => $formattedName,
+            'gender' => $request->gender,
+            'birth_date' => $request->birth_date,
+            'phone_number' => $request->phone_number,
+            'email' => $request->email,
+            'state' => $request->state,
+        ]);
+    
+        return redirect()->route('admin.users')
+            ->with('success', 'Usuario actualizado correctamente.');
     }
-
+    
     public function destroy(User $user)
     {
         $user->delete();
