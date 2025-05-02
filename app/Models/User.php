@@ -11,14 +11,19 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    // Si usas cédula como clave primaria
+    public $incrementing = false;
+    protected $keyType = 'string'; // o 'integer' si es numérico
+
     protected $fillable = [
+        'id', // Asegúrate de incluir el id aquí
         'name',
         'gender',
         'birth_date',
         'phone_number',
         'email',
         'state',
-        'gym_id',
+        'gym_id'
     ];
 
     // Relaciones

@@ -27,20 +27,20 @@ class UserController extends Controller
 
         if ($request->has('search')) {
             $search = $request->search;
-        
+
             // Verificar si el search tiene formato dd/mm/yyyy
             $convertedDate = null;
             if (preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $search)) {
                 $convertedDate = \Carbon\Carbon::createFromFormat('d/m/Y', $search)->format('Y-m-d');
             }
-        
+
             $query->where(function ($q) use ($search, $convertedDate) {
                 $q->where('name', 'like', "%$search%")
                     ->orWhere('email', 'like', "%$search%")
                     ->orWhere('phone_number', 'like', "%$search%")
                     ->orWhere('state', 'like', "%$search%")
                     ->orWhere('gender', 'like', "%$search%");
-        
+
                 if ($convertedDate) {
                     $q->orWhere('birth_date', $convertedDate);
                 }
@@ -86,8 +86,20 @@ class UserController extends Controller
             'gender' => 'required|in:M,F',
             'birth_date' => 'required|date',
             'phone_number' => 'required|string|max:20',
-            'email' => 'required|string',
-            'state' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'state' => 'required|in:Activo,Inactivo',
+        ]);
+
+        // Crear el nuevo usuario
+        $newUser = User::create([
+            'id' => $request->id,
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'birth_date' => $request->birth_date,
+            'phone_number' => $request->phone_number,
+            'email' => $request->email,
+            'state' => $request->state,
+            'gym_id' => $request->gym_id,
         ]);
 
         return redirect()->route(class_basename($user) === 'Admin' ? 'admin.users' : 'receptionist.users')
