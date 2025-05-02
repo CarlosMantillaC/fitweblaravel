@@ -25,15 +25,25 @@ class UserController extends Controller
 
         $query = $gym->users();
 
-        // Filtros
         if ($request->has('search')) {
             $search = $request->search;
-            $query->where(function ($q) use ($search) {
+        
+            // Verificar si el search tiene formato dd/mm/yyyy
+            $convertedDate = null;
+            if (preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $search)) {
+                $convertedDate = \Carbon\Carbon::createFromFormat('d/m/Y', $search)->format('Y-m-d');
+            }
+        
+            $query->where(function ($q) use ($search, $convertedDate) {
                 $q->where('name', 'like', "%$search%")
                     ->orWhere('email', 'like', "%$search%")
                     ->orWhere('phone_number', 'like', "%$search%")
                     ->orWhere('state', 'like', "%$search%")
                     ->orWhere('gender', 'like', "%$search%");
+        
+                if ($convertedDate) {
+                    $q->orWhere('birth_date', $convertedDate);
+                }
             });
         }
 
@@ -45,6 +55,10 @@ class UserController extends Controller
         // Filtro por género
         if ($request->has('gender') && $request->gender != 'all') {
             $query->where('gender', $request->gender);
+        }
+
+        if ($request->has('id') && $request->id !== null) {
+            $query->where('id', 'like', '%' . $request->id . '%');
         }
 
         $perPage = $request->input('per_page', 10); // 10 por defecto

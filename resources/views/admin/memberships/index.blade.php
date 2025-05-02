@@ -47,6 +47,25 @@
                         placeholder="Tipo, monto, descuento, fechas, nombre usuario...">
                 </div>
 
+                <div>
+                    <label for="id" class="block text-sm font-medium text-gray-300 mb-1">ID</label>
+                    <input type="text" name="id" value="{{ request('id') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl
+                        focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                        transition-all duration-500 placeholder-gray-400 text-base"
+                        placeholder="Buscar por ID">
+                </div>
+
+                <!-- Filtro por id de usuario -->
+                <div>
+                    <label for="user_id" class="block text-sm font-medium text-gray-300 mb-1">Cédula del Usuario</label>
+                    <input type="text" name="user_id" id="user_id" value="{{ request('user_id') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl
+                           focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                           transition-all duration-500 placeholder-gray-400 text-base"
+                        placeholder="Buscar por Cédula">
+                </div>
+
                 <!-- Filtro por tipo -->
                 <div>
                     <label for="type" class="block text-sm font-medium text-gray-300 mb-1">Tipo</label>
@@ -140,7 +159,7 @@
                             <tr class="border-b border-gray-700">
                                 <th class="px-4 py-3 text-sm text-gray-300">ID</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Nombre del Usuario</th>
-                                <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">ID del Usuario</th>
+                                <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Cédula</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Tipo</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Monto</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden md:table-cell">Descuento</th>
@@ -156,19 +175,21 @@
                                 <tr
                                     class="border-b border-gray-700 hover:bg-[#252525] hover:text-white transition duration-300">
                                     <td class="px-4 py-3 text-sm text-white">{{ $membership->id }}</td>
-                                    <td class="px-4 py-3 text-sm text-white">{{ $membership->user->name}}</td>
+                                    <td class="px-4 py-3 text-sm text-white">{{ $membership->user->name }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
-                                        {{ $membership->user->id}}</td>
+                                        {{ $membership->user->id }}</td>
                                     <td class="px-4 py-3 text-sm text-white">{{ $membership->type }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
                                         ${{ number_format($membership->amount, 0, ',', '.') }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden md:table-cell">
                                         {{ $membership->discount }}%</td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
-                                        {{ $membership->start_date }}</td>
-                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
-                                        {{ $membership->finish_date }}</td>
+                                        {{ \Carbon\Carbon::parse($membership->start_date)->format('d/m/Y') }}
                                     </td>
+                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
+                                        {{ \Carbon\Carbon::parse($membership->finish_date)->format('d/m/Y') }}
+                                    </td>
+
                                     @if ($role === 'Admin')
                                         <td class="px-4 py-3 flex gap-2">
                                             <a href="{{ route('memberships.edit', $membership->id) }}"

@@ -42,18 +42,25 @@ class MembershipController extends Controller
         if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function ($q) use ($search) {
-                $q->where('type', 'like', "%$search%")
-                    ->orWhere('start_date', 'like', "%$search%")
-                    ->orWhere('finish_date', 'like', "%$search%")
-                    ->orWhere('amount', 'like', "%$search%")
+                $q->where('amount', 'like', "%$search%")
                     ->orWhere('discount', 'like', "%$search%")
                     ->orWhereHas('user', function ($q2) use ($search) {
-                        $q2->where('id', 'like', "%$search%");
+                        $q2->where('name', 'like', "%$search%");
                         
                     });
             });
         }
 
+        // Filtro por id
+        if ($request->has('id') && $request->id !== null) {
+            $query->where('id', 'like', '%' . $request->id . '%');
+        }
+
+        // Filtro por id de usuario
+        if ($request->filled('user_id')) {
+            $query->where('user_id', $request->user_id);
+        }
+        
         // Filtro por tipo de membresía
         if ($request->filled('type') && $request->type !== 'all') {
             $query->where('type', $request->type);
@@ -61,7 +68,7 @@ class MembershipController extends Controller
 
         // Filtro por fechas
         if ($request->filled('start_date')) {
-            $query->whereDate('start_date', '>=', $request->start_date);
+            $query->whereDate('start_date', '=', $request->start_date);
         }
 
         if ($request->filled('finish_date')) {
