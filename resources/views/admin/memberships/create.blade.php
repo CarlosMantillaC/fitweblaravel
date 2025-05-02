@@ -34,24 +34,24 @@
                     class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                     <option value="Mensual">Mensual</option>
                     <option value="Diaria">Diaria</option>
-                    <option value="Trimestral">Semestral</option>
+                    <option value="Trimestral">Trimestral</option>
                     <option value="Anual">Anual</option>
-                    <!-- Agrega más tipos si es necesario -->
                 </select>
             </div>
-            
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div class="space-y-1">
                     <label class="block text-sm sm:text-base">Monto</label>
                     <input type="number" step="0.01" name="amount" required
-                        class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                        class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        placeholder="Ej: 150000">
                 </div>
 
                 <div class="space-y-1">
-                    <label class="block text-sm sm:text-base">Descuento</label>
-                    <input type="number" step="0.01" name="discount"
-                        class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    <label class="block text-sm sm:text-base">Descuento (%)</label>
+                    <input type="number" step="0.01" name="discount" value="0"
+                        class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        placeholder="Ej: 10">
                 </div>
             </div>
 
@@ -70,14 +70,10 @@
             </div>
 
             <div class="space-y-1">
-                <label class="block text-sm sm:text-base">Usuario</label>
-                <select name="user_id" required
-                    class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
-                    <option value="">Seleccionar usuario</option>
-                    @foreach ($users as $u)
-                        <option value="{{ $u->id }}">{{ $u->name }} ({{ $u->email }})</option>
-                    @endforeach
-                </select>
+                <label class="block text-sm sm:text-base">Cédula del Usuario</label>
+                <input type="text" name="user_id" required
+                    class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    placeholder="Ingrese la cédula del usuario">
             </div>
 
             <button type="submit"
@@ -87,5 +83,4 @@
         </form>
     </div>
 </body>
-
 </html>

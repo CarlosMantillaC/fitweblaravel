@@ -46,7 +46,6 @@ class MembershipController extends Controller
                     ->orWhere('discount', 'like', "%$search%")
                     ->orWhereHas('user', function ($q2) use ($search) {
                         $q2->where('name', 'like', "%$search%");
-                        
                     });
             });
         }
@@ -60,7 +59,7 @@ class MembershipController extends Controller
         if ($request->filled('user_id')) {
             $query->where('user_id', $request->user_id);
         }
-        
+
         // Filtro por tipo de membresía
         if ($request->filled('type') && $request->type !== 'all') {
             $query->where('type', $request->type);
@@ -97,21 +96,46 @@ class MembershipController extends Controller
     {
         $login = Login::find(Session::get('login_id'));
         $user = $login->loginable;
+        $gym = $user->gym;
 
         $request->validate([
-            'type' => 'required|string|max:255',
-            'amount' => 'required|numeric',
-            'discount' => 'nullable|numeric',
+            'type' => 'required|string|max:255|in:Mensual,Diaria,Trimestral,Anual',
+            'amount' => 'required|numeric|min:0',
+            'discount' => 'nullable|numeric|min:0|max:100',
             'start_date' => 'required|date',
             'finish_date' => 'required|date|after_or_equal:start_date',
-            'user_id' => 'required|exists:users,id',
+            'user_id' => [
+                'required',
+                function ($attribute, $value, $fail) use ($gym) {
+                    $user = User::where('id', $value)
+                        ->where('gym_id', $gym->id)
+                        ->first();
+
+                    if (!$user) {
+                        $fail('No existe un usuario con esta cédula en el gimnasio.');
+                    }
+                }
+            ],
         ]);
 
-        Membership::create($request->all());
+        // Buscar al usuario por su cédula
+        $userMember = User::where('id', $request->user_id)
+            ->where('gym_id', $gym->id)
+            ->firstOrFail();
+
+        Membership::create([
+            'type' => $request->type,
+            'amount' => $request->amount,
+            'discount' => $request->discount ?? 0,
+            'start_date' => $request->start_date,
+            'finish_date' => $request->finish_date,
+            'user_id' => $userMember->id
+        ]);
 
         return redirect()->route(class_basename($user) === 'Admin' ? 'admin.memberships' : 'receptionist.memberships')
-            ->with('success', 'Usuario registrado correctamente.');
+            ->with('success', 'Membresía creada correctamente.');
     }
+
 
     public function edit(Membership $membership)
     {
