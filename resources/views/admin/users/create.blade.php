@@ -41,6 +41,21 @@
                     focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
                     transition-all duration-500 placeholder-gray-400 text-base"
                     placeholder="Escribe el nombre...">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+
+                <div class="space-y-1">
+                    <label class="block text-sm sm:text-base">ID</label>
+                    <input type="number" name="id" required
+                        class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                </div>
+
+                <div class="space-y-1">
+                    <label class="block text-sm sm:text-base">Nombre</label>
+                    <input type="text" name="name" required
+                        class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                </div>
+
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -111,6 +126,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div class="space-y-1">
+
                     <label class="block text-sm sm:text-base text-gray-300">Estado</label>
                     <div x-data="{
                         open: false,
@@ -140,6 +156,13 @@
                         </ul>
                         <input type="hidden" name="state" :value="selected">
                     </div>
+
+                    <label class="block text-sm sm:text-base">Estado</label>
+                    <select name="state" required
+                        class="w-full p-2 sm:p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                        <option value="Inactivo">Inactivo</option>
+                        <option value="Activo">Activo</option>
+                    </select>
                 </div>
             </div>
 

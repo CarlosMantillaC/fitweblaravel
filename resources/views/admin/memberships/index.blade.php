@@ -34,8 +34,9 @@
                         this.$refs.form.submit();
                     });
                 }
-            }" x-ref="form" action="{{ url()->current() }}" method="GET" class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        
+            }" x-ref="form" action="{{ url()->current() }}" method="GET"
+                class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
                 <!-- Buscar general -->
                 <div>
                     <label for="search" class="block text-sm font-medium text-gray-300 mb-1">Buscar</label>
@@ -45,19 +46,41 @@
                            transition-all duration-500 placeholder-gray-400 text-base"
                         placeholder="Tipo, monto, descuento, fechas, nombre usuario...">
                 </div>
-        
+
+                <div>
+                    <label for="id" class="block text-sm font-medium text-gray-300 mb-1">ID</label>
+                    <input type="text" name="id" value="{{ request('id') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl
+                        focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                        transition-all duration-500 placeholder-gray-400 text-base"
+                        placeholder="Buscar por ID">
+                </div>
+
+                <!-- Filtro por id de usuario -->
+                <div>
+                    <label for="user_id" class="block text-sm font-medium text-gray-300 mb-1">Cédula del Usuario</label>
+                    <input type="text" name="user_id" id="user_id" value="{{ request('user_id') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl
+                           focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                           transition-all duration-500 placeholder-gray-400 text-base"
+                        placeholder="Buscar por Cédula">
+                </div>
+
                 <!-- Filtro por tipo -->
                 <div>
                     <label for="type" class="block text-sm font-medium text-gray-300 mb-1">Tipo</label>
                     <select name="type" id="type"
                         class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all duration-300 text-base">
                         <option value="all">Todos</option>
-                        <option value="mensual" {{ request('type') == 'mensual' ? 'selected' : '' }}>Mensual</option>
-                        <option value="trimestral" {{ request('type') == 'trimestral' ? 'selected' : '' }}>Trimestral</option>
-                        <option value="anual" {{ request('type') == 'anual' ? 'selected' : '' }}>Anual</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type }}" {{ request('type') == $type ? 'selected' : '' }}>
+                                {{ ucfirst($type) }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
-        
+
+
                 <!-- Fecha de inicio -->
                 <div>
                     <label for="start_date" class="block text-sm font-medium text-gray-300 mb-1">Desde</label>
@@ -66,7 +89,7 @@
                            focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
                            transition-all duration-500 text-base">
                 </div>
-        
+
                 <!-- Fecha de fin -->
                 <div>
                     <label for="finish_date" class="block text-sm font-medium text-gray-300 mb-1">Hasta</label>
@@ -75,8 +98,8 @@
                            focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
                            transition-all duration-500 text-base">
                 </div>
-        
-                
+
+
                 <!-- Botones -->
                 <div class="flex items-end gap-2 col-span-1 md:col-span-2">
                     <button type="submit"
@@ -94,7 +117,7 @@
                 <!-- Selector per_page -->
                 <div class="flex items-center gap-2 md:col-span-4">
                     <label for="per_page" class="text-sm text-gray-300">Mostrar:</label>
-        
+
                     <!-- Dropdown personalizado -->
                     <div class="relative w-24">
                         <button @click.prevent="open = !open" @keydown.escape.window="open = false" type="button"
@@ -106,36 +129,37 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
-        
+
                         <ul x-show="open" x-cloak x-transition @click.outside="open = false"
                             class="absolute z-10 mt-2 w-full bg-[#252525] border border-gray-600 rounded-md shadow-lg">
                             <template x-for="option in options" :key="option">
                                 <li @click="selectAndSubmit(option)"
-                                    :class="{'bg-[#f36100] text-white': selected == option}"
+                                    :class="{ 'bg-[#f36100] text-white': selected == option }"
                                     class="px-4 py-2 cursor-pointer transition-all duration-300 hover:bg-[#f36100]/80">
                                     <span x-text="option"></span>
                                 </li>
                             </template>
                         </ul>
                     </div>
-        
+
                     <span class="text-sm text-gray-400">registros</span>
                     <input type="hidden" name="per_page" x-ref="input" :value="selected">
                 </div>
-        
+
             </form>
         </div>
-        
+
 
         <!-- Tabla -->
         <div class="overflow-x-auto">
             <div class="min-w-full inline-block align-middle">
                 <div class="overflow-hidden">
-                    <table class="min-w-full bg-[#151515] rounded-lg shadow-lg">
+                    <table class="min-w-full bg-[#151515] rounded-lg shadow-lg text-center">
                         <thead>
-                            <tr class="text-left border-b border-gray-700">
+                            <tr class="border-b border-gray-700">
                                 <th class="px-4 py-3 text-sm text-gray-300">ID</th>
-                                <th class="px-4 py-3 text-sm text-gray-300">Usuario</th>
+                                <th class="px-4 py-3 text-sm text-gray-300">Nombre del Usuario</th>
+                                <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Cédula</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Tipo</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Monto</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden md:table-cell">Descuento</th>
@@ -152,16 +176,20 @@
                                     class="border-b border-gray-700 hover:bg-[#252525] hover:text-white transition duration-300">
                                     <td class="px-4 py-3 text-sm text-white">{{ $membership->id }}</td>
                                     <td class="px-4 py-3 text-sm text-white">{{ $membership->user->name }}</td>
+                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
+                                        {{ $membership->user->id }}</td>
                                     <td class="px-4 py-3 text-sm text-white">{{ $membership->type }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
                                         ${{ number_format($membership->amount, 0, ',', '.') }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden md:table-cell">
                                         {{ $membership->discount }}%</td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
-                                        {{ $membership->start_date }}</td>
-                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
-                                        {{ $membership->finish_date }}</td>
+                                        {{ \Carbon\Carbon::parse($membership->start_date)->format('d/m/Y') }}
                                     </td>
+                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
+                                        {{ \Carbon\Carbon::parse($membership->finish_date)->format('d/m/Y') }}
+                                    </td>
+
                                     @if ($role === 'Admin')
                                         <td class="px-4 py-3 flex gap-2">
                                             <a href="{{ route('memberships.edit', $membership->id) }}"

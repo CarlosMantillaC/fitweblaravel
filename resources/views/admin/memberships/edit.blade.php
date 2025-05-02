@@ -28,10 +28,16 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="type" class="block font-semibold mb-1">Tipo</label>
-                        <input type="text" name="type" id="type"
-                            value="{{ old('type', $membership->type) }}"
+                        <select name="type" id="type"
                             class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            @foreach ($types as $type)
+                                <option value="{{ $type }}" {{ old('type', $membership->type) == $type ? 'selected' : '' }}>
+                                    {{ ucfirst($type) }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
+                    
 
                     <div>
                         <label for="amount" class="block font-semibold mb-1">Monto</label>

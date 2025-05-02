@@ -19,4 +19,10 @@ class Membership extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // En el modelo Membership
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

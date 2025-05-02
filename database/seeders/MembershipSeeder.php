@@ -21,12 +21,12 @@ class MembershipSeeder extends Seeder
         // Generar 20 membresías
         for ($i = 0; $i < 20; $i++) {
             Membership::create([
-                'type' => $faker->randomElement(['Anual', 'Semestral', 'Mensual']), // Aleatoriza el tipo de membresía
+                'type' => $faker->randomElement(['Anual', 'Semestral', 'Mensual', 'Diaria']), // Aleatoriza el tipo de membresía
                 'amount' => $faker->numberBetween(50000, 1000000), // Monto aleatorio entre 50,000 y 1,000,000
                 'discount' => $faker->numberBetween(0, 200000), // Descuento aleatorio entre 0 y 200,000
                 'start_date' => $faker->date($format = 'Y-m-d', $max = 'now'), // Fecha de inicio aleatoria hasta el día de hoy
                 'finish_date' => now()->addYear(), // Fecha de finalización dentro de un año
-                'user_id' => $faker->numberBetween(1, 20), // Relacionar con un usuario aleatorio (puedes cambiar este valor si necesitas una lógica diferente)
+                'user_id' => User::inRandomOrder()->first()->id, // Relacionar con un usuario aleatorio (ahora usando el id como cédula)
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

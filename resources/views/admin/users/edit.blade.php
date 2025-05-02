@@ -89,6 +89,33 @@
                         <option value="Inactivo" {{ $editUser->state === 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
                     </select>
                 </div>
+
+                        <div>
+                            <label for="email" class="block font-semibold mb-1">email</label>
+                            <input type="text" name="email" id="email"
+                                value="{{ old('email', $editUser->email) }}"
+                                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2  focus:ring-orange-500">
+                        </div>
+
+                        <div>
+                            <label for="state" class="block font-semibold mb-1">Estado</label>
+                            <select name="state" id="state"
+                                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                <option value="Inactivo" {{ $editUser->state === 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
+                                <option value="Activo" {{ $editUser->state === 'Activo' ? 'selected' : '' }}>Activo</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="flex justify-end space-x-3 mt-8">
+                        <a href="{{ route('admin.users') }}"
+                            class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded">Cancelar</a>
+                        <button type="submit"
+                            class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-6 rounded">Actualizar</button>
+                    </div>
+                </form>
+
             </div>
 
             <!-- Botones -->
