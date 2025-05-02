@@ -4,8 +4,11 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Alpine from 'alpinejs';
 
+
 window.Alpine = Alpine;
 Alpine.start();
+
+
 
 const mobileMenuButton = document.getElementById("mobile-menu-button");
 const closeMobileMenu = document.getElementById("close-mobile-menu");
@@ -22,6 +25,7 @@ function openMenu() {
 
     mobileMenuButton.classList.add("hamburger-open");
 }
+
 
 function closeMenu() {
     mobileSidebar.classList.remove("open");
@@ -79,3 +83,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+

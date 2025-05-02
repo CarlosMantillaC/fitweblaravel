@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @source "../views";
 
+[x-cloak] { display: none !important; }
+
+
 :root {
     --color-primary: #0a0a0a;
     --color-secondary: #151515;
