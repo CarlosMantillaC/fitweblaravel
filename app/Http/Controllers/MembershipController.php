@@ -38,6 +38,9 @@ class MembershipController extends Controller
             $q->where('gym_id', $gym->id);
         })->distinct('type')->pluck('type');
 
+        // Obtener todos los usuarios para el modal
+        $users = User::where('gym_id', $gym->id)->get(); // Filtramos por el gimnasio
+
         // 🔍 Filtro general (tipo, fechas, monto, descuento, nombre de usuario)
         if ($request->filled('search')) {
             $search = $request->search;
@@ -77,7 +80,7 @@ class MembershipController extends Controller
 
         $memberships = $query->paginate($perPage)->withQueryString();
 
-        return view('admin.memberships.index', compact('memberships', 'user', 'types'));
+        return view('admin.memberships.index', compact('memberships', 'user', 'types', 'users'));
     }
 
     public function create()

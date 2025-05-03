@@ -8,18 +8,39 @@
 @endsection
 
 @section('content')
-    <main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0">
-        <!-- Encabezado -->
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-            <h1 class="text-3xl lg:text-4xl font-extrabold text-[#f36100] transition-all duration-300">
-                Membresías - <span class="text-white">{{ $role === 'Admin' ? 'Admin' : 'Recepcionista' }}</span>
-            </h1>
-            <a href="{{ route($role === 'Admin' ? 'admin.memberships.create' : 'receptionist.memberships.create') }}"
-                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto text-center">
-                + Agregar Membresía
-            </a>
-        </div>
-
+    <main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0" x-data="{
+        showCreateModal: false,
+        showEditModal: false,
+        currentEditMembership: null,
+    }">
+    
+    @include('components.modals', [
+        // Encabezado
+        'title' => 'Membresías',
+        'subtitle' => $role === 'Admin' ? 'Admin' : 'Recepcionista',
+        'buttonText' => 'Agregar Membresía',
+    
+        // Crear
+        'createShowVar' => 'showCreateModal',
+        'createTitle' => 'Registrar Nueva Membresía',
+        'createView' => 'admin.memberships.create',
+        'createParams' => [
+            'users' => $users,
+            'types' => $types
+        ],
+    
+        // Editar
+        'editShowVar' => 'showEditModal',
+        'editTitle' => 'Editar Membresía',
+        'editCondition' => 'currentEditMembership',
+        'editView' => 'admin.memberships.edit',
+        'editParams' => [
+            'editMembership' => $memberships->first(),
+            'types' => $types,
+            'users' => $users
+        ]
+    ])
+    
         <!-- Filtros -->
         <div class="bg-[#151515] p-4 rounded-lg shadow mb-6">
             <form x-data="{
@@ -191,22 +212,29 @@
                                     </td>
 
                                     @if ($role === 'Admin')
-                                        <td class="px-4 py-3 flex gap-2">
-                                            <a href="{{ route('memberships.edit', $membership->id) }}"
-                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
-                                                Editar
-                                            </a>
-                                            <form action="{{ route('memberships.destroy', $membership->id) }}"
-                                                method="POST"
-                                                onsubmit="return confirm('¿Estás seguro de eliminar esta membresía?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm transition duration-300">
-                                                    Eliminar
-                                                </button>
-                                            </form>
-                                        </td>
+                                    <td class="px-4 py-3 flex gap-2">
+                                        
+                                        <button
+                                        @click="currentEditMembership = {{ json_encode([
+                                            'id' => $membership->id,
+                                            'type' => $membership->type,
+                                            'amount' => $membership->amount,
+                                            'discount' => $membership->discount,
+                                            'start_date' => $membership->start_date,
+                                            'finish_date' => $membership->finish_date,
+                                            'user_id' => $membership->user->id,
+                                            'user_name' => $membership->user->name,
+                                        ]) }}; showEditModal = true"
+                                        class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
+                                        Editar
+                                    </button>
+                                
+                                    <!-- Botón Eliminar como componente -->
+                                    <x-delete-button :action="route('memberships.destroy', $membership->id)" />
+                                    
+                                    </td>
+                        
+                                    
                                     @endif
                                 </tr>
                             @empty
