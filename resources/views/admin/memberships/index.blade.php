@@ -213,13 +213,14 @@
 
                                     @if ($role === 'Admin')
                                         <td class="px-4 py-3 flex gap-2">
-
-
                                             <button
-                                                @click="currentEditMembership = {{ json_encode($membership) }}; showEditModal = true"
-                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
-                                                Editar
-                                            </button>
+                                            @click="currentEditMembership = {
+                                                ...{{ json_encode($membership) }},
+                                                user_name: '{{ addslashes($membership->user->name) }}'
+                                            }; showEditModal = true"
+                                            class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
+                                            Editar
+                                        </button>
 
                                             <!-- Botón Eliminar como componente -->
                                             <x-delete-button :action="route('memberships.destroy', $membership->id)" />

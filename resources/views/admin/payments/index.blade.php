@@ -8,18 +8,39 @@
 @endsection
 
 @section('content')
-    <main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0">
+<main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0" x-data="{
+    showCreateModal: false,
+    showEditModal: false,
+    currentEditPayment: null,
+}">
 
-        <!-- Título -->
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-            <h1 class="text-3xl lg:text-4xl font-extrabold text-[#f36100] transition-all duration-300">
-                Pagos - <span class="text-white">{{ $role === 'Admin' ? 'Admin' : 'Recepcionista' }}</span>
-            </h1>
-            <a href="{{ route($role === 'Admin' ? 'admin.payments.create' : 'receptionist.payments.create') }}"
-                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow w-full md:w-auto text-center">
-                + Registrar Pago
-            </a>
-        </div>
+    @include('components.modals', [
+        // Encabezado
+        'title' => 'Pagos',
+        'subtitle' => $role === 'Admin' ? 'Admin' : 'Recepcionista',
+        'buttonText' => 'Registrar Pago',
+
+        // Crear
+        'createShowVar' => 'showCreateModal',
+        'createTitle' => 'Registrar Nuevo Pago',
+        'createView' => 'admin.payments.create',
+        'createParams' => [
+            'users' => $users,
+            'methods' => ['efectivo', 'bancolombia', 'nequi', 'daviplata'],
+        ],
+
+        // Editar
+        'editShowVar' => 'showEditModal',
+        'editTitle' => 'Editar Pago',
+        'editCondition' => 'currentEditPayment',
+        'editView' => 'admin.payments.edit',
+        'editParams' => [
+            'editPayment' => $payments->first(),
+            'users' => $users,
+            'methods' => ['efectivo', 'bancolombia', 'nequi', 'daviplata'],
+        ],
+    ])
+
 
         <!-- Filtros -->
         <div class="bg-[#151515] p-4 rounded-lg shadow mb-6">
@@ -56,13 +77,14 @@
                         class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70">
                         <option value="">Todos</option>
                         @foreach ($paymentMethods as $method)
-                            <option value="{{ $method }}" {{ request('payment_method') === $method ? 'selected' : '' }}>
+                            <option value="{{ $method }}"
+                                {{ request('payment_method') === $method ? 'selected' : '' }}>
                                 {{ ucfirst($method) }}
                             </option>
                         @endforeach
                     </select>
                 </div>
-                
+
                 <!-- Botones -->
                 <div class="flex items-end gap-2">
                     <button type="submit"
@@ -80,14 +102,15 @@
         </div>
 
         <!-- Tabla -->
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto text-center">
             <div class="min-w-full inline-block align-middle">
                 <div class="overflow-hidden">
                     <table class="min-w-full bg-[#151515] rounded-lg shadow-lg">
                         <thead>
-                            <tr class="text-left border-b border-gray-700">
+                            <tr class="border-b border-gray-700">
                                 <th class="px-4 py-3 text-sm text-gray-300">ID</th>
-                                <th class="px-4 py-3 text-sm text-gray-300">Usuario</th>
+                                <th class="px-4 py-3 text-sm text-gray-300">Nombre del Usuario</th>
+                                <th class="px-4 py-3 text-sm text-gray-300">Cédula</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">ID_Membresia</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Monto</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Método</th>
@@ -103,27 +126,29 @@
                                     class="border-b border-gray-700 hover:bg-[#252525] hover:text-white transition duration-300">
                                     <td class="px-4 py-3 text-sm text-white">{{ $payment->id }}</td>
                                     <td class="px-4 py-3 text-sm text-white">{{ $payment->user->name }}</td>
+                                    <td class="px-4 py-3 text-sm text-white">{{ $payment->user->id }}</td>
                                     <td class="px-4 py-3 text-sm text-white">{{ $payment->membership_id }}</td>
                                     <td class="px-4 py-3 text-sm text-white">
                                         ${{ number_format($payment->amount, 0, ',', '.') }}</td>
                                     <td class="px-4 py-3 text-sm text-white">{{ $payment->payment_method }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
-                                        {{ $payment->created_at->format('d/m/Y') }}</td>
+                                        {{ \Carbon\Carbon::parse($payment->date)->format('d/m/Y') }}
+                                    </td>
                                     @if ($role === 'Admin')
-                                        <td class="px-4 py-3 flex gap-2">
-                                            <a href="{{ route('payments.edit', $payment->id) }}"
-                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
-                                                Editar
-                                            </a>
-                                            <form action="{{ route('payments.destroy', $payment->id) }}" method="POST"
-                                                onsubmit="return confirm('¿Estás seguro de eliminar este pago?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm transition duration-300">
-                                                    Eliminar
-                                                </button>
-                                            </form>
+                                        <td class="ml-8 px-4 py-3 flex gap-2">
+
+                                            <button
+                                            @click="currentEditPayment = {
+                                                ...{{ json_encode($payment) }},
+                                                user_name: '{{ addslashes($payment->user->name) }}'
+                                            }; showEditModal = true"
+                                            class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
+                                            Editar
+                                        </button>
+                                        
+                                            <!-- Botón Eliminar como componente -->
+                                            <x-delete-button :action="route('payments.destroy', $payment->id)" />
+
                                         </td>
                                     @endif
                                 </tr>

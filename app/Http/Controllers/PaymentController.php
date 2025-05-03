@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payment;
 use App\Models\Login;
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -13,14 +13,7 @@ class PaymentController extends Controller
 {
     public function index(Request $request)
     {
-        $login = Login::find(Session::get('login_id'));
-
-        if (!$login || !$login->loginable) {
-            return redirect('/login')->withErrors(['access' => 'Sesión inválida']);
-        }
-
-        $user = $login->loginable;
-        $gym = $user->gym;
+        $gym = $this->getGym();
 
         $perPage = $request->input('per_page', 10);
 
@@ -60,36 +53,20 @@ class PaymentController extends Controller
 
         $memberships = Membership::whereHas('user', function ($q) use ($gym) {
             $q->where('gym_id', $gym->id);
-        })
-        ->whereHas('payments') // ← Solo membresías con pagos
-        ->with('user')
-        ->get();
-        
+        })->whereHas('payments')->with('user')->get();
+
         $paymentMethods = Payment::whereHas('user', function ($q) use ($gym) {
             $q->where('gym_id', $gym->id);
-        })
-        ->select('payment_method')
-        ->distinct()
-        ->pluck('payment_method');
-
-        return view('admin.payments.index', compact('payments', 'user', 'memberships', 'paymentMethods'));
-    }        
-
-    public function create()
-    {
-        $login = Login::find(Session::get('login_id'));
-        $user = $login->loginable;
-        $gym = $user->gym;
+        })->select('payment_method')->distinct()->pluck('payment_method');
 
         $users = User::where('gym_id', $gym->id)->get();
-        $memberships = Membership::whereIn('user_id', $users->pluck('id'))->get();
 
-        return view('admin.payments.create', compact('user', 'gym', 'users', 'memberships'));
+        return view('admin.payments.index', compact('payments', 'users', 'memberships', 'paymentMethods'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'date' => 'required|date',
             'amount' => 'required|numeric',
             'payment_method' => 'required|string|max:255',
@@ -97,26 +74,14 @@ class PaymentController extends Controller
             'membership_id' => 'required|exists:memberships,id',
         ]);
 
-        Payment::create($request->all());
+        Payment::create($validated);
 
-        return redirect()->route('admin.payments')->with('success', 'Pago registrado correctamente.');
-    }
-
-    public function edit(Payment $payment)
-    {
-        $login = Login::find(Session::get('login_id'));
-        $user = $login->loginable;
-        $gym = $user->gym;
-
-        $users = User::where('gym_id', $gym->id)->get();
-        $memberships = Membership::whereIn('user_id', $users->pluck('id'))->get();
-
-        return view('admin.payments.edit', compact('payment', 'users', 'memberships', 'gym'));
+        return redirect()->route('payments.index')->with('success', 'Pago registrado correctamente.');
     }
 
     public function update(Request $request, Payment $payment)
     {
-        $request->validate([
+        $validated = $request->validate([
             'date' => 'required|date',
             'amount' => 'required|numeric',
             'payment_method' => 'required|string|max:255',
@@ -124,9 +89,9 @@ class PaymentController extends Controller
             'membership_id' => 'required|exists:memberships,id',
         ]);
 
-        $payment->update($request->all());
+        $payment->update($validated);
 
-        return redirect()->route('admin.payments')->with('success', 'Pago actualizado correctamente.');
+        return redirect()->route('payments.index')->with('success', 'Pago actualizado correctamente.');
     }
 
     public function destroy(Payment $payment)
@@ -135,4 +100,16 @@ class PaymentController extends Controller
 
         return redirect()->route('admin.payments')->with('success', 'Pago eliminado correctamente.');
     }
+
+        // Método privado para obtener el gimnasio desde la sesión
+        private function getGym()
+        {
+            $login = Login::find(Session::get('login_id'));
+    
+            if (!$login || !$login->loginable || !$login->loginable->gym) {
+                abort(403, 'Acceso no autorizado.');
+            }
+    
+            return $login->loginable->gym;
+        }
 }
