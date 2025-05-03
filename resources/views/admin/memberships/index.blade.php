@@ -13,34 +13,34 @@
         showEditModal: false,
         currentEditMembership: null,
     }">
-    
-    @include('components.modals', [
-        // Encabezado
-        'title' => 'Membresías',
-        'subtitle' => $role === 'Admin' ? 'Admin' : 'Recepcionista',
-        'buttonText' => 'Agregar Membresía',
-    
-        // Crear
-        'createShowVar' => 'showCreateModal',
-        'createTitle' => 'Registrar Nueva Membresía',
-        'createView' => 'admin.memberships.create',
-        'createParams' => [
-            'users' => $users,
-            'types' => $types
-        ],
-    
-        // Editar
-        'editShowVar' => 'showEditModal',
-        'editTitle' => 'Editar Membresía',
-        'editCondition' => 'currentEditMembership',
-        'editView' => 'admin.memberships.edit',
-        'editParams' => [
-            'editMembership' => $memberships->first(),
-            'types' => $types,
-            'users' => $users
-        ]
-    ])
-    
+
+        @include('components.modals', [
+            // Encabezado
+            'title' => 'Membresías',
+            'subtitle' => $role === 'Admin' ? 'Admin' : 'Recepcionista',
+            'buttonText' => 'Agregar Membresía',
+        
+            // Crear
+            'createShowVar' => 'showCreateModal',
+            'createTitle' => 'Registrar Nueva Membresía',
+            'createView' => 'admin.memberships.create',
+            'createParams' => [
+                'users' => $users,
+                'types' => $types,
+            ],
+        
+            // Editar
+            'editShowVar' => 'showEditModal',
+            'editTitle' => 'Editar Membresía',
+            'editCondition' => 'currentEditMembership',
+            'editView' => 'admin.memberships.edit',
+            'editParams' => [
+                'editMembership' => $memberships->first(),
+                'types' => $types,
+                'users' => $users,
+            ],
+        ])
+
         <!-- Filtros -->
         <div class="bg-[#151515] p-4 rounded-lg shadow mb-6">
             <form x-data="{
@@ -212,29 +212,19 @@
                                     </td>
 
                                     @if ($role === 'Admin')
-                                    <td class="px-4 py-3 flex gap-2">
-                                        
-                                        <button
-                                        @click="currentEditMembership = {{ json_encode([
-                                            'id' => $membership->id,
-                                            'type' => $membership->type,
-                                            'amount' => $membership->amount,
-                                            'discount' => $membership->discount,
-                                            'start_date' => $membership->start_date,
-                                            'finish_date' => $membership->finish_date,
-                                            'user_id' => $membership->user->id,
-                                            'user_name' => $membership->user->name,
-                                        ]) }}; showEditModal = true"
-                                        class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
-                                        Editar
-                                    </button>
-                                
-                                    <!-- Botón Eliminar como componente -->
-                                    <x-delete-button :action="route('memberships.destroy', $membership->id)" />
-                                    
-                                    </td>
-                        
-                                    
+                                        <td class="px-4 py-3 flex gap-2">
+
+
+                                            <button
+                                                @click="currentEditMembership = {{ json_encode($membership) }}; showEditModal = true"
+                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
+                                                Editar
+                                            </button>
+
+                                            <!-- Botón Eliminar como componente -->
+                                            <x-delete-button :action="route('memberships.destroy', $membership->id)" />
+
+                                        </td>
                                     @endif
                                 </tr>
                             @empty
