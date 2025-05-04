@@ -3,6 +3,9 @@ import 'animate.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Alpine from 'alpinejs';
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.css";
+
 
 
 window.Alpine = Alpine;

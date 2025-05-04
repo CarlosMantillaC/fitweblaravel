@@ -251,8 +251,10 @@
                     </table>
 
                     <!-- Paginación -->
-                    <div class="mt-4 px-4 py-3 flex items-center justify-between border-t border-gray-700 sm:px-6">
-                        {{ $users->appends(request()->except('page'))->links() }}
+                    <div class="mt-4 px-4 py-3 flex items-center justify-center border-t border-gray-700 sm:px-6">
+
+                    {{ $users->appends(request()->except('page'))->links('vendor.pagination.tailwind') }}
+
                     </div>
                 </div>
             </div>
@@ -260,3 +262,4 @@
 
     </main>
 @endsection
+
