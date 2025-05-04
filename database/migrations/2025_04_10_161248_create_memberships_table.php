@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->decimal('amount', 10, 2);
-            $table->decimal('discount', 10, 2)->default(0);
+            $table->integer('amount'); 
+            $table->integer('discount')->default(0);
             $table->date('start_date');
             $table->date('finish_date');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
