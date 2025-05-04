@@ -21,7 +21,7 @@
     </div>
 
     <!-- Método de pago -->
-    <div class="space-y-1" x-data="{ method: 'Efectivo', open: false, options: ['Efectivo', 'Bancolombia', 'Nequi', 'Otro'] }">
+    <div class="space-y-1" x-data="{ method: 'Efectivo', open: false, options: ['Efectivo', 'Bancolombia', 'Nequi', 'Daviplata'] }">
         <label class="block text-sm sm:text-base text-gray-300">Método de pago</label>
         <div class="relative">
             <button @click="open = !open" type="button"

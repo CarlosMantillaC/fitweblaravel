@@ -36,7 +36,7 @@
                     <div x-show="open" @click.away="open = false" x-transition
                         class="absolute z-10 mt-1 w-full bg-[#252525] border border-gray-700 rounded-lg shadow-lg overflow-hidden">
                         <ul class="py-1">
-                            @foreach (['efectivo', 'bancolombia', 'nequi', 'daviplata'] as $method)
+                            @foreach (['Efectivo', 'Bancolombia', 'Nequi', 'Daviplata'] as $method)
                                 <li>
                                     <button type="button"
                                         @click="currentEditPayment.payment_method = '{{ $method }}'; open = false"

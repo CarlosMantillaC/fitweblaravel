@@ -8,43 +8,57 @@
 @endsection
 
 @section('content')
-<main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0" x-data="{
-    showCreateModal: false,
-    showEditModal: false,
-    currentEditPayment: null,
-}">
+    <main class="flex-1 p-4 lg:p-8 mt-1 lg:mt-0" x-data="{
+        showCreateModal: false,
+        showEditModal: false,
+        currentEditPayment: null,
+    }">
 
-    @include('components.modals', [
-        // Encabezado
-        'title' => 'Pagos',
-        'subtitle' => $role === 'Admin' ? 'Admin' : 'Recepcionista',
-        'buttonText' => 'Registrar Pago',
-
-        // Crear
-        'createShowVar' => 'showCreateModal',
-        'createTitle' => 'Registrar Nuevo Pago',
-        'createView' => 'admin.payments.create',
-        'createParams' => [
-            'users' => $users,
-            'methods' => ['efectivo', 'bancolombia', 'nequi', 'daviplata'],
-        ],
-
-        // Editar
-        'editShowVar' => 'showEditModal',
-        'editTitle' => 'Editar Pago',
-        'editCondition' => 'currentEditPayment',
-        'editView' => 'admin.payments.edit',
-        'editParams' => [
-            'editPayment' => $payments->first(),
-            'users' => $users,
-            'methods' => ['efectivo', 'bancolombia', 'nequi', 'daviplata'],
-        ],
-    ])
+        @include('components.modals', [
+            // Encabezado
+            'title' => 'Pagos',
+            'subtitle' => $role === 'Admin' ? 'Admin' : 'Recepcionista',
+            'buttonText' => 'Registrar Pago',
+        
+            // Crear
+            'createShowVar' => 'showCreateModal',
+            'createTitle' => 'Registrar Nuevo Pago',
+            'createView' => 'admin.payments.create',
+            'createParams' => [
+                'users' => $users,
+                'methods' => ['efectivo', 'bancolombia', 'nequi', 'daviplata'],
+            ],
+        
+            // Editar
+            'editShowVar' => 'showEditModal',
+            'editTitle' => 'Editar Pago',
+            'editCondition' => 'currentEditPayment',
+            'editView' => 'admin.payments.edit',
+            'editParams' => [
+                'editPayment' => $payments->first(),
+                'users' => $users,
+                'methods' => ['efectivo', 'bancolombia', 'nequi', 'daviplata'],
+            ],
+        ])
 
 
         <!-- Filtros -->
         <div class="bg-[#151515] p-4 rounded-lg shadow mb-6">
-            <form action="{{ url()->current() }}" method="GET" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <form x-data="{
+                selected: '{{ request('per_page', 10) }}',
+                options: [5, 10, 25, 50, 100],
+                open: false,
+                selectAndSubmit(option) {
+                    this.selected = option;
+                    this.open = false;
+                    this.$nextTick(() => {
+                        this.$refs.input.value = option;
+                        this.$refs.form.submit();
+                    });
+                }
+            }" x-ref="form" action="{{ url()->current() }}" method="GET"
+                class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
                 <!-- Buscar -->
                 <div>
                     <label for="search" class="block text-sm font-medium text-gray-300 mb-1">Buscar</label>
@@ -55,19 +69,41 @@
                         placeholder="Nombre del usuario, método...">
                 </div>
 
+                <div>
+                    <label for="id" class="block text-sm font-medium text-gray-300 mb-1">ID</label>
+                    <input type="text" name="id" value="{{ request('id') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl
+                        focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                        transition-all duration-500 placeholder-gray-400 text-base"
+                        placeholder="Buscar por ID">
+                </div>
+
+                <div>
+                    <label for="user_id" class="block text-sm font-medium text-gray-300 mb-1">Cédula del Usuario</label>
+                    <input type="text" name="user_id" id="user_id" value="{{ request('user_id') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl
+                           focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                           transition-all duration-500 placeholder-gray-400 text-base"
+                        placeholder="Buscar por Cédula">
+                </div>
+
                 <!-- Membresía -->
                 <div>
                     <label for="membership_id" class="block text-sm font-medium text-gray-300 mb-1">Membresía</label>
-                    <select name="membership_id" id="membership_id"
-                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70">
-                        <option value="">Todas</option>
-                        @foreach ($memberships as $membership)
-                            <option value="{{ $membership->id }}"
-                                {{ request('membership_id') == $membership->id ? 'selected' : '' }}>
-                                {{ $membership->type }} - {{ $membership->user->name }}
-                            </option>
-                        @endforeach
-                    </select>
+                    <input type="text" name="membership_id" id="membership_id" value="{{ request('membership_id') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl
+                       focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                       transition-all duration-500 placeholder-gray-400 text-base"
+                        placeholder="Buscar por Cédula">
+                </div>
+
+                <!-- Fecha de pago -->
+                <div>
+                    <label for="date" class="block text-sm font-medium text-gray-300 mb-1">Fecha de pago</label>
+                    <input type="date" name="date" id="date" value="{{ request('date') }}"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl
+                        focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                        transition-all duration-500 text-base">
                 </div>
 
                 <!-- Método -->
@@ -98,6 +134,38 @@
                         Limpiar
                     </a>
                 </div>
+
+                <!-- Selector per_page -->
+                <div class="flex items-center gap-2 md:col-span-4">
+                    <label for="per_page" class="text-sm text-gray-300">Mostrar:</label>
+
+                    <!-- Dropdown personalizado -->
+                    <div class="relative w-24">
+                        <button @click.prevent="open = !open" @keydown.escape.window="open = false" type="button"
+                            class="w-full bg-[#252525] border border-gray-600 rounded-md px-3 py-[6px] text-white text-sm
+                                            hover:border-[#f36100] focus:outline-none focus:ring-2 focus:ring-[#f36100] transition-all duration-300 flex justify-between items-center">
+                            <span x-text="selected"></span>
+                            <svg class="w-4 h-4 ml-2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <ul x-show="open" x-cloak x-transition @click.outside="open = false"
+                            class="absolute z-10 mt-2 w-full bg-[#252525] border border-gray-600 rounded-md shadow-lg">
+                            <template x-for="option in options" :key="option">
+                                <li @click="selectAndSubmit(option)"
+                                    :class="{ 'bg-[#f36100] text-white': selected == option }"
+                                    class="px-4 py-2 cursor-pointer transition-all duration-300 hover:bg-[#f36100]/80">
+                                    <span x-text="option"></span>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+
+                    <span class="text-sm text-gray-400">registros</span>
+                    <input type="hidden" name="per_page" x-ref="input" :value="selected">
+                </div>
             </form>
         </div>
 
@@ -111,7 +179,7 @@
                                 <th class="px-4 py-3 text-sm text-gray-300">ID</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Nombre del Usuario</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Cédula</th>
-                                <th class="px-4 py-3 text-sm text-gray-300">ID_Membresia</th>
+                                <th class="px-4 py-3 text-sm text-gray-300">Membresia</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Monto</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Método</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Fecha</th>
@@ -138,14 +206,14 @@
                                         <td class="ml-8 px-4 py-3 flex gap-2">
 
                                             <button
-                                            @click="currentEditPayment = {
+                                                @click="currentEditPayment = {
                                                 ...{{ json_encode($payment) }},
                                                 user_name: '{{ addslashes($payment->user->name) }}'
                                             }; showEditModal = true"
-                                            class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
-                                            Editar
-                                        </button>
-                                        
+                                                class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
+                                                Editar
+                                            </button>
+
                                             <!-- Botón Eliminar como componente -->
                                             <x-delete-button :action="route('payments.destroy', $payment->id)" />
 
