@@ -15,7 +15,7 @@
 
 <body class="font-['Oswald'] font-bold bg-primary text-white">
     <!-- Contenedor con margen y posicionamiento fijo -->
-    <div class="md:hidden">
+    <div class="lg:hidden">
         <!-- Botón con márgenes internas y sombra -->
         <button id="mobile-menu-button"
             class="m-4 p-3 rounded-md bg-[#151515] focus:outline-none shadow-md transition-all duration-300">
@@ -29,7 +29,7 @@
 
     <div class="flex min-h-screen">
         <!-- Sidebar para móvil -->
-        <div id="mobile-sidebar" class="md:hidden fixed inset-0 z-40 closed">
+        <div id="mobile-sidebar" class="lg:hidden fixed inset-0 z-40 closed">
             <div id="mobile-overlay" class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm opacity-0 invisible"></div>
             <div class="relative flex-1 flex flex-col w-72 max-w-xs bg-primary h-full border-r border-primary">
                 <div class="absolute top-0 right-0 -mr-12 pt-4">
@@ -91,7 +91,7 @@
 
 
         <!-- Sidebar (oculto en móvil) -->
-        <aside class="w-full md:w-70 bg-secondary text-white shadow-lg md:block hidden md:relative p-4 md:p-8">
+        <aside class="w-full md:w-70 bg-secondary text-white shadow-lg lg:block hidden lg:relative p-4 md:p-8">
             <div class="p-6 border-b border-gray-700">
                 <h1 class="text-2xl font-bold">Mi Panel</h1>
             </div>

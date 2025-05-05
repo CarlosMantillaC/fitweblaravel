@@ -181,7 +181,7 @@
                                 <th class="px-4 py-3 text-sm text-gray-300">ID</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Nombre del Usuario</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Cédula</th>
-                                <th class="px-4 py-3 text-sm text-gray-300">Tipo</th>
+                                <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Tipo</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Monto</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden md:table-cell">Descuento</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Inicio</th>
@@ -199,7 +199,7 @@
                                     <td class="px-4 py-3 text-sm text-white">{{ $membership->user->name }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
                                         {{ $membership->user->id }}</td>
-                                    <td class="px-4 py-3 text-sm text-white">{{ $membership->type }}</td>
+                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">{{ $membership->type }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
                                         ${{ number_format($membership->amount, 0, ',', '.') }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden md:table-cell">
