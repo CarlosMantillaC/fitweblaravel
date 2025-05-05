@@ -67,6 +67,13 @@
                         </span>
                     </a>
 
+
+                    <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.payments' : 'receptionist.payments') }}"
+                        class="flex items-center gap-3 py-2.5 px-4 hover:bg-gray-700 rounded text-gray-200 hover:text-white transition-all duration-300">
+                        <i class="fas fa-money-bill-wave text-[#f36100]"></i>
+                        <span>Pagos</span>
+                    </a>
+
                     <a href="#"
                         class="nav-item block py-3 px-4 hover:bg-gray-700/50 rounded-lg text-gray-200 hover:text-white">
                         <span class="flex items-center">
@@ -101,19 +108,19 @@
                     <i class="fas fa-home text-[#f36100]"></i>
                     <span>Inicio</span>
                 </a>
-            
+
                 <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.users' : 'receptionist.users') }}"
                     class="flex items-center gap-3 py-2.5 px-4 hover:bg-gray-700 rounded text-gray-200 hover:text-white transition-all duration-300">
                     <i class="fas fa-users text-[#f36100]"></i>
                     <span>Usuarios</span>
                 </a>
-            
+
                 <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.memberships' : 'receptionist.memberships') }}"
                     class="flex items-center gap-3 py-2.5 px-4 hover:bg-gray-700 rounded text-gray-200 hover:text-white transition-all duration-300">
                     <i class="fas fa-id-card text-[#f36100]"></i>
                     <span>Membresías</span>
                 </a>
-                        
+
                 <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.payments' : 'receptionist.payments') }}"
                     class="flex items-center gap-3 py-2.5 px-4 hover:bg-gray-700 rounded text-gray-200 hover:text-white transition-all duration-300">
                     <i class="fas fa-money-bill-wave text-[#f36100]"></i>
@@ -125,7 +132,7 @@
                     <i class="fas fa-cog text-[#f36100]"></i>
                     <span>Configuración</span>
                 </a>
-            
+
                 <form method="POST" action="{{ route('logout') }}" class="mt-4 px-4">
                     @csrf
                     <button type="submit"
@@ -135,7 +142,7 @@
                     </button>
                 </form>
             </nav>
-            
+
         </aside>
 
 

@@ -94,9 +94,8 @@
                         class="absolute z-10 mt-2 w-full bg-[#252525] border border-gray-700 rounded-xl shadow-lg">
                         <template x-for="option in options" :key="option">
                             <li @click="selected = option; open = false"
-                                :class="{ 'bg-[#f36100] text-white': selected === option }"
-                                class="px-4 py-2 cursor-pointer transition-all duration-300">
-                                <span x-text="option === 'all' ? 'Todos' : option"></span>
+                                class="px-4 py-2 cursor-pointer transition-all duration-300 hover:bg-[#f36100] hover:text-white">
+                                <span x-text="option === 'all' ? 'Todos' : option.charAt(0).toUpperCase() + option.slice(1)"></span>
                             </li>
                         </template>
                     </ul>
@@ -123,17 +122,18 @@
                         </svg>
                     </button>
 
+
+                                    
                     <ul x-show="open" x-cloak x-transition @click.outside="open = false"
                         class="absolute z-10 mt-2 w-full bg-[#252525] border border-gray-700 rounded-xl shadow-lg">
                         <template x-for="option in options" :key="option">
                             <li @click="selected = option; open = false"
-                                :class="{ 'bg-[#f36100] text-white': selected === option }"
-                                class="px-4 py-2 cursor-pointer transition-all duration-300">
+                                class="px-4 py-2 cursor-pointer transition-all duration-300 hover:bg-[#f36100] hover:text-white">
                                 <span
-                                    x-text="option === 'all' ? 'Todos' : option === 'M' ? 'Masculino' : 'Femenino'"></span>
-                            </li>
+                                x-text="option === 'all' ? 'Todos' : option === 'M' ? 'Masculino' : 'Femenino'"></span>                            </li>
                         </template>
                     </ul>
+                
                     <input type="hidden" name="gender" :value="selected">
                 </div>
 
@@ -204,7 +204,7 @@
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Email</th>
                                 <th class="px-4 py-3 text-sm text-gray-300 hidden md:table-cell">Estado</th>
                                 @if ($role === 'Admin')
-                                    <th class="px-4 py-3 text-sm text-gray-300">Acciones</th>
+                                    <th class="px-4 py-3 text-sm text-gray-300 table-cell">Acciones</th>
                                 @endif
                             </tr>
                         </thead>
@@ -226,17 +226,18 @@
                                     <td class="px-4 py-3 text-sm text-white hidden md:table-cell">{{ $userRow->state }}
                                     </td>
                                     @if ($role === 'Admin')
-                                        <td class="px-4 py-3 flex gap-2">
-
+                                    <td class="px-4 py-3 table-cell">
+                                        <div class="flex justify-center items-center space-x-2">
                                             <button
                                                 @click="currentEditUser = {{ json_encode($userRow) }}; showEditModal = true"
                                                 class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
                                                 Editar
                                             </button>
-
+                                    
                                             <x-delete-button :action="route('users.destroy', $userRow->id)" />
-
-                                        </td>
+                                        </div>
+                                    </td>
+                                    
                                     @endif
                                 </tr>
                             @empty

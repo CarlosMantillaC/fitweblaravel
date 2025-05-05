@@ -88,19 +88,39 @@
                 </div>
 
                 <!-- Filtro por tipo -->
-                <div>
+                <div x-data="{
+                    open: false,
+                    selected: '{{ request('type') ?? 'all' }}',
+                    options: ['all', @foreach ($types as $type)'{{ $type }}'@if (!$loop->last), @endif @endforeach]
+                }" class="relative w-full">
                     <label for="type" class="block text-sm font-medium text-gray-300 mb-1">Tipo</label>
-                    <select name="type" id="type"
-                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all duration-300 text-base">
-                        <option value="all">Todos</option>
-                        @foreach ($types as $type)
-                            <option value="{{ $type }}" {{ request('type') == $type ? 'selected' : '' }}>
-                                {{ ucfirst($type) }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
 
+                    <button @click.prevent="open = !open" @keydown.escape.window="open = false" type="button"
+                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl text-left
+                               focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100] focus:outline-none
+                               transition-all duration-300 flex justify-between items-center">
+                        <span
+                            x-text="selected === 'all' ? 'Todos' : selected.charAt(0).toUpperCase() + selected.slice(1)"></span>
+                        <svg class="h-5 w-5 text-gray-400 transition-transform duration-200" :class="{ 'rotate-180': open }"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+
+                    <ul x-show="open" x-cloak x-transition @click.outside="open = false"
+                        class="absolute z-10 mt-2 w-full bg-[#252525] border border-gray-700 rounded-xl shadow-lg">
+                        <template x-for="option in options" :key="option">
+                            <li @click="selected = option; open = false"
+                                class="px-4 py-2 cursor-pointer transition-all duration-300 hover:bg-[#f36100] hover:text-white">
+                                <span
+                                    x-text="option === 'all' ? 'Todos' : option.charAt(0).toUpperCase() + option.slice(1)"></span>
+                            </li>
+                        </template>
+                    </ul>
+                    <input type="hidden" name="type" :value="selected">
+                </div>
 
                 <!-- Fecha de inicio -->
                 <div>
@@ -119,7 +139,6 @@
                            focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
                            transition-all duration-500 text-base">
                 </div>
-
 
                 <!-- Botones -->
                 <div class="flex items-end gap-2 col-span-1 md:col-span-2">
@@ -145,9 +164,12 @@
                             class="w-full bg-[#252525] border border-gray-600 rounded-md px-3 py-[6px] text-white text-sm
                             hover:border-[#f36100] focus:outline-none focus:ring-2 focus:ring-[#f36100] transition-all duration-300 flex justify-between items-center">
                             <span x-text="selected"></span>
-                            <svg class="w-4 h-4 ml-2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            <svg class="h-5 w-5 text-gray-400 transition-transform duration-200"
+                                :class="{ 'rotate-180': open }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
                             </svg>
                         </button>
 
@@ -199,7 +221,8 @@
                                     <td class="px-4 py-3 text-sm text-white">{{ $membership->user->name }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
                                         {{ $membership->user->id }}</td>
-                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">{{ $membership->type }}</td>
+                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">{{ $membership->type }}
+                                    </td>
                                     <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
                                         ${{ number_format($membership->amount, 0, ',', '.') }}</td>
                                     <td class="px-4 py-3 text-sm text-white hidden md:table-cell">
@@ -212,19 +235,22 @@
                                     </td>
 
                                     @if ($role === 'Admin')
-                                        <td class="px-4 py-3 flex gap-2">
-                                            <button
-                                            @click="currentEditMembership = {
+                                        <td class="px-4 py-3 table-cell">
+
+                                            <div class="flex justify-center items-center space-x-2">
+
+                                                <button
+                                                    @click="currentEditMembership = {
                                                 ...{{ json_encode($membership) }},
                                                 user_name: '{{ addslashes($membership->user->name) }}'
                                             }; showEditModal = true"
-                                            class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
-                                            Editar
-                                        </button>
+                                                    class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
+                                                    Editar
+                                                </button>
 
-                                            <!-- Botón Eliminar como componente -->
-                                            <x-delete-button :action="route('memberships.destroy', $membership->id)" />
-
+                                                <!-- Botón Eliminar como componente -->
+                                                <x-delete-button :action="route('memberships.destroy', $membership->id)" />
+                                            </div>
                                         </td>
                                     @endif
                                 </tr>
@@ -240,7 +266,7 @@
                     </table>
 
                     <!-- Paginación -->
-                    <div class="mt-4 px-4 py-3 flex items-center justify-between border-t border-gray-700 sm:px-6">
+                    <div class="mt-4 px-4 py-3 flex items-center justify-center border-t border-gray-700 sm:px-6">
                         {{ $memberships->appends(request()->except('page'))->links() }}
                     </div>
                 </div>
