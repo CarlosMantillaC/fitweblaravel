@@ -96,48 +96,54 @@ class MembershipController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $login = Login::find(Session::get('login_id'));
-        $user = $login->loginable;
-        $gym = $user->gym;
+{
+    $login = Login::find(Session::get('login_id'));
+    $user = $login->loginable;
+    $gym = $user->gym;
 
-        $request->validate([
-            'type' => 'required|string|max:255|in:Mensual,Diaria,Trimestral,Anual',
-            'amount' => 'required|numeric|min:0',
-            'discount' => 'nullable|numeric|min:0|max:100',
-            'start_date' => 'required|date',
-            'finish_date' => 'required|date|after_or_equal:start_date',
-            'user_id' => [
-                'required',
-                function ($attribute, $value, $fail) use ($gym) {
-                    $user = User::where('id', $value)
-                        ->where('gym_id', $gym->id)
-                        ->first();
+    $request->validate([
+        'type' => 'required|string|max:255|in:Mensual,Diaria,Trimestral,Anual',
+        'amount' => 'required|numeric|min:0',
+        'discount' => 'nullable|numeric|min:0|max:100',
+        'start_date' => 'required|date',
+        'finish_date' => 'required|date|after_or_equal:start_date',
+        'user_id' => [
+            'required',
+            function ($attribute, $value, $fail) use ($gym) {
+                $user = User::where('id', $value)
+                    ->where('gym_id', $gym->id)
+                    ->first();
 
-                    if (!$user) {
-                        $fail('No existe un usuario con esta cédula en el gimnasio.');
-                    }
+                if (!$user) {
+                    $fail('No existe un usuario con esta cédula en el gimnasio.');
                 }
-            ],
-        ]);
+            }
+        ],
+    ]);
 
-        // Buscar al usuario por su cédula
-        $userMember = User::where('id', $request->user_id)
-            ->where('gym_id', $gym->id)
-            ->firstOrFail();
+    // Buscar al usuario por su cédula
+    $userMember = User::where('id', $request->user_id)
+        ->where('gym_id', $gym->id)
+        ->firstOrFail();
 
-        Membership::create([
-            'type' => $request->type,
-            'amount' => $request->amount,
-            'discount' => $request->discount ?? 0,
-            'start_date' => $request->start_date,
-            'finish_date' => $request->finish_date,
-            'user_id' => $userMember->id
-        ]);
+    // Crear la membresía
+    $membership = Membership::create([
+        'type' => $request->type,
+        'amount' => $request->amount,
+        'discount' => $request->discount ?? 0,
+        'start_date' => $request->start_date,
+        'finish_date' => $request->finish_date,
+        'user_id' => $userMember->id
+    ]);
 
-        return redirect()->route(class_basename($user) === 'Admin' ? 'admin.memberships' : 'receptionist.memberships')
-            ->with('success', 'Membresía creada correctamente.');
-    }
+    // Redirigir a la página de pagos con los datos necesarios
+    return redirect()->route('admin.payments.store')->with([
+        'user_id' => $userMember->id,
+        'membership_id' => $membership->id,
+        'amount' => $membership->amount,
+    ])->with('success', 'Membresía creada correctamente. Ahora puedes registrar el pago.');
+}
+
 
 
     public function edit(Membership $membership)

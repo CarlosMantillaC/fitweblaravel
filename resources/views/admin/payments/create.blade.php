@@ -1,15 +1,13 @@
-<form method="POST"
-    action="{{ route(class_basename($user) === 'Admin' ? 'admin.payments.store' : 'receptionist.payments.store') }}"
-    class="space-y-4 sm:space-y-6">
+<form method="POST" action="{{ route(class_basename($user) === 'Admin' ? 'admin.payments.store' : 'receptionist.payments.store') }}" class="space-y-4 sm:space-y-6">
     @csrf
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-
 
         <!-- ID de usuario -->
         <div class="space-y-1">
             <label class="block text-sm sm:text-base text-gray-300">Cédula del Usuario</label>
             <input type="text" name="user_id" required
+                value="{{ session('user_id') }}"
                 class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
                     focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all"
                 placeholder="Ingrese la cédula del usuario">
@@ -19,12 +17,12 @@
         <div class="space-y-1">
             <label class="block text-sm sm:text-base text-gray-300">ID de Membresía</label>
             <input type="text" name="membership_id" required
+                value="{{ session('membership_id') }}"
                 class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
                     focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all"
                 placeholder="ID de la membresía correspondiente">
         </div>
     </div>
-
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <!-- Fecha del pago -->
@@ -34,8 +32,6 @@
                 class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
                 focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all">
         </div>
-
-
 
         <!-- Método de pago -->
         <div class="space-y-1" x-data="{ method: 'Efectivo', open: false, options: ['Efectivo', 'Bancolombia', 'Nequi', 'Daviplata'] }">
@@ -68,15 +64,14 @@
             </div>
             <input type="hidden" name="payment_method" x-model="method">
         </div>
-
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-
         <!-- Monto -->
         <div class="space-y-1">
             <label class="block text-sm sm:text-base text-gray-300">Monto</label>
             <input type="number" step="0.01" name="amount" required
+                value="{{ session('amount') }}"
                 class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
                 focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all"
                 placeholder="Ej: 150000">
@@ -94,5 +89,4 @@
             Guardar Pago
         </button>
     </div>
-
 </form>

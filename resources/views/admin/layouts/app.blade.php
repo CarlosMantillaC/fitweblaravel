@@ -5,18 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Admin Dashboard')</title>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- Tipografía Oswald -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif;
+        }
+    </style>
 </head>
 
-<body class="font-['Oswald'] font-bold bg-primary text-white">
+<body class="font-bold bg-primary text-white">
 
-    <!-- Botón de menú móvil -->
+    <!-- Botón menú móvil -->
     <div class="lg:hidden">
         <button id="mobile-menu-button"
-            class="m-4 p-3 rounded-md bg-[#151515] focus:outline-none shadow-md hover:bg-[#1f1f1f] transition-all">
+            class="m-4 p-3 rounded-md bg-[#151515] focus:outline-none shadow-md hover:bg-[#1f1f1f] transition-all"
+            aria-expanded="false" aria-controls="mobile-sidebar">
             <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <line x1="3" y1="6" x2="21" y2="6" stroke-width="2" stroke="currentColor" />
                 <line x1="3" y1="12" x2="21" y2="12" stroke-width="2" stroke="currentColor" />
@@ -42,7 +50,6 @@
 
                 <nav class="mt-6 px-4 py-4 space-y-3">
                     @php $isAdmin = class_basename($user) === 'Admin'; @endphp
-                    
 
                     <a href="{{ route($isAdmin ? 'admin.dashboard' : 'receptionist.dashboard') }}"
                         class="nav-item block py-3 px-4 rounded-lg hover:bg-gray-700/50 text-gray-200 hover:text-white transition">
@@ -59,8 +66,7 @@
                         <i class="fa-solid fa-id-card text-tertiary mr-3"></i> Membresías
                     </a>
 
-
-                    <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.payments' : 'receptionist.payments') }}"
+                    <a href="{{ route($isAdmin ? 'admin.payments' : 'receptionist.payments') }}"
                         class="flex items-center gap-3 py-2.5 px-4 hover:bg-gray-700 rounded text-gray-200 hover:text-white transition-all duration-300">
                         <i class="fas fa-money-bill-wave text-[#f36100]"></i>
                         <span>Pagos</span>
@@ -88,56 +94,35 @@
                 <h1 class="text-2xl font-bold">Mi Panel</h1>
             </div>
             <nav class="mt-6 space-y-2">
-            <a href="{{ route($isAdmin ? 'admin.dashboard' : 'receptionist.dashboard') }}"
-        class="flex items-center gap-3 py-2.5 px-4 hover:bg-[#252525] hover:text-white transition duration-300">
-        <i class="fas fa-home text-[#f36100]"></i> <span>Inicio</span>
+                <a href="{{ route($isAdmin ? 'admin.dashboard' : 'receptionist.dashboard') }}"
+                    class="flex items-center gap-3 py-2.5 px-4 hover:bg-[#252525] hover:text-white transition duration-300">
+                    <i class="fas fa-home text-[#f36100]"></i> <span>Inicio</span>
                 </a>
 
-<<<<<<< Updated upstream
-                <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.users' : 'receptionist.users') }}"
+                <a href="{{ route($isAdmin ? 'admin.users' : 'receptionist.users') }}"
                     class="flex items-center gap-3 py-2.5 px-4 hover:bg-gray-700 rounded text-gray-200 hover:text-white transition-all duration-300">
                     <i class="fas fa-users text-[#f36100]"></i>
                     <span>Usuarios</span>
                 </a>
 
-                <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.memberships' : 'receptionist.memberships') }}"
+                <a href="{{ route($isAdmin ? 'admin.memberships' : 'receptionist.memberships') }}"
                     class="flex items-center gap-3 py-2.5 px-4 hover:bg-gray-700 rounded text-gray-200 hover:text-white transition-all duration-300">
                     <i class="fas fa-id-card text-[#f36100]"></i>
                     <span>Membresías</span>
                 </a>
 
-                <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.payments' : 'receptionist.payments') }}"
+                <a href="{{ route($isAdmin ? 'admin.payments' : 'receptionist.payments') }}"
                     class="flex items-center gap-3 py-2.5 px-4 hover:bg-gray-700 rounded text-gray-200 hover:text-white transition-all duration-300">
                     <i class="fas fa-money-bill-wave text-[#f36100]"></i>
                     <span>Pagos</span>
-=======
-                <a href="{{ route($isAdmin ? 'admin.users' : 'receptionist.users') }}"
-                class="flex items-center gap-3 py-2.5 px-4 hover:bg-[#252525] hover:text-white transition duration-300">
-                <i class="fas fa-users text-[#f36100]"></i> <span>Usuarios</span>
-                </a>
-
-                <a href="{{ route($isAdmin ? 'admin.memberships' : 'receptionist.memberships') }}"
-                class="flex items-center gap-3 py-2.5 px-4 hover:bg-[#252525] hover:text-white transition duration-300">
-                <i class="fas fa-id-card text-[#f36100]"></i> <span>Membresías</span>
-                </a>
-
-                <a href="{{ route($isAdmin ? 'admin.payments' : 'receptionist.payments') }}"
-                class="flex items-center gap-3 py-2.5 px-4 hover:bg-[#252525] hover:text-white transition duration-300">
-                <i class="fas fa-money-bill-wave text-[#f36100]"></i> <span>Pagos</span>
->>>>>>> Stashed changes
                 </a>
 
                 <a href="#"
-                class="flex items-center gap-3 py-2.5 px-4 hover:bg-[#252525] hover:text-white transition duration-300">
-                <i class="fas fa-cog text-[#f36100]"></i> <span>Configuración</span>
+                    class="flex items-center gap-3 py-2.5 px-4 hover:bg-[#252525] hover:text-white transition duration-300">
+                    <i class="fas fa-cog text-[#f36100]"></i> <span>Configuración</span>
                 </a>
 
-<<<<<<< Updated upstream
-                <form method="POST" action="{{ route('logout') }}" class="mt-4 px-4">
-=======
-
                 <form method="POST" action="{{ route('logout') }}" class="mt-6 px-4">
->>>>>>> Stashed changes
                     @csrf
                     <button type="submit"
                         class="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-[#f36100] hover:bg-orange-600 rounded text-white transition">
@@ -145,14 +130,12 @@
                     </button>
                 </form>
             </nav>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
         </aside>
 
         <!-- Contenido principal -->
-        @yield('content')
+        <main class="flex-1">
+            @yield('content')
+        </main>
     </div>
 
 </body>

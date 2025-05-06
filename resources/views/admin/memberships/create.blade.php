@@ -1,11 +1,44 @@
 <form method="POST"
     action="{{ route(class_basename($user) === 'Admin' ? 'admin.memberships.store' : 'receptionist.memberships.store') }}"
-    class="space-y-4 sm:space-y-6">
+    class="space-y-4 sm:space-y-6"
+    x-data="{
+        type: 'Mensual',
+        open: false,
+        options: ['Mensual', 'Diaria', 'Quincenal', 'Trimestral', 'Anual'],
+        startDate: '',
+        finishDate: '',
+        calculateFinishDate() {
+            if (!this.startDate) return;
+
+            const start = new Date(this.startDate);
+            let end = new Date(start);
+
+            switch (this.type) {
+                case 'Mensual':
+                    end.setMonth(end.getMonth() + 1);
+                    break;
+                case 'Diaria':
+                    end.setDate(end.getDate() + 1);
+                    break;
+                case 'Quincenal':
+                    end.setDate(end.getDate() + 15);
+                    break;
+                case 'Trimestral':
+                    end.setMonth(end.getMonth() + 3);
+                    break;
+                case 'Anual':
+                    end.setFullYear(end.getFullYear() + 1);
+                    break;
+            }
+
+            this.finishDate = end.toISOString().split('T')[0];
+        }
+    }"
+    x-init="calculateFinishDate()"
+>
     @csrf
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-
-
         <div class="space-y-1">
             <label class="block text-sm sm:text-base text-gray-300">Cédula del Usuario</label>
             <input type="text" name="user_id" required
@@ -15,11 +48,7 @@
         </div>
 
         <!-- Tipo de membresía con dropdown -->
-        <div class="space-y-1" x-data="{
-            type: 'Mensual',
-            open: false,
-            options: ['Mensual', 'Diaria', 'Trimestral', 'Anual']
-        }">
+        <div class="space-y-1">
             <label class="block text-sm sm:text-base text-gray-300">Tipo</label>
             <div class="relative">
                 <button @click="open = !open" type="button"
@@ -40,7 +69,7 @@
                     <ul class="py-1">
                         <template x-for="option in options" :key="option">
                             <li>
-                                <button type="button" @click="type = option; open = false"
+                                <button type="button" @click="type = option; open = false; calculateFinishDate()"
                                     class="w-full px-4 py-2 text-left hover:bg-[#f36100] transition-colors duration-200">
                                     <span x-text="option"></span>
                                 </button>
@@ -51,8 +80,8 @@
             </div>
             <input type="hidden" name="type" x-model="type">
         </div>
-
     </div>
+
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <div class="space-y-1">
             <label class="block text-sm sm:text-base text-gray-300">Monto</label>
@@ -74,20 +103,22 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <div class="space-y-1">
             <label class="block text-sm sm:text-base text-gray-300">Fecha de inicio</label>
-            <input type="date" name="start_date" required
+            <input type="date" name="start_date" required x-model="startDate" @change="calculateFinishDate"
                 class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
                         focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all">
         </div>
 
         <div class="space-y-1">
             <label class="block text-sm sm:text-base text-gray-300">Fecha de fin</label>
-            <input type="date" name="finish_date" required
+            <input type="date" name="finish_date" required x-model="finishDate"
                 class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
                         focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all">
         </div>
     </div>
 
-
+    <div class="mt-2 text-sm text-gray-400" x-show="startDate && finishDate">
+        La membresía estará activa desde el <span x-text="new Date(startDate).toLocaleDateString()"></span> hasta el <span x-text="new Date(finishDate).toLocaleDateString()"></span>.
+    </div>
 
     <div class="flex justify-end gap-4 pt-4">
         <button type="button" @click="showCreateModal = false"
@@ -100,3 +131,4 @@
         </button>
     </div>
 </form>
+
