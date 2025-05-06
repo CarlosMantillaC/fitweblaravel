@@ -32,7 +32,7 @@
                 @if ($paginator->hasMorePages())
                     <a href="{{ $paginator->nextPageUrl() }}" class="px-5 py-2 text-sm text-white bg-[#151515] hover:bg-[#f36100] rounded">Siguiente</a>
                 @else
-                    <span class="px-5 py-2 text-sm text-gray-500 bg-[#151515] rounded">Siguiente</span>
+                    <span class="px-5 py-2 text-sm text-gray-500 bg-[#151515] rounded">Siguiente></span>
                 @endif
             </div>
         </div>
