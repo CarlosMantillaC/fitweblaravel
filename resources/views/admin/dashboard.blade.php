@@ -36,12 +36,16 @@
             <canvas id="usersLineChart" class="w-full h-[300px]"></canvas>
         </div>
 
+        
+
         <!-- Estadística adicional - Heatmap -->
          
         <div class="col-span-1 lg:col-span-6 bg-[#1f1f1f] p-6 rounded-2xl shadow-lg border border-[#2a2a2a]">
             <h3 class="text-xl font-bold text-center mb-4 text-white">Asistencias por Día</h3>
             <div id="asistencia-heatmap" class="overflow-x-auto"></div>
         </div>
+
+        
 
     </div>
 
