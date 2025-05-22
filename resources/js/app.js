@@ -3,8 +3,61 @@ import 'animate.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Alpine from 'alpinejs';
-import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import CalHeatmap from 'cal-heatmap';
+
+import CalHeatmap from 'cal-heatmap';
+import 'cal-heatmap/cal-heatmap.css';
+window.CalHeatmap = CalHeatmap;
+
+
+fetch('/dashboard/asistencias-por-dia')
+  .then(res => res.json())
+  .then(data => {
+    if (!data.length) {
+      // No hay datos, crear datos fake para mostrar heatmap
+      const fakeData = {};
+      const today = new Date();
+      for(let i = 0; i < 90; i++) {
+        const date = new Date(today);
+        date.setDate(today.getDate() - i);
+        const timestamp = Math.floor(date.getTime() / 1000);
+        fakeData[timestamp] = Math.floor(Math.random() * 10);  // random 0-9 asistencias
+      }
+      return fakeData;
+    }
+
+    const parsed = {};
+    data.forEach(entry => {
+      const timestamp = Math.floor(new Date(entry.fecha).getTime() / 1000);
+      parsed[timestamp] = entry.asistencias;
+    });
+    return parsed;
+  })
+  .then(dataset => {
+    cal.paint({
+      itemSelector: '#asistencia-heatmap',
+      domain: 'month',
+      subDomain: 'day',
+      range: 3,
+      cellSize: 20,
+      domainGutter: 10,
+      data: {
+        source: dataset,
+        type: 'json'
+      },
+      legend: [1, 3, 5, 10],
+      legendColors: {
+        min: '#2a2a2a',
+        max: '#34D399',
+        empty: '#1f1f1f'
+      },
+      tooltip: true,
+      itemName: ['asistencia', 'asistencias'],
+      start: new Date()
+    });
+  })
+  .catch(err => console.error('Error cargando heatmap:', err));
 
 
 

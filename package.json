@@ -20,6 +20,7 @@
         "animate.css": "^4.1.1",
         "aos": "^2.3.4",
         "autoprefixer": "^10.4.21",
+        "cal-heatmap": "^4.2.4",
         "flatpickr": "^4.6.13",
         "jquery": "^3.7.1",
         "postcss": "^8.5.3",
