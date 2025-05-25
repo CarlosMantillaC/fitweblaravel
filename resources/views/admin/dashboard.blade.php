@@ -36,6 +36,13 @@
             <canvas id="usersLineChart" class="w-full h-[300px]"></canvas>
         </div>
 
+        <!-- Gráfico de Ganancias por Mes -->
+        <div class="col-span-1 lg:col-span-6 bg-[#1f1f1f] p-6 rounded-2xl shadow-lg border border-[#2a2a2a]">
+            <h3 class="text-xl font-bold text-center mb-4 text-white">Ganancias Mensuales</h3>
+            <canvas id="gananciasChart" class="w-full h-[300px]"></canvas>
+        </div>
+
+
         
 
         <!-- Estadística adicional - Heatmap -->
@@ -147,7 +154,9 @@
                     }
                 });
             })
-            .catch(err => console.error('Error cargando datos de usuarios por mes:', err));
+            .catch(err => console.error('Error cargando datos de usuarios por mes:', err));       
     </script>
+    
+    
 </main>
 @endsection

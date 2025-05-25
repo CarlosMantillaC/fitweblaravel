@@ -98,11 +98,8 @@ Route::middleware(['receptionist'])->group(function () {
     });
 });
 
-Route::get('/dashboard/asistencias-por-dia', function () {
-    return DB::table('asistencias')
-        ->selectRaw('DATE(fecha) as fecha, COUNT(*) as asistencias')
-        ->groupBy('fecha')
-        ->orderBy('fecha')
-        ->get();
-});
+
+Route::get('/dashboard', [PaymentController::class, 'dashboard'])->name('dashboard');
+
+
 

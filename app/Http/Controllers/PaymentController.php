@@ -8,6 +8,7 @@ use App\Models\Payment;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -195,6 +196,7 @@ class PaymentController extends Controller
 
     }
     
+    
 
     public function destroy(Payment $payment)
     {
@@ -202,4 +204,40 @@ class PaymentController extends Controller
 
         return redirect()->route('admin.payments')->with('success', 'Pago eliminado correctamente.');
     }
+
+     public function dashboard()
+    {
+        $hoy = Carbon::today();
+        $inicioMes = Carbon::now()->startOfMonth();
+        $inicioAnio = Carbon::now()->startOfYear();
+
+        $gananciasHoy = Payment::whereDate('created_at', $hoy)->sum('amount');
+        $gananciasMes = Payment::whereBetween('created_at', [$inicioMes, Carbon::now()])->sum('amount');
+        $gananciasAnio = Payment::whereBetween('created_at', [$inicioAnio, Carbon::now()])->sum('amount');
+
+        // Datos para la gráfica mensual
+        $gananciasPorMes = Payment::selectRaw('MONTH(created_at) as mes, SUM(amount) as total')
+            ->whereYear('created_at', Carbon::now()->year)
+            ->groupBy('mes')
+            ->orderBy('mes')
+            ->get();
+
+        $meses = [];
+        $totales = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $meses[] = ucfirst(Carbon::create()->month($i)->locale('es')->monthName); // ej: Enero, Febrero
+            $total = $gananciasPorMes->firstWhere('mes', $i)?->total ?? 0;
+            $totales[] = $total;
+        }
+
+        return view('admin.dashboard', compact(
+            'gananciasHoy',
+            'gananciasMes',
+            'gananciasAnio',
+            'meses',
+            'totales'
+        ));
+    }
+
 }
