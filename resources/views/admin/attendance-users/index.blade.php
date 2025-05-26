@@ -2,7 +2,7 @@
 
 @section('title')
     @php
-        $role = class_basename($authUser);
+        $role = class_basename($user);
     @endphp
     {{ $role === 'Admin' ? 'Admin Dashboard' : ($role === 'Receptionist' ? 'Receptionista Dashboard' : 'Dashboard') }}
 @endsection
@@ -23,25 +23,23 @@
         // Crear
         'createShowVar' => 'showCreateModal',
         'createTitle' => 'Registrar Nueva Asistencia',
-        'createView' => 'admin.attendance_users.create',
+        'createView' => 'admin.attendance-users.create',
         'createParams' => [
             'users' => $users,
-            'types' => $types,
         ],
 
         // Editar
         'editShowVar' => 'showEditModal',
         'editTitle' => 'Editar Asistencia', 
         'editCondition' => 'currentEditAttendance', 
-        'editView' => 'admin.attendance_users.edit', 
+        'editView' => 'admin.attendance-users.edit', 
         'editParams' => [
             'attendance' => $attendances->first() ?? null, 
-            'types' => $types,
             'users' => $users,
         ],
     ])
 
-        <!-- Filtros -->
+         <!-- Filtros -->
         <div class="bg-[#151515] p-4 rounded-lg shadow mb-6">
             <form x-data="{
                 selected: '{{ request('per_page', 10) }}',
@@ -58,14 +56,14 @@
             }" x-ref="form" action="{{ url()->current() }}" method="GET"
                 class="grid grid-cols-1 md:grid-cols-4 gap-4">
 
-                <!-- Buscar general -->
+                <!-- Buscar -->
                 <div>
                     <label for="search" class="block text-sm font-medium text-gray-300 mb-1">Buscar</label>
                     <input type="text" name="search" id="search" value="{{ request('search') }}"
                         class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl
-                           focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
-                           transition-all duration-500 placeholder-gray-400 text-base"
-                        placeholder="Usuario, tipo, fecha...">
+                    focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
+                    transition-all duration-500 placeholder-gray-400 text-base"
+                        placeholder="Nombre del usuario, método...">
                 </div>
 
                 <div>
@@ -85,42 +83,7 @@
                            focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none 
                            transition-all duration-500 placeholder-gray-400 text-base"
                         placeholder="Buscar por Cédula">
-                </div>
-
-                <!-- Filtro por tipo -->
-                <div x-data="{
-                    open: false,
-                    selected: '{{ request('type') ?? 'all' }}',
-                    options: ['all', @foreach ($types as $key => $value)'{{ $key }}'@if (!$loop->last), @endif @endforeach]
-                }" class="relative w-full">
-                    <label for="type" class="block text-sm font-medium text-gray-300 mb-1">Tipo</label>
-
-                    <button @click.prevent="open = !open" @keydown.escape.window="open = false" type="button"
-                        class="w-full py-2 px-3 bg-[#252525] text-white border border-gray-700 rounded-xl text-left
-                               focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100] focus:outline-none
-                               transition-all duration-300 flex justify-between items-center">
-                        <span
-                            x-text="selected === 'all' ? 'Todos' : options.find(o => o === selected) ? types[selected] : selected"></span>
-                        <svg class="h-5 w-5 text-gray-400 transition-transform duration-200" :class="{ 'rotate-180': open }"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </button>
-
-                    <ul x-show="open" x-cloak x-transition @click.outside="open = false"
-                        class="absolute z-10 mt-2 w-full bg-[#252525] border border-gray-700 rounded-xl shadow-lg">
-                        <template x-for="option in options" :key="option">
-                            <li @click="selected = option; open = false"
-                                class="px-4 py-2 cursor-pointer transition-all duration-300 hover:bg-[#f36100] hover:text-white">
-                                <span
-                                    x-text="option === 'all' ? 'Todos' : types[option]"></span>
-                            </li>
-                        </template>
-                    </ul>
-                    <input type="hidden" name="type" :value="selected">
-                </div>
+                </div>        
 
                 <!-- Fecha -->
                 <div>
@@ -196,7 +159,7 @@
                                 <th class="px-4 py-3 text-sm text-gray-300">Fecha</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Hora entrada</th>
                                 <th class="px-4 py-3 text-sm text-gray-300">Hora salida</th>
-                                @if ($authUser->role === 'Admin')
+                                @if ($role === 'Admin')
                                     <th class="px-4 py-3 text-sm text-gray-300">Acciones</th>
                                 @endif
                             </tr>
@@ -222,7 +185,7 @@
                                         {{ $attendance->check_out ? \Carbon\Carbon::parse($attendance->check_out)->format('H:i') : '--' }}
                                     </td>
 
-                                    @if ($authUser->role === 'Admin')
+                                    @if ($role === 'Admin')
                                         <td class="px-4 py-3 table-cell">
                                             <div class="flex justify-center items-center space-x-2">
                                                 <button
@@ -235,7 +198,7 @@
                                                 </button>
 
                                                 <!-- Botón Eliminar -->
-                                                <form action="{{ route('admin.attendance_users.destroy', $attendance->id) }}" method="POST">
+                                                <form action="{{ route('admin.attendance-users.destroy', $attendance->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" 
@@ -250,7 +213,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="{{ $authUser->role === 'Admin' ? 8 : 7 }}"
+                                    <td colspan="{{ $role === 'Admin' ? 6 : 5 }}"
                                         class="text-center px-4 py-6 text-gray-400">
                                         No hay asistencias registradas.
                                     </td>

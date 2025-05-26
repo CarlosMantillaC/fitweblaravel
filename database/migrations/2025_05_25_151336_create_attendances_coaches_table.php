@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('attendances_coaches', function (Blueprint $table) {
         $table->id();
-        $table->string('attendable_type');
-        $table->unsignedBigInteger('attendable_id');
+        $table->foreignId('user_id')->constrained()->onDelete('cascade');
         $table->dateTime('check_in')->nullable();
         $table->dateTime('check_out')->nullable();
         $table->date('date');

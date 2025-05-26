@@ -2,48 +2,53 @@
     action="{{ route('admin.attendance-users.store') }}"
     class="space-y-4 sm:space-y-6"
     x-data="{
-        currentDateTime: {
+        currentTime: {
             date: '',
             check_in: '',
             check_out: ''
         },
-        getCurrentDateTime() {
+        getCurrentTime() {
             const now = new Date();
             
             // Formatear fecha (YYYY-MM-DD)
             const year = now.getFullYear();
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
-            this.currentDateTime.date = `${year}-${month}-${day}`;
+            this.currentTime.date = `${year}-${month}-${day}`;
             
-            // Formatear horas (HH:MM)
+            // Formatear hora (HH:MM)
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const timeString = `${hours}:${minutes}`;
             
-            this.currentDateTime.check_in = timeString;
-            this.currentDateTime.check_out = timeString;
+            // Asignar valores
+            this.currentTime.check_in = timeString;
+            this.currentTime.check_out = timeString;
             
-            // Actualizar los campos del formulario
-            document.getElementById('date').value = this.currentDateTime.date;
-            document.getElementById('check_in').value = this.currentDateTime.check_in;
-            document.getElementById('check_out').value = this.currentDateTime.check_out;
+            // Actualizar inputs del formulario
+            document.getElementById('date').value = this.currentTime.date;
+            document.getElementById('check_in').value = this.currentTime.check_in;
+            document.getElementById('check_out').value = this.currentTime.check_out;
             
-            return this.currentDateTime;
+            return this.currentTime;
         },
         setCurrentTime(field) {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
-            document.getElementById(field).value = `${hours}:${minutes}`;
+            const timeString = `${hours}:${minutes}`;
+            
+            // Actualizar solo el campo específico
+            this.currentTime[field] = timeString;
+            document.getElementById(field).value = timeString;
         }
     }"
-    x-init="currentDateTime.date = new Date().toISOString().split('T')[0]"
+    x-init="currentTime.date = new Date().toISOString().split('T')[0]"
 >
     @csrf
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-        <!-- ID Asistencia (opcional, puede ser autoincremental) -->
+        <!-- ID Asistencia -->
         <div class="space-y-1">
             <label class="block text-sm sm:text-base text-gray-300">ID Asistencia</label>
             <input type="text" readonly
@@ -51,74 +56,69 @@
                 value="Automático">
         </div>
 
-        <!-- Cédula -->
+        <!-- ID de usuario -->
         <div class="space-y-1">
-            <label class="block text-sm sm:text-base text-gray-300">Cédula</label>
-            <input type="text" name="user_identifier" required
+            <label for="user_id" class="block text-sm sm:text-base text-gray-300">Cédula del Usuario</label>
+            <input type="text" name="user_id" id="user_id" required
+                value="{{ session('user_id') }}"
                 class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
                     focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all"
-                placeholder="Ingrese la cédula">
+                placeholder="Ingrese la cédula del usuario">
         </div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
         <!-- Fecha -->
         <div class="space-y-1">
-            <label class="block text-sm sm:text-base text-gray-300">Fecha</label>
+            <label for="date" class="block text-sm sm:text-base text-gray-300">Fecha</label>
             <div class="relative">
                 <input type="date" name="date" id="date" required
+                    x-model="currentTime.date"
                     class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
-                        focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all">
-                <button type="button" @click="getCurrentDateTime()"
+                    focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all">
+                <button type="button" @click="getCurrentTime()"
                     class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-[#f36100]">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    ⏱
                 </button>
             </div>
         </div>
 
         <!-- Hora Entrada -->
         <div class="space-y-1">
-            <label class="block text-sm sm:text-base text-gray-300">Hora Entrada</label>
+            <label for="check_in" class="block text-sm sm:text-base text-gray-300">Hora Entrada</label>
             <div class="relative">
                 <input type="time" name="check_in" id="check_in" required
+                    x-model="currentTime.check_in"
                     class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
-                        focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all">
+                    focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all">
                 <button type="button" @click="setCurrentTime('check_in')"
                     class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-[#f36100]">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    🕓
                 </button>
             </div>
         </div>
 
         <!-- Hora Salida -->
         <div class="space-y-1">
-            <label class="block text-sm sm:text-base text-gray-300">Hora Salida</label>
+            <label for="check_out" class="block text-sm sm:text-base text-gray-300">Hora Salida</label>
             <div class="relative">
                 <input type="time" name="check_out" id="check_out"
+                    x-model="currentTime.check_out"
                     class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
-                        focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all">
+                    focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all">
                 <button type="button" @click="setCurrentTime('check_out')"
                     class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-[#f36100]">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    🕔
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Botón para capturar todos los datos actuales -->
+    <!-- Botón capturar fecha y hora -->
     <div class="pt-2">
-        <button type="button" @click="getCurrentDateTime()"
+        <button type="button" @click="getCurrentTime()"
             class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Capturar fecha y hora actual
+            ⏱ Capturar fecha y hora actual
         </button>
     </div>
 

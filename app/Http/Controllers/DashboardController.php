@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Pago;
+use App\Models\Payment;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $inactivos = User::where('estado', 'inactivo')->count();
 
         // 2. Ganancias mensuales (últimos 6 meses)
-        $pagosPorMes = Pago::selectRaw('MONTHNAME(created_at) as mes, SUM(monto) as total')
+        $pagosPorMes = Payment::selectRaw('MONTHNAME(created_at) as mes, SUM(monto) as total')
             ->where('created_at', '>=', now()->subMonths(6))
             ->groupBy(DB::raw('MONTH(created_at)'), DB::raw('MONTHNAME(created_at)'))
             ->orderBy(DB::raw('MONTH(created_at)'))
