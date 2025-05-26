@@ -127,7 +127,7 @@
                             <i class="fas fa-money-bill-wave text-[#f36100]"></i>
                             <span>Pagos</span>
                         </a>
-                        <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.memberships' : 'receptionist.memberships') }}"
+                        <a href="{{ route(class_basename($user) === 'Admin' ? 'admin.attendance-users' : 'receptionist.attendance-users') }}"
                             class="flex items-center gap-3 py-2 px-4 hover:bg-[#252525] rounded transition duration-300">
                             <i class="fas fa-clipboard-list text-[#f36100]"></i>
                             <span>Aistencias</span>

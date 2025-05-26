@@ -7,6 +7,8 @@ use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\AttendanceUserController;
+use App\Http\Controllers\AttendanceCoachController;
 
 // Página principal y públicas
 Route::get('/', fn () => view('inicio'));
@@ -60,6 +62,32 @@ Route::middleware(['admin'])->group(function () {
             'show' => 'payments.show',
         ]);
     });
+
+    Route::prefix('admin')->group(function () {
+        Route::resource('attendance-coaches', AttendanceCoachController::class)->names([
+            'index' => 'admin.attendance-coaches',
+            'create' => 'admin.attendance-coaches.create',
+            'store' => 'admin.attendance-coaches.store',
+            'edit' => 'attendance-coaches.edit',
+            'update' => 'attendance-coaches.update',
+            'destroy' => 'attendance-coaches.destroy',
+            'show' => 'attendance-coaches.show',
+        ]);
+    });
+
+Route::prefix('admin')->group(function () {
+    Route::resource('attendance-users', AttendanceUserController::class)->names([
+        'index'   => 'admin.attendance-users',
+        'create'  => 'admin.attendance-users.create',
+        'store'   => 'admin.attendance-users.store',
+        'edit'    => 'admin.attendance-users.edit',
+        'update'  => 'admin.attendance-users.update',
+        'destroy' => 'admin.attendance-users.destroy',
+        'show'    => 'admin.attendance-users.show',
+    ]);
+});
+
+
 });
 
 Route::middleware(['receptionist'])->group(function () {
@@ -96,6 +124,16 @@ Route::middleware(['receptionist'])->group(function () {
             'show' => 'receptionist.payments.show',
         ]);
     });
+
+    Route::resource('attendance-users', AttendanceUserController::class)->names([
+        'index'   => 'receptionist.attendance-users',
+        'create'  => 'receptionist.attendance-users.create',
+        'store'   => 'receptionist.attendance-users.store',
+        'edit'    => 'receptionist.attendance-users.edit',
+        'update'  => 'receptionist.attendance-users.update',
+        'destroy' => 'receptionist.attendance-users.destroy',
+        'show'    => 'receptionist.attendance-users.show',
+    ]);
 });
 
 
