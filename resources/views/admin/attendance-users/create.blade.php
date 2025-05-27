@@ -21,9 +21,6 @@
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const timeString = `${hours}:${minutes}`;
             
-            // Asignar valores
-            this.currentTime.check_in = timeString;
-            this.currentTime.check_out = timeString;
             
             // Actualizar inputs del formulario
             document.getElementById('date').value = this.currentTime.date;
@@ -48,13 +45,6 @@
     @csrf
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-        <!-- ID Asistencia -->
-        <div class="space-y-1">
-            <label class="block text-sm sm:text-base text-gray-300">ID Asistencia</label>
-            <input type="text" readonly
-                class="w-full py-2 px-3 rounded-xl bg-[#252525] text-gray-400 border border-gray-700 cursor-not-allowed"
-                value="Automático">
-        </div>
 
         <!-- ID de usuario -->
         <div class="space-y-1">
@@ -97,29 +87,6 @@
                 </button>
             </div>
         </div>
-
-        <!-- Hora Salida -->
-        <div class="space-y-1">
-            <label for="check_out" class="block text-sm sm:text-base text-gray-300">Hora Salida</label>
-            <div class="relative">
-                <input type="time" name="check_out" id="check_out"
-                    x-model="currentTime.check_out"
-                    class="w-full py-2 px-3 rounded-xl bg-[#252525] text-white border border-gray-700 
-                    focus:border-[#f36100] focus:ring-2 focus:ring-[#f36100]/70 focus:outline-none transition-all">
-                <button type="button" @click="setCurrentTime('check_out')"
-                    class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-[#f36100]">
-                    🕔
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Botón capturar fecha y hora -->
-    <div class="pt-2">
-        <button type="button" @click="getCurrentTime()"
-            class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-300">
-            ⏱ Capturar fecha y hora actual
-        </button>
     </div>
 
     <div class="flex justify-end gap-4 pt-6">

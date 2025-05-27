@@ -88,6 +88,7 @@ class AttendanceUserController extends Controller
             ],
         ]);
 
+
         AttendanceUser::create([
             'user_id' => $request->user_id,
             'check_in' => $request->check_in,
@@ -95,9 +96,10 @@ class AttendanceUserController extends Controller
             'date' => $request->date,
         ]);
 
-        return redirect()->route('admin.attendance-users.index')
+        return redirect()->route('admin.attendance-users')
                          ->with('success', 'Asistencia registrada exitosamente.');
     }
+
 
     public function edit(AttendanceUser $attendance)
     {
@@ -118,66 +120,64 @@ class AttendanceUserController extends Controller
         return view('admin.attendance-users.edit', compact('attendance', 'users', 'user'));
     }
 
-    public function update(Request $request, AttendanceUser $attendance)
+        public function update(Request $request, AttendanceUser $attendance)
     {
         $login = Login::find(Session::get('login_id'));
         $user = $login?->loginable;
-        $gym = $user->gym;
-
-        if (!$user || !$gym) {
+        
+        if (!$user || !$user->gym) {
             return redirect('/login')->withErrors(['access' => 'Sesión inválida']);
         }
 
-        if ($attendance->user->gym_id !== $gym->id) {
+        // Cargar la relación user si no está cargada
+        $attendance->load('user');
+
+        // Verificar que el usuario de la asistencia exista
+        if (!$attendance->user) {
+            return back()->with('error', 'El usuario asociado a esta asistencia no existe');
+        }
+
+        // Verificar que el usuario pertenezca al gimnasio
+        if ($attendance->user->gym_id !== $user->gym->id) {
             abort(403, 'No autorizado');
         }
 
         $request->validate([
-            'user_id' => [
-                'required',
-                function ($attribute, $value, $fail) use ($gym) {
-                    $user = User::where('id', $value)
-                        ->where('gym_id', $gym->id)
-                        ->first();
-
-                    if (!$user) {
-                        $fail('Este usuario no pertenece a tu gimnasio.');
-                    }
-                }
-            ],
-            'check_in' => 'required|date_format:H:i',
-            'check_out' => 'nullable|date_format:H:i|after_or_equal:check_in',
-            'date' => 'required|date',
+            'check_out' => 'required|date_format:H:i|after_or_equal:check_in',
         ]);
 
         $attendance->update([
-            'user_id' => $request->user_id,
-            'check_in' => $request->check_in,
             'check_out' => $request->check_out,
-            'date' => $request->date,
         ]);
 
-        return redirect()->route('admin.attendance-users.index')
-                         ->with('success', 'Asistencia actualizada correctamente.');
+        return redirect()->route('admin.attendance-users')
+                        ->with('success', 'Asistencia finalizada correctamente.');
     }
 
     public function destroy(AttendanceUser $attendance)
     {
         $login = Login::find(Session::get('login_id'));
         $user = $login?->loginable;
-        $gym = $user->gym;
-
-        if (!$user || !$gym) {
+        
+        if (!$user || !$user->gym) {
             return redirect('/login')->withErrors(['access' => 'Sesión inválida']);
         }
 
-        if ($attendance->user->gym_id !== $gym->id) {
+        // Cargar la relación user si no está cargada
+        $attendance->load('user');
+
+        // Verificar que el usuario de la asistencia exista
+        if (!$attendance->user) {
+            return back()->with('error', 'El usuario asociado a esta asistencia no existe');
+        }
+
+        if ($attendance->user->gym_id !== $user->gym->id) {
             abort(403, 'No autorizado');
         }
 
         $attendance->delete();
 
-        return redirect()->route('admin.attendance-users.index')
-                         ->with('success', 'Asistencia eliminada correctamente.');
+        return redirect()->route('admin.attendance-users')
+                        ->with('success', 'Asistencia eliminada correctamente.');
     }
 }

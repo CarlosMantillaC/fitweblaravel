@@ -30,12 +30,11 @@
 
         // Editar
         'editShowVar' => 'showEditModal',
-        'editTitle' => 'Editar Asistencia', 
+        'editTitle' => 'Finalizar Asistencia', 
         'editCondition' => 'currentEditAttendance', 
         'editView' => 'admin.attendance-users.edit', 
         'editParams' => [
             'attendance' => $attendances->first() ?? null, 
-            'users' => $users,
         ],
     ])
 
@@ -147,87 +146,77 @@
         </div>
 
 
-        <!-- Tabla -->
-        <div class="overflow-x-auto">
-            <div class="min-w-full inline-block align-middle">
-                <div class="overflow-hidden">
-                    <table class="min-w-full bg-[#151515] rounded-lg shadow-lg text-center">
-                        <thead>
-                            <tr class="border-b border-gray-700">
-                                <th class="px-4 py-3 text-sm text-gray-300">ID</th>
-                                <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Cédula</th>
-                                <th class="px-4 py-3 text-sm text-gray-300">Fecha</th>
-                                <th class="px-4 py-3 text-sm text-gray-300">Hora entrada</th>
-                                <th class="px-4 py-3 text-sm text-gray-300">Hora salida</th>
-                                @if ($role === 'Admin')
-                                    <th class="px-4 py-3 text-sm text-gray-300">Acciones</th>
-                                @endif
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($attendances as $attendance)
-                                <tr
-                                    class="border-b border-gray-700 hover:bg-[#252525] hover:text-white transition duration-300">
-                                    <td class="px-4 py-3 text-sm text-white">{{ $attendance->id }}</td>
-                                    <td class="px-4 py-3 text-sm text-white">{{ $attendance->user->name }}</td>
-                                    <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
-                                        {{ $attendance->user->id }}</td>
-                                    <td class="px-4 py-3 text-sm text-white">
-                                        {{ $types[$attendance->type] ?? $attendance->type }}
-                                    </td>
-                                    <td class="px-4 py-3 text-sm text-white">
-                                        {{ \Carbon\Carbon::parse($attendance->date)->format('d/m/Y') }}
-                                    </td>
-                                    <td class="px-4 py-3 text-sm text-white">
-                                        {{ \Carbon\Carbon::parse($attendance->check_in)->format('H:i') }}
-                                    </td>
-                                    <td class="px-4 py-3 text-sm text-white">
-                                        {{ $attendance->check_out ? \Carbon\Carbon::parse($attendance->check_out)->format('H:i') : '--' }}
-                                    </td>
+<div class="overflow-x-auto">
+    <div class="min-w-full inline-block align-middle">
+        <div class="overflow-hidden">
+            <table class="min-w-full bg-[#151515] rounded-lg shadow-lg text-center">
+                <thead>
+                    <tr class="border-b border-gray-700">
+                        <th class="px-4 py-3 text-sm text-gray-300">ID</th>
+                        <th class="px-4 py-3 text-sm text-gray-300">Nombre</th>
+                        <th class="px-4 py-3 text-sm text-gray-300 hidden sm:table-cell">Cédula</th>
+                        <th class="px-4 py-3 text-sm text-gray-300">Fecha</th>
+                        <th class="px-4 py-3 text-sm text-gray-300">Hora entrada</th>
+                        <th class="px-4 py-3 text-sm text-gray-300">Hora salida</th>
+                        @if ($role === 'Admin')
+                            <th class="px-4 py-3 text-sm text-gray-300">Acciones</th>
+                        @endif
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($attendances as $attendance)
+                        <tr class="border-b border-gray-700 hover:bg-[#252525] hover:text-white transition duration-300">
+                            <td class="px-4 py-3 text-sm text-white">{{ $attendance->id }}</td>
+                            <td class="px-4 py-3 text-sm text-white">{{ $attendance->user->name }}</td>
+                            <td class="px-4 py-3 text-sm text-white hidden sm:table-cell">
+                                {{ $attendance->user->id }}</td>
+                            <td class="px-4 py-3 text-sm text-white">
+                                {{ \Carbon\Carbon::parse($attendance->date)->format('d/m/Y') }}
+                            </td>
+                            <td class="px-4 py-3 text-sm text-white">
+                                {{ \Carbon\Carbon::parse($attendance->check_in)->format('H:i') }}
+                            </td>
+                            <td class="px-4 py-3 text-sm text-white">
+                                {{ $attendance->check_out ? \Carbon\Carbon::parse($attendance->check_out)->format('H:i') : '--' }}
+                            </td>
 
-                                    @if ($role === 'Admin')
-                                        <td class="px-4 py-3 table-cell">
-                                            <div class="flex justify-center items-center space-x-2">
-                                                <button
-                                                    @click="currentEditAttendance = {
-                                                        ...{{ json_encode($attendance) }},
-                                                        user_name: '{{ addslashes($attendance->user->name) }}'
-                                                    }; showEditModal = true"
-                                                    class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition duration-300">
-                                                    Editar
-                                                </button>
+                            @if ($role === 'Admin')
+                                <td class="px-4 py-3 table-cell">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        @if(!$attendance->check_out)
+                                            <button
+                                                @click="currentEditAttendance = {
+                                                    ...{{ json_encode($attendance) }},
+                                                    user_name: '{{ addslashes($attendance->user->name) }}'
+                                                }; showEditModal = true"
+                                                class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm transition duration-300">
+                                                Finalizar Asistencia
+                                            </button>
+                                        @endif
+                                            <!-- Botón Eliminar como componente -->
+                                            <x-delete-button :action="route('admin.attendance-users.destroy', $attendance->id)" />
 
-                                                <!-- Botón Eliminar -->
-                                                <form action="{{ route('admin.attendance-users.destroy', $attendance->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" 
-                                                        class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition duration-300"
-                                                        onclick="return confirm('¿Estás seguro de eliminar esta asistencia?')">
-                                                        Eliminar
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    @endif
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="{{ $role === 'Admin' ? 6 : 5 }}"
-                                        class="text-center px-4 py-6 text-gray-400">
-                                        No hay asistencias registradas.
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                                    </div>
+                                </td>
+                            @endif
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="{{ $role === 'Admin' ? 7 : 6 }}"
+                                class="text-center px-4 py-6 text-gray-400">
+                                No hay asistencias registradas.
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
 
-                    <!-- Paginación -->
-                    <div class="mt-4 px-4 py-3 flex items-center justify-center border-t border-gray-700 sm:px-6">
-                        {{ $attendances->appends(request()->except('page'))->links() }}
-                    </div>
-                </div>
+            <!-- Paginación -->
+            <div class="mt-4 px-4 py-3 flex items-center justify-center border-t border-gray-700 sm:px-6">
+                {{ $attendances->appends(request()->except('page'))->links() }}
             </div>
         </div>
+    </div>
+</div>
     </main>
 @endsection
