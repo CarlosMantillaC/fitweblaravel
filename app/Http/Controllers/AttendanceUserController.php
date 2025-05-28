@@ -94,6 +94,7 @@ class AttendanceUserController extends Controller
             'check_in' => $request->check_in,
             'check_out' => $request->check_out,
             'date' => $request->date,
+
         ]);
 
         return redirect()->route('admin.attendance-users')
@@ -124,6 +125,7 @@ class AttendanceUserController extends Controller
     {
         $login = Login::find(Session::get('login_id'));
         $user = $login?->loginable;
+        $gym = $user->gym;
         
         if (!$user || !$user->gym) {
             return redirect('/login')->withErrors(['access' => 'Sesión inválida']);
@@ -142,38 +144,25 @@ class AttendanceUserController extends Controller
             abort(403, 'No autorizado');
         }
 
-        $request->validate([
-            'check_out' => 'required|date_format:H:i|after_or_equal:check_in',
-        ]);
+try {
+    $validated = $request->validate([
+        'check_out' => 'required|date_format:H:i|after_or_equal:check_in',
+    ]);
 
-        $attendance->update([
-            'check_out' => $request->check_out,
-        ]);
+    $attendance->update([
+        'check_out' => $validated['check_out'],
+    ]);
 
-        return redirect()->route('admin.attendance-users')
+            return redirect()->route('admin.attendance-users')
                         ->with('success', 'Asistencia finalizada correctamente.');
+} catch (\Exception $e) {
+    return redirect()->back()->with('error', 'Error al actualizar la hora de salida: '.$e->getMessage());
+}
+
     }
 
     public function destroy(AttendanceUser $attendance)
     {
-        $login = Login::find(Session::get('login_id'));
-        $user = $login?->loginable;
-        
-        if (!$user || !$user->gym) {
-            return redirect('/login')->withErrors(['access' => 'Sesión inválida']);
-        }
-
-        // Cargar la relación user si no está cargada
-        $attendance->load('user');
-
-        // Verificar que el usuario de la asistencia exista
-        if (!$attendance->user) {
-            return back()->with('error', 'El usuario asociado a esta asistencia no existe');
-        }
-
-        if ($attendance->user->gym_id !== $user->gym->id) {
-            abort(403, 'No autorizado');
-        }
 
         $attendance->delete();
 

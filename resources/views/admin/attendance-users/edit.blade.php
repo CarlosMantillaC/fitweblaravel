@@ -1,4 +1,4 @@
-<form method="POST" 
+s<form method="POST" 
     action="{{ route('admin.attendance-users.update', $attendance->id) }}"
     class="space-y-4 sm:space-y-6"
     x-data="{
